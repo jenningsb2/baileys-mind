@@ -6,6 +6,7 @@ import renderToString from 'next-mdx-remote/render-to-string';
 
 import { notesFilePaths, NOTES_PATH } from '../../utils/mdxUtils';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 import { NoteLayout } from '@/components/layouts/NoteLayout/NoteLayout';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
 
@@ -26,8 +27,21 @@ type NotePageProps = {
 
 const NotePage: React.FC<NotePageProps> = ({ source, frontMatter }) => {
   const content = hydrate(source, { components });
+  const title = `Note - ${frontMatter.title}`;
+  const description = frontMatter?.description;
+
+  const SEO = {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+    },
+  };
+
   return (
     <NoteLayout>
+      <NextSeo {...SEO} />
       <h1>{frontMatter.title}</h1>
       {frontMatter.description ? <p>{frontMatter.description}</p> : null}
       <main>{content}</main>
