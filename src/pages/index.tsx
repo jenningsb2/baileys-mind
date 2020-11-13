@@ -41,6 +41,7 @@ const Home: NextPage<HomeProps> = ({ notes }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  // Creating an array of notes from `notes/` directory
   const notes = notesFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(NOTES_PATH, filePath));
 

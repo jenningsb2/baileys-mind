@@ -26,7 +26,10 @@ type NotePageProps = {
 };
 
 const NotePage: React.FC<NotePageProps> = ({ source, frontMatter }) => {
+  // Hydrating `NotePage` component with content from mdx file
   const content = hydrate(source, { components });
+
+  // Grabbing information from frontmatter
   const title = `Note - ${frontMatter.title}`;
   const description = frontMatter?.description;
 

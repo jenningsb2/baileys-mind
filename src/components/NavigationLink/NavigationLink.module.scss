@@ -1,0 +1,27 @@
+@import '@scss/_mixins';
+
+.link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 4px;
+  justify-content: center;
+  font-size: var(--fz-sm);
+  height: 30px;
+  padding: 0 20px;
+  @include default-transition;
+
+  &:hover {
+    color: var(--color-yellow);
+    background-color: adjust-color(#ffc148, $alpha: -0.95);
+  }
+
+  &[data-state='active'] {
+    color: var(--color-yellow);
+    background-color: #6b5221;
+  }
+}
