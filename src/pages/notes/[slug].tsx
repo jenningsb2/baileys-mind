@@ -30,7 +30,7 @@ const NotePage: React.FC<NotePageProps> = ({ source, frontMatter }) => {
   const content = hydrate(source, { components });
 
   // Grabbing information from frontmatter
-  const title = `Note - ${frontMatter.title}`;
+  const title = `Bailey Jennings - ${frontMatter.title}`;
   const description = frontMatter?.description;
 
   const SEO = {

@@ -1,11 +1,18 @@
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { NextSeo } from 'next-seo';
 
 const Notes: React.FC = () => {
+  const title = 'Bailey Jennings - Notes';
+  const SEO = {
+    title,
+    openGraph: {
+      title,
+    },
+  };
   return (
     <MainLayout>
-      <div>
-        <h1>Notes</h1>
-      </div>
+      <NextSeo {...SEO} />
+      <h1>Notes</h1>
     </MainLayout>
   );
 };

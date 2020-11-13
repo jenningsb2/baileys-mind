@@ -3,6 +3,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { NextSeo } from 'next-seo';
 
 import { notesFilePaths, NOTES_PATH } from '../utils/mdxUtils';
 
@@ -20,8 +21,16 @@ type HomeProps = {
 };
 
 const Home: NextPage<HomeProps> = ({ notes }) => {
+  const title = 'Bailey Jennings - Home';
+  const SEO = {
+    title,
+    openGraph: {
+      title,
+    },
+  };
   return (
     <MainLayout>
+      <NextSeo {...SEO} />
       <div className={styles.container}>
         <h1>Home</h1>
         <ul>
