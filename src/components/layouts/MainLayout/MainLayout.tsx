@@ -8,7 +8,9 @@ export const MainLayout: React.FC = ({ children }) => {
     <>
       <DefaultSeo {...SEO} />
       <div className={styles.layout}>
-        <Navigation />
+        <div className={styles.navigationWrapper}>
+          <Navigation />
+        </div>
         <div className={styles.wrapper}>
           <div className={styles.content}>{children}</div>
         </div>
