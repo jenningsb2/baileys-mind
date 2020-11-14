@@ -8,7 +8,8 @@ import { NextSeo } from 'next-seo';
 import { notesFilePaths, NOTES_PATH } from '../utils/mdxUtils';
 
 import styles from '@scss/pages/Home.module.scss';
-import { GetStaticProps, NextPage } from 'next';
+import { GetStaticProps } from 'next';
+import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 
 type HomeProps = {
   notes: {
@@ -20,7 +21,7 @@ type HomeProps = {
   }[];
 };
 
-const Home: NextPage<HomeProps> = ({ notes }) => {
+const Home: React.FC<HomeProps> = ({ notes }) => {
   const title = 'Bailey Jennings - Home';
   const SEO = {
     title,
@@ -29,7 +30,7 @@ const Home: NextPage<HomeProps> = ({ notes }) => {
     },
   };
   return (
-    <MainLayout>
+    <>
       <NextSeo {...SEO} />
       <div className={styles.container}>
         <h1>Home</h1>
@@ -45,7 +46,7 @@ const Home: NextPage<HomeProps> = ({ notes }) => {
           ))}
         </ul>
       </div>
-    </MainLayout>
+    </>
   );
 };
 
@@ -64,6 +65,10 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   return { props: { notes } };
+};
+
+(Home as PageWithLayoutType).getLayout = (page) => {
+  return <MainLayout>{page}</MainLayout>;
 };
 
 export default Home;

@@ -1,3 +1,4 @@
+import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { NextSeo } from 'next-seo';
 
@@ -10,11 +11,14 @@ const About: React.FC = () => {
     },
   };
   return (
-    <MainLayout>
+    <>
       <NextSeo {...SEO} />
       <h1>About</h1>
-    </MainLayout>
+    </>
   );
 };
 
+(About as PageWithLayoutType).getLayout = (page) => {
+  return <MainLayout>{page}</MainLayout>;
+};
 export default About;

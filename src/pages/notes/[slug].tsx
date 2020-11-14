@@ -9,6 +9,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { NoteLayout } from '@/components/layouts/NoteLayout/NoteLayout';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
+import { PageWithLayoutType } from '@/components/layouts/layouts.model';
+import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -43,12 +45,12 @@ const NotePage: React.FC<NotePageProps> = ({ source, frontMatter }) => {
   };
 
   return (
-    <NoteLayout>
+    <>
       <NextSeo {...SEO} />
       <h1>{frontMatter.title}</h1>
       {frontMatter.description ? <p>{frontMatter.description}</p> : null}
       <main>{content}</main>
-    </NoteLayout>
+    </>
   );
 };
 
@@ -85,6 +87,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths,
     fallback: false,
   };
+};
+
+(NotePage as PageWithLayoutType).getLayout = (page) => {
+  return (
+    <MainLayout>
+      <NoteLayout>{page}</NoteLayout>;
+    </MainLayout>
+  );
 };
 
 export default NotePage;
