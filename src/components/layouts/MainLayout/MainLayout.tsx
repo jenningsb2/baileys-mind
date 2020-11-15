@@ -2,10 +2,11 @@ import { DefaultSeo } from 'next-seo';
 import styles from './MainLayout.module.scss';
 import SEO from 'next-seo.config';
 import { Navigation } from '@/components/Navigation/Navigation';
+import { ThemeProvider } from '@/context/theme';
 
 export const MainLayout: React.FC = ({ children }) => {
   return (
-    <>
+    <ThemeProvider>
       <DefaultSeo {...SEO} />
       <div className={styles.layout}>
         <div className={styles.navigationWrapper}>
@@ -16,6 +17,6 @@ export const MainLayout: React.FC = ({ children }) => {
         </div>
         <footer>footer</footer>
       </div>
-    </>
+    </ThemeProvider>
   );
 };

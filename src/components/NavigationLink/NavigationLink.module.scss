@@ -1,7 +1,7 @@
 @import '@scss/_mixins';
 
 .link {
-  color: var(--color-white);
+  color: var(--color-yellow);
   text-decoration: none;
   font-weight: 700;
   text-align: center;
@@ -23,5 +23,21 @@
   &[data-state='active'] {
     color: var(--color-yellow);
     background-color: #6b5221;
+  }
+}
+
+[data-theme='light'] {
+  .link {
+    color: var(--text-01);
+
+    &:hover {
+      color: var(--color-yellow);
+      background-color: adjust-color(#ffc148, $alpha: -0.75);
+    }
+
+    &[data-state='active'] {
+      color: var(--color-yellow);
+      background-color: #6b5221;
+    }
   }
 }
