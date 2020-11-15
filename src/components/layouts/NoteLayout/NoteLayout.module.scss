@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: var(--content-width, 682px);
+  width: 100%;
+}

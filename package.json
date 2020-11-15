@@ -5,19 +5,38 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,json}'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.{js,jsx,ts,tsx,css,scss}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.19",
-    "@next/mdx": "^10.0.0",
+    "gray-matter": "^4.0.2",
     "next": "10.0.0",
+    "next-compose-plugins": "^2.2.1",
+    "next-mdx-remote": "^1.0.0",
+    "next-seo": "^4.17.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sass": "^1.29.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.55",
+    "classnames": "^2.2.6",
+    "globby": "^11.0.1",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.1.2",
     "typescript": "^4.0.5"
   }
 }
