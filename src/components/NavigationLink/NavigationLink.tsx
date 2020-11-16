@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import styles from './NavigationLink.module.scss';
 
@@ -28,7 +29,10 @@ export const NavigationLink: React.FC<{ href: string }> = ({
       href={href}
       onClick={handleClick}
       data-state={linkState}>
-      {children}
+      <span className={styles.linkText}>{children}</span>
+      {linkState === 'active' ? (
+        <motion.div className={styles.linkBg} layoutId='link-bg' />
+      ) : null}
     </a>
   );
 };
