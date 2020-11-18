@@ -4,7 +4,6 @@
   --surface-02: var(--color-slate);
   --text-01: var(--color-white);
   --text-02: var(--color-black);
-  --text-03: var(--color-yellow);
 }
 
 .root[data-theme='light'] {
@@ -13,5 +12,4 @@
   --surface-02: var(--color-slate);
   --text-01: var(--color-black);
   --text-02: var(--color-black);
-  --text-03: var(--color-yellow);
 }
