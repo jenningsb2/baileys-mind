@@ -10,6 +10,7 @@ import { notesFilePaths, NOTES_PATH } from '../utils/mdxUtils';
 import styles from '@scss/pages/Home.module.scss';
 import { GetStaticProps } from 'next';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
+import { CustomLink } from '@/components/CustomLink/CustomLink';
 
 type HomeProps = {
   notes: {
@@ -37,11 +38,11 @@ const Home: React.FC<HomeProps> = ({ notes }) => {
         <ul>
           {notes.map((note) => (
             <li key={note.filePath}>
-              <Link
+              <CustomLink
                 as={`notes/${note.filePath.replace(/\.mdx?$/, '')}`}
                 href={`notes/[slug]`}>
-                <a>{note.data.title}</a>
-              </Link>
+                {note.data.title}
+              </CustomLink>
             </li>
           ))}
         </ul>

@@ -1,13 +1,21 @@
 $colors: (
-  'black': #181818,
+  'black': #0d0d0d,
   'white': #ffffff,
-  'yellow': #ffc148,
+  'yellow': #e69c20,
+  'blue': #206ae6,
+  'grey-100': #d4d5d8,
+  'grey-200': #b4b6bb,
+  'grey-300': #61636b,
   'slate': #656565,
 );
 
 :root {
-  --color-black: #181818;
+  --color-black: #0d0d0d;
   --color-white: #ffffff;
-  --color-yellow: #ffc148;
+  --color-grey-100: #d4d5d8;
+  --color-grey-200: #b4b6bb;
+  --color-grey-300: #61636b;
+  --color-yellow: #e69c20;
+  --color-blue: #206ae6;
   --color-slate: #656565;
 }

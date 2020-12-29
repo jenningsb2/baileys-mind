@@ -92,7 +92,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 (NotePage as PageWithLayoutType).getLayout = (page) => {
   return (
     <MainLayout>
-      <NoteLayout>{page}</NoteLayout>;
+      <NoteLayout>{page}</NoteLayout>
     </MainLayout>
   );
 };

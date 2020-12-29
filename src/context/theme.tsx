@@ -22,7 +22,7 @@ const ThemeContext = createContext({} as ThemeContextType);
 
 const ThemeProvider: React.FC = ({ children }) => {
   const root = useRef() as MutableRefObject<HTMLDivElement>;
-  const [theme, setTheme] = useState<AppThemes>('dark');
+  const [theme, setTheme] = useState<AppThemes>('light');
   useEffect(() => {
     root.current.dataset.theme = theme;
   }, [theme]);
