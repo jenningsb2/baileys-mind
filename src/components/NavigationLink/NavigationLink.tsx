@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import styles from './NavigationLink.module.scss';
 
 type NavigationLinkState = 'active' | 'inactive';
-
-export const NavigationLink: React.FC<{ href: string }> = ({
+interface NavigationLinkProps {
+  href: string;
+}
+export const NavigationLink: React.FC<NavigationLinkProps> = ({
   children,
   href,
 }) => {
@@ -18,7 +20,7 @@ export const NavigationLink: React.FC<{ href: string }> = ({
       : setLinkState('inactive');
   }, [router]);
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: MouseEvent) => {
     e.preventDefault();
     router.push(href);
   };

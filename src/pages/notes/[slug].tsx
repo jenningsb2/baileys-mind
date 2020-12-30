@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
+import { MdxRemote } from 'next-mdx-remote/types';
 
 import { notesFilePaths, NOTES_PATH } from '../../utils/mdxUtils';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -16,12 +17,12 @@ import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
 // here.
-const components: any = {
+const components: MdxRemote.Components = {
   a: CustomLink,
 };
 
 type NotePageProps = {
-  source: any;
+  source: MdxRemote.Source;
   frontMatter: {
     [key: string]: any;
   };
@@ -63,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // MDX is parsed by 'gray-matter' lib
   const { content, data } = matter(source);
 
-  const mdxSource = await renderToString(content, {
+  const mdxSource: MdxRemote.Source = await renderToString(content, {
     components,
     scope: data,
   });
