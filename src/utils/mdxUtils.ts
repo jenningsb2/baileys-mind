@@ -1,11 +1,15 @@
+import { Paths } from '@/data/paths';
 import fs from 'fs';
 import path from 'path';
 
-// NOTES_PATH is useful when you want to get the path to a specific file
-export const NOTES_PATH = path.join(process.cwd(), './src/notes');
+// WRITINGS_PATH is useful when you want to get the path to a specific file
+export const WRITINGS_PATH = path.join(
+  process.cwd(),
+  `./src/${Paths.writings}`,
+);
 
-// notesFilePaths is the list of all mdx files inside the NOTES_PATH directory
-export const notesFilePaths = fs
-  .readdirSync(NOTES_PATH)
+// writingsFilePaths is the list of all mdx files inside the writings_PATH directory
+export const writingsFilePaths = fs
+  .readdirSync(WRITINGS_PATH)
   // Only include md(x) files
   .filter((path) => /\.mdx?$/.test(path));

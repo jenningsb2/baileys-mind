@@ -2,8 +2,8 @@ import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { NextSeo } from 'next-seo';
 
-const Notes: React.FC = () => {
-  const title = 'Bailey Jennings - Notes';
+const Writings: React.FC = () => {
+  const title = 'Bailey Jennings - Writings';
   const SEO = {
     title,
     openGraph: {
@@ -13,12 +13,12 @@ const Notes: React.FC = () => {
   return (
     <>
       <NextSeo {...SEO} />
-      <h1>Notes</h1>
+      <h1>Writings</h1>
     </>
   );
 };
 
-(Notes as PageWithLayoutType).getLayout = (page) => {
+(Writings as PageWithLayoutType).getLayout = (page) => {
   return <MainLayout>{page}</MainLayout>;
 };
-export default Notes;
+export default Writings;

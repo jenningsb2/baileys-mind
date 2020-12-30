@@ -5,15 +5,16 @@ import path from 'path';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { NextSeo } from 'next-seo';
 
-import { notesFilePaths, NOTES_PATH } from '../utils/mdxUtils';
+import { writingsFilePaths, WRITINGS_PATH } from '../utils/mdxUtils';
 
 import styles from '@scss/pages/Home.module.scss';
 import { GetStaticProps } from 'next';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
+import { Paths } from '@/data/paths';
 
 type HomeProps = {
-  notes: {
+  writings: {
     content: string;
     data: {
       [key: string]: any;
@@ -22,7 +23,7 @@ type HomeProps = {
   }[];
 };
 
-const Home: React.FC<HomeProps> = ({ notes }) => {
+const Home: React.FC<HomeProps> = ({ writings }) => {
   const title = 'Bailey Jennings - Home';
   const SEO = {
     title,
@@ -36,12 +37,15 @@ const Home: React.FC<HomeProps> = ({ notes }) => {
       <div className={styles.container}>
         <h1>Home</h1>
         <ul>
-          {notes.map((note) => (
-            <li key={note.filePath}>
+          {writings.map((writing) => (
+            <li key={writing.filePath}>
               <CustomLink
-                as={`notes/${note.filePath.replace(/\.mdx?$/, '')}`}
-                href={`notes/[slug]`}>
-                {note.data.title}
+                as={`${Paths.writings}/${writing.filePath.replace(
+                  /\.mdx?$/,
+                  '',
+                )}`}
+                href={`${Paths.writings}/[slug]`}>
+                {writing.data.title}
               </CustomLink>
             </li>
           ))}
@@ -52,9 +56,9 @@ const Home: React.FC<HomeProps> = ({ notes }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Creating an array of notes from `notes/` directory
-  const notes = notesFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(NOTES_PATH, filePath));
+  // Creating an array of writings from `writings/` directory
+  const writings = writingsFilePaths.map((filePath) => {
+    const source = fs.readFileSync(path.join(WRITINGS_PATH, filePath));
 
     const { content, data } = matter(source);
 
@@ -65,7 +69,7 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   });
 
-  return { props: { notes } };
+  return { props: { writings } };
 };
 
 (Home as PageWithLayoutType).getLayout = (page) => {

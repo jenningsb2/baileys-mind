@@ -1,7 +1,7 @@
 import { ToggleSwitch } from '@/components/Toggle/Toggle';
-import styles from './NoteLayout.module.scss';
+import styles from './WritingLayout.module.scss';
 
-export const NoteLayout: React.FC = ({ children }) => {
+export const WritingLayout: React.FC = ({ children }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>

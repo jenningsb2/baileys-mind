@@ -9,8 +9,8 @@ export const Navigation: React.FC = () => {
       <div className={styles.content}>
         <AnimateSharedLayout>
           <NavigationLink href={Paths.home}>Home</NavigationLink>
-          <NavigationLink href={Paths.notes}>Notes</NavigationLink>
-          <NavigationLink href={Paths.about}>About</NavigationLink>
+          <NavigationLink href={`/${Paths.writings}`}>Writings</NavigationLink>
+          <NavigationLink href={`/${Paths.about}`}>About</NavigationLink>
         </AnimateSharedLayout>
       </div>
     </nav>

@@ -5,10 +5,10 @@ import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
 import { MdxRemote } from 'next-mdx-remote/types';
 
-import { notesFilePaths, NOTES_PATH } from '../../utils/mdxUtils';
+import { writingsFilePaths, WRITINGS_PATH } from '@/utils/mdxUtils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
-import { NoteLayout } from '@/components/layouts/NoteLayout/NoteLayout';
+import { WritingLayout } from '@/components/layouts/WritingLayout/WritingLayout';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
@@ -21,15 +21,15 @@ const components: MdxRemote.Components = {
   a: CustomLink,
 };
 
-type NotePageProps = {
+type WritingPageProps = {
   source: MdxRemote.Source;
   frontMatter: {
     [key: string]: any;
   };
 };
 
-const NotePage: React.FC<NotePageProps> = ({ source, frontMatter }) => {
-  // Hydrating `NotePage` component with content from mdx file
+const WritingPage: React.FC<WritingPageProps> = ({ source, frontMatter }) => {
+  // Hydrating `WritingPage` component with content from mdx file
   const content = hydrate(source, { components });
 
   // Grabbing information from frontmatter
@@ -58,8 +58,8 @@ const NotePage: React.FC<NotePageProps> = ({ source, frontMatter }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // rebuilding filename from 'slug' which is passed as a link param
   // (which was created in the `getStaticPaths` method)
-  const noteFilePath = path.join(NOTES_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(noteFilePath);
+  const writingFilePath = path.join(WRITINGS_PATH, `${params.slug}.mdx`);
+  const source = fs.readFileSync(writingFilePath);
 
   // MDX is parsed by 'gray-matter' lib
   const { content, data } = matter(source);
@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = notesFilePaths
+  const paths = writingsFilePaths
     // Remove file extensions for page paths
     .map((path) => path.replace(/\.mdx?$/, ''))
     // Map the path into the static paths object required by Next.js
@@ -90,12 +90,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-(NotePage as PageWithLayoutType).getLayout = (page) => {
+(WritingPage as PageWithLayoutType).getLayout = (page) => {
   return (
     <MainLayout>
-      <NoteLayout>{page}</NoteLayout>
+      <WritingLayout>{page}</WritingLayout>
     </MainLayout>
   );
 };
 
-export default NotePage;
+export default WritingPage;

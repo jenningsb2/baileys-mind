@@ -11,7 +11,7 @@ const prettier = require('prettier');
     './src/pages/**/*{.js,.jsx,.ts,.tsx,.mdx}',
     '!./src/pages/_*{.js,.jsx,.ts,.tsx,.mdx}',
     '!./src/pages/404*{.js,.jsx,.ts,.tsx,.mdx}',
-    '!./src/pages/notes',
+    `!./src/pages/writings`,
     '!./src/pages/api',
   ]).then((pages) => {
     const cleaned = pages.map((page) => {
@@ -20,11 +20,13 @@ const prettier = require('prettier');
     return cleaned;
   });
 
-  const notes = await globby(['./src/notes/**/*{.md,.mdx}']).then((notes) =>
-    notes.map((note) => note.replace('./src', '')),
+  const writings = await globby([
+    './src/writings/**/*{.md,.mdx}',
+  ]).then((writings) =>
+    writings.map((writing) => writing.replace('./src', '')),
   );
 
-  const content = [...pages, ...notes];
+  const content = [...pages, ...writings];
 
   const sitemap = `
         <?xml version="1.0" encoding="UTF-8"?>
