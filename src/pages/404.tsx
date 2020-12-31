@@ -1,12 +1,13 @@
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
+import { Paths } from '@/data/paths';
 import Link from 'next/link';
 
 const FourZeroFour: React.FC = () => {
   return (
     <>
       <h1>Oops, nothing to see here.</h1>
-      <Link href='/'>
+      <Link href={Paths.home}>
         <a>Back to home.</a>
       </Link>
     </>
@@ -14,6 +15,6 @@ const FourZeroFour: React.FC = () => {
 };
 
 (FourZeroFour as PageWithLayoutType).getLayout = (page) => {
-  return <MainLayout>{page}</MainLayout>;
+  return <RootLayout>{page}</RootLayout>;
 };
 export default FourZeroFour;

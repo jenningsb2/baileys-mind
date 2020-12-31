@@ -1,8 +1,11 @@
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
+import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { NextSeo } from 'next-seo';
 
 import styles from '@scss/pages/Home.module.scss';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
+import classnames from 'classnames';
+import { FeaturedPosts } from '@/components/FeaturedPosts/FeaturedPosts';
 
 const Home: React.FC = () => {
   const title = 'Bailey Jennings - Home';
@@ -16,14 +19,28 @@ const Home: React.FC = () => {
     <>
       <NextSeo {...SEO} />
       <div className={styles.container}>
-        <h1>Home</h1>
+        <section className={styles.intro}>
+          <h1 className={classnames('fz-xl lh-tight', styles.headline)}>
+            Hey there,
+          </h1>
+          <p>
+            Welcome to my personal site. You'll find notes on product
+            management, customer research, strategy, life meaning, and any other
+            topics that I find myself learning about.
+          </p>
+        </section>
+        <FeaturedPosts />
       </div>
     </>
   );
 };
 
 (Home as PageWithLayoutType).getLayout = (page) => {
-  return <MainLayout>{page}</MainLayout>;
+  return (
+    <RootLayout>
+      <PrimaryLayout>{page}</PrimaryLayout>
+    </RootLayout>
+  );
 };
 
 export default Home;

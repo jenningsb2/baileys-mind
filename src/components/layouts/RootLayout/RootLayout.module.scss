@@ -4,6 +4,7 @@
   flex-flow: column;
 }
 .wrapper {
+  padding-top: var(--space-xl);
   flex: 1;
   display: flex;
   justify-content: center;

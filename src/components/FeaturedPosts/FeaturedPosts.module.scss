@@ -1,0 +1,20 @@
+.title {
+  margin-bottom: var(--space-lg);
+}
+.list {
+  > :not(template) {
+    margin-bottom: var(--space-md);
+  }
+  > :last-child {
+    margin-right: 0;
+  }
+}
+
+// Post
+.time {
+  font-size: var(--fz-xsm);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+  color: var(--color-grey-300);
+  font-weight: 700;
+}

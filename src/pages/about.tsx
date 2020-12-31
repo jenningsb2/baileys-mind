@@ -1,5 +1,5 @@
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { NextSeo } from 'next-seo';
 
 const About: React.FC = () => {
@@ -19,6 +19,6 @@ const About: React.FC = () => {
 };
 
 (About as PageWithLayoutType).getLayout = (page) => {
-  return <MainLayout>{page}</MainLayout>;
+  return <RootLayout>{page}</RootLayout>;
 };
 export default About;

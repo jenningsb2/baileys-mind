@@ -1,5 +1,5 @@
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { Paths } from '@/data/paths';
@@ -45,6 +45,6 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 (Writings as PageWithLayoutType).getLayout = (page) => {
-  return <MainLayout>{page}</MainLayout>;
+  return <RootLayout>{page}</RootLayout>;
 };
 export default Writings;

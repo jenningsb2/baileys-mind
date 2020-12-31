@@ -1,10 +1,10 @@
 import { DefaultSeo } from 'next-seo';
-import styles from './MainLayout.module.scss';
+import styles from './RootLayout.module.scss';
 import SEO from 'next-seo.config';
 import { Navigation } from '@/components/Navigation/Navigation';
 import { ThemeProvider } from '@/context/theme';
 
-export const MainLayout: React.FC = ({ children }) => {
+export const RootLayout: React.FC = ({ children }) => {
   return (
     <ThemeProvider>
       <DefaultSeo {...SEO} />

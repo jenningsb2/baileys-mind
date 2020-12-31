@@ -11,7 +11,7 @@ import { NextSeo } from 'next-seo';
 import { WritingLayout } from '@/components/layouts/WritingLayout/WritingLayout';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -92,9 +92,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 (WritingPage as PageWithLayoutType).getLayout = (page) => {
   return (
-    <MainLayout>
+    <RootLayout>
       <WritingLayout>{page}</WritingLayout>
-    </MainLayout>
+    </RootLayout>
   );
 };
 
