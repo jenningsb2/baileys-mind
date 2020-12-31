@@ -102,6 +102,12 @@ p,
   margin-bottom: 30px;
 }
 
+a {
+  text-decoration: none;
+  font-size: var(--fz-sm);
+  line-height: var(--lh-tight);
+}
+
 li {
   font-weight: 400;
   line-height: var(--lh-loose);

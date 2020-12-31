@@ -11,10 +11,14 @@ $colors: (
 
 :root {
   --color-black: #0d0d0d;
+  --color-black-20: #{adjust-color(#0d0d0d, $alpha: -0.8)};
   --color-white: #ffffff;
   --color-grey-100: #d4d5d8;
+  --color-grey-100-20: #{adjust-color(#d4d5d8, $alpha: -0.8)};
   --color-grey-200: #b4b6bb;
+  --color-grey-200-30: #{adjust-color(#b4b6bb, $alpha: -0.7)};
   --color-grey-300: #61636b;
+  --color-grey-300-30: #{adjust-color(#61636b, $alpha: -0.7)};
   --color-yellow: #e69c20;
   --color-blue: #206ae6;
   --color-slate: #656565;

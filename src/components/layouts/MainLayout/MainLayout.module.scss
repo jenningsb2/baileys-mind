@@ -11,10 +11,10 @@
 
 .content {
   width: 100%;
-  max-width: var(--site-width, 916px);
-  margin: 0 var(--gutter, 90px);
+  max-width: var(--site-width);
+  margin: 0 var(--gutter);
 }
 
 .navigationWrapper {
-  margin-bottom: 56px;
+  margin-bottom: var(--nav-height);
 }

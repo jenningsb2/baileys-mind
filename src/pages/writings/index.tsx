@@ -1,22 +1,14 @@
-import fs from 'fs';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
-import { writingsFilePaths, WRITINGS_PATH } from '@/utils/mdxUtils';
 import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
-import path from 'path';
-import matter from 'gray-matter';
 import { Paths } from '@/data/paths';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
+import { WritingsData } from '@/models/writings-data';
+import { getWritingsData } from '@/utils/get-writings-data';
 
 type WritingsProps = {
-  writings: {
-    content: string;
-    data: {
-      [key: string]: any;
-    };
-    filePath: string;
-  }[];
+  writings: WritingsData[];
 };
 const Writings: React.FC<WritingsProps> = ({ writings }) => {
   const title = 'Bailey Jennings - Writings';
@@ -48,22 +40,8 @@ const Writings: React.FC<WritingsProps> = ({ writings }) => {
   );
 };
 
-// TODO: Create a HOF that grabs this data
 export const getStaticProps: GetStaticProps = async () => {
-  // Creating an array of writings from `writings/` directory
-  const writings = writingsFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(WRITINGS_PATH, filePath));
-
-    const { content, data } = matter(source);
-
-    return {
-      content,
-      data,
-      filePath,
-    };
-  });
-
-  return { props: { writings } };
+  return { props: { writings: getWritingsData() } };
 };
 
 (Writings as PageWithLayoutType).getLayout = (page) => {
