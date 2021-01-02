@@ -6,6 +6,7 @@ import { Paths } from '@/data/paths';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
 import { WritingsData } from '@/models/writings-data';
 import { getWritingsData } from '@/utils/get-writings-data';
+import { Heading } from '@/components/elements/Heading';
 
 type WritingsProps = {
   writings: WritingsData[];
@@ -21,7 +22,7 @@ const Writings: React.FC<WritingsProps> = ({ writings }) => {
   return (
     <>
       <NextSeo {...SEO} />
-      <h1>Writings</h1>
+      <Heading css={{ mb: '$6' }}>Writings</Heading>
       <ul>
         {writings.map((writing) => (
           <li key={writing.filePath}>
