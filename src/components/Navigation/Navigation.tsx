@@ -44,7 +44,9 @@ export const Navigation: React.FC = () => {
               <NavigationLink href={`/${Paths.writings}`}>
                 writing
               </NavigationLink>
-              <NavigationLink href={`${Paths.reading}`}>reading</NavigationLink>
+              <NavigationLink href={`/${Paths.reading}`}>
+                reading
+              </NavigationLink>
               <NavigationLink href={`/${Paths.about}`}>about</NavigationLink>
             </NavigationLinks>
           </AnimateSharedLayout>
