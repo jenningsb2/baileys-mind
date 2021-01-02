@@ -1,5 +1,6 @@
 .root[data-theme='dark'] {
   --ui-bg: var(--color-black);
+  --surface-01: var(--color-grey-100);
   --text-01: var(--color-grey-100);
   --text-02: var(--color-grey-100);
   --text-03: var(--color-yellow);
@@ -10,6 +11,7 @@
 
 .root[data-theme='light'] {
   --ui-bg: var(--color-grey-100);
+  --surface-01: var(--color-black);
   --text-01: var(--color-black);
   --text-02: var(--color-white);
   --text-03: var(--color-blue);

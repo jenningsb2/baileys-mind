@@ -2,7 +2,9 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-family: var(--ff-primary);
 }
 .root {
   background-color: var(--ui-bg);
+  color: var(--text-01);
 }

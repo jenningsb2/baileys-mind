@@ -3,6 +3,7 @@ import styles from './RootLayout.module.scss';
 import SEO from 'next-seo.config';
 import { Navigation } from '@/components/Navigation/Navigation';
 import { ThemeProvider } from '@/context/theme';
+import { Footer } from '@/components/Footer/Footer';
 
 export const RootLayout: React.FC = ({ children }) => {
   return (
@@ -15,7 +16,7 @@ export const RootLayout: React.FC = ({ children }) => {
         <div className={styles.wrapper}>
           <div className={styles.content}>{children}</div>
         </div>
-        <footer>footer</footer>
+        <Footer />
       </div>
     </ThemeProvider>
   );
