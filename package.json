@@ -19,6 +19,7 @@
     ]
   },
   "dependencies": {
+    "@stitches/react": "0.0.2",
     "framer-motion": "^2.9.4",
     "gray-matter": "^4.0.2",
     "next": "10.0.0",

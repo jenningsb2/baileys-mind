@@ -1,7 +1,22 @@
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { useState, useEffect, MouseEvent } from 'react';
-import styles from './NavigationLink.module.scss';
+import { styled } from 'stitches.config';
+import { Text } from '@/components/elements/Text';
+
+const StyledLink = styled('a', {
+  color: '$text1',
+  position: 'relative',
+});
+
+const LinkLine = styled(motion.div, {
+  bc: '$action',
+  height: 1,
+  width: '$full',
+  position: 'absolute',
+  bottom: -3,
+  left: 0,
+});
 
 type NavigationLinkState = 'active' | 'inactive';
 interface NavigationLinkProps {
@@ -26,15 +41,9 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   };
 
   return (
-    <a
-      className={styles.link}
-      href={href}
-      onClick={handleClick}
-      data-state={linkState}>
-      <span className={styles.linkText}>{children}</span>
-      {linkState === 'active' ? (
-        <motion.div className={styles.linkBg} layoutId='link-bg' />
-      ) : null}
-    </a>
+    <StyledLink href={href} onClick={handleClick}>
+      <Text>{children}</Text>
+      {linkState === 'active' ? <LinkLine layoutId='link-bg' /> : null}
+    </StyledLink>
   );
 };

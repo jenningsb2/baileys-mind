@@ -1,4 +1,3 @@
-@use "sass:math";
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -34,85 +33,85 @@
   src: url('/fonts/Inter-BoldItalic.woff2') format('woff2'),
     url('/fonts/Inter-BoldItalic.woff') format('woff');
 }
-// Defining Custom Properties for typography
-$scale: 1.414;
-$base: 24px;
-:root {
-  // *  Typeface
-  --ff-primary: 'Inter', sans-serif;
+// // Defining Custom Properties for typography
+// $scale: 1.414;
+// $base: 24px;
+// :root {
+//   // *  Typeface
+//   --ff-primary: 'Inter', sans-serif;
 
-  // * Font Sizes
-  --fz-super: #{math.round($base * math.pow($scale, 5))}; // 136px
-  --fz-xxl: #{math.round($base * math.pow($scale, 4))}; // 96px
-  --fz-xl: #{math.round($base * math.pow($scale, 3))}; // 68px
-  --fz-lg: #{math.round($base * math.pow($scale, 2))}; // 48px
-  --fz-md: #{math.round($base * math.pow($scale, 1))}; // 34px
-  --fz-base: #{$base}; // 24px
-  --fz-sm: #{math.round($base / math.pow($scale, 1))}; // 17px
-  --fz-xsm: #{math.round($base / math.pow($scale, 2))}; // 12px
-  --fz-micro: #{math.round($base / math.pow($scale, 3))}; // 8px
+//   // * Font Sizes
+//   --fz-super: #{math.round($base * math.pow($scale, 5))}; // 136px
+//   --fz-xxl: #{math.round($base * math.pow($scale, 4))}; // 96px
+//   --fz-xl: #{math.round($base * math.pow($scale, 3))}; // 68px
+//   --fz-lg: #{math.round($base * math.pow($scale, 2))}; // 48px
+//   --fz-md: #{math.round($base * math.pow($scale, 1))}; // 34px
+//   --fz-base: #{$base}; // 24px
+//   --fz-sm: #{math.round($base / math.pow($scale, 1))}; // 17px
+//   --fz-xsm: #{math.round($base / math.pow($scale, 2))}; // 12px
+//   --fz-micro: #{math.round($base / math.pow($scale, 3))}; // 8px
 
-  // * Line Height
-  --lh-primary: 1.33;
-  --lh-tight: 1;
-  --lh-loose: 1.5;
-}
+//   // * Line Height
+//   --lh-primary: 1.33;
+//   --lh-tight: 1;
+//   --lh-loose: 1.5;
+// }
 
-// * Native Element Styles
-h1,
-.text-h1,
-h2,
-.text-h2,
-h3,
-.text-h3,
-h4,
-.text-h4,
-h5,
-.text-h5,
-h6,
-.text-h6,
-a,
-button,
-li,
-p,
-.text-p {
-  font-family: var(--ff-primary);
-  text-align: left;
-  color: var(--text-01);
-  line-height: var(--lh-primary);
-}
+// // * Native Element Styles
+// h1,
+// .text-h1,
+// h2,
+// .text-h2,
+// h3,
+// .text-h3,
+// h4,
+// .text-h4,
+// h5,
+// .text-h5,
+// h6,
+// .text-h6,
+// a,
+// button,
+// li,
+// p,
+// .text-p {
+//   font-family: var(--ff-primary);
+//   text-align: left;
+//   color: var(--text-01);
+//   line-height: var(--lh-primary);
+// }
 
-h1,
-.text-h1 {
-  font-weight: 700;
-  line-height: var(--lh-tight);
-  font-size: var(--fz-md);
-  margin-bottom: 16px;
-}
+// h1,
+// .text-h1 {
+//   font-weight: 700;
+//   line-height: var(--lh-tight);
+//   font-size: var(--fz-md);
+//   margin-bottom: 16px;
+// }
 
-h2,
-.text-h2 {
-  font-weight: 700;
-  line-height: var(--lh-tight);
-  font-size: var(--fz-base);
-}
+// h2,
+// .text-h2 {
+//   font-weight: 700;
+//   line-height: var(--lh-tight);
+//   font-size: var(--fz-base);
+// }
 
-p,
-.text-p {
-  font-weight: 400;
-  line-height: var(--lh-loose);
-  font-size: var(--fz-sm);
-  margin-bottom: 30px;
-}
+// p,
+// .text-p {
+//   font-weight: 400;
+//   line-height: var(--lh-loose);
+//   font-size: var(--fz-sm);
+//   margin-bottom: 30px;
+// }
 
-a {
-  text-decoration: none;
-  font-size: var(--fz-sm);
-  line-height: var(--lh-tight);
-}
+// a {
+//   text-decoration: none;
+//   font-size: var(--fz-sm);
+//   line-height: var(--lh-tight);
+// }
 
-li {
-  font-weight: 400;
-  line-height: var(--lh-loose);
-  font-size: var(--fz-sm);
-}
+// li {
+//   font-weight: 400;
+//   line-height: var(--lh-loose);
+//   font-size: var(--fz-sm);
+// }

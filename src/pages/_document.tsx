@@ -5,12 +5,38 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
+import { css } from '../../stitches.config';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
+    const originalRenderPage = ctx.renderPage;
+    try {
+      let extractedStyles: string[] = [];
+      ctx.renderPage = () => {
+        const { styles, result } = css.getStyles(originalRenderPage);
+        extractedStyles = styles;
+        return result;
+      };
 
-    return { ...initialProps };
+      const initialProps = await Document.getInitialProps(ctx);
+
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+
+            {extractedStyles.map((content, index) => (
+              <style
+                key={index}
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
+            ))}
+          </>
+        ),
+      };
+    } finally {
+    }
   }
 
   render() {

@@ -1,8 +1,29 @@
 import { Paths } from '@/data/paths';
-import classnames from 'classnames';
 import Link from 'next/link';
 import React from 'react';
-import styles from './Footer.module.scss';
+import { styled } from 'stitches.config';
+import { Text } from '@/components/elements/Text';
+
+const Box = styled('div', {});
+const StyledFooter = styled('footer', {
+  pt: '$9',
+  display: 'flex',
+  jc: 'center',
+});
+const FooterContent = styled('div', {
+  borderTop: '1px solid $surface1',
+  width: '100%',
+  maxWidth: '$site',
+  mx: '$7',
+});
+const List = styled('ul', {
+  spaceY: '$2',
+});
+const LinkStyled = styled('a', {
+  display: 'block',
+  ta: 'right',
+  color: '$text1',
+});
 
 export const Footer: React.FC = ({ children }) => {
   const [year, setYear] = React.useState<number | null>(null);
@@ -46,53 +67,60 @@ export const Footer: React.FC = ({ children }) => {
   ];
 
   return (
-    <footer className={classnames('p-t-super', styles.container)}>
-      <div className={classnames('p-y-md', styles.content)}>
-        <div className={classnames('p-b-md m-b-lg', styles.links)}>
-          <Link href={Paths.email}>
-            <a className={classnames('fz-sm', styles.email)}>
-              jenningsebailey@gmail.com
-            </a>
-          </Link>
-          <div className={classnames('space-x-md', styles.linkLists)}>
-            <ul className='space-y-xsm'>
+    <StyledFooter>
+      <FooterContent>
+        <Box
+          css={{
+            py: '$5',
+            mb: '$6',
+            display: 'flex',
+            jc: 'space-between',
+            bp1: { fd: 'column', spaceY: '$6' },
+          }}>
+          <Box>
+            <Link href={Paths.email} passHref>
+              <LinkStyled
+                css={{ display: 'inline-block', ta: 'left', fz: '$3' }}>
+                jenningsebailey@gmail.com
+              </LinkStyled>
+            </Link>
+          </Box>
+          <Box css={{ display: 'flex', spaceX: '$5' }}>
+            <List>
               {siteLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href}>
-                    <a className={styles.listLink}>{link.label}</a>
+                  <Link href={link.href} passHref>
+                    <LinkStyled>{link.label}</LinkStyled>
                   </Link>
                 </li>
               ))}
-            </ul>
-            <ul className='space-y-xsm'>
+            </List>
+            <List>
               {socialLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href}>
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className={styles.listLink}>
+                  <Link href={link.href} passHref>
+                    <LinkStyled target='_blank' rel='noopener noreferrer'>
                       {link.label}
-                    </a>
+                    </LinkStyled>
                   </Link>
                 </li>
               ))}
-            </ul>
-          </div>
-        </div>
-        <div className={classnames(styles.legal)}>
-          <div className='fz-xsm lh-tight'>&copy; {year} copyright</div>
-          <Link href={Paths.hunter}>
-            <a
+            </List>
+          </Box>
+        </Box>
+        <Box css={{ display: 'flex', jc: 'space-between', pb: '$4' }}>
+          <Text size='2'>&copy; {year} copyright</Text>
+          <Link href={Paths.hunter} passHref>
+            <LinkStyled
               target='_blank'
               rel='noopener noreferrer'
-              className='link-reset fz-xsm lh-primary'>
+              css={{ fontSize: '$2', lh: '$primary' }}>
               designed and developed <br />
               by hunter jennings
-            </a>
+            </LinkStyled>
           </Link>
-        </div>
-      </div>
-    </footer>
+        </Box>
+      </FooterContent>
+    </StyledFooter>
   );
 };

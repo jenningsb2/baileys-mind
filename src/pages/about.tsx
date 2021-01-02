@@ -1,6 +1,7 @@
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { NextSeo } from 'next-seo';
+import { Heading } from '@/components/elements/Heading';
 
 const About: React.FC = () => {
   const title = 'Bailey Jennings - About';
@@ -13,7 +14,7 @@ const About: React.FC = () => {
   return (
     <>
       <NextSeo {...SEO} />
-      <h1>About</h1>
+      <Heading css={{ mb: '$6' }}>About</Heading>
     </>
   );
 };

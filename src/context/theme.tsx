@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import {
   createContext,
   Dispatch,
@@ -9,6 +10,7 @@ import {
   useContext,
   useEffect,
 } from 'react';
+import { darkThemeClass, styled } from '../../stitches.config';
 
 export type AppThemes = 'dark' | 'light';
 type UpdateAppTheme = Dispatch<SetStateAction<AppThemes>>;
@@ -19,6 +21,10 @@ type ThemeContextType = {
 };
 
 const ThemeContext = createContext({} as ThemeContextType);
+
+const Box = styled('div', {
+  backgroundColor: '$uiBackground',
+});
 
 const ThemeProvider: React.FC = ({ children }) => {
   const root = useRef() as MutableRefObject<HTMLDivElement>;
@@ -37,9 +43,13 @@ const ThemeProvider: React.FC = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={value}>
-      <div className='root' ref={root}>
+      <Box
+        className={classnames({
+          [`${darkThemeClass}`]: theme === 'dark',
+        })}
+        ref={root}>
         {children}
-      </div>
+      </Box>
     </ThemeContext.Provider>
   );
 };
