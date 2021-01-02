@@ -85,6 +85,9 @@ const theme = {
     $tight: '1',
     $loose: '1.5',
   },
+  transitions: {
+    $default: 'all 225ms cubic-bezier(0.4, 0, 0.2, 1)',
+  },
 };
 const darkTheme = {
   // Dark theme tokens
