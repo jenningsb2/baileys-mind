@@ -6,20 +6,26 @@ $colors: (
   'grey-100': #d4d5d8,
   'grey-200': #b4b6bb,
   'grey-300': #61636b,
-  'slate': #656565,
 );
 
 :root {
-  --color-black: #0d0d0d;
-  --color-black-20: #{adjust-color(#0d0d0d, $alpha: -0.8)};
+  --color-black-rgb: 13, 13, 13;
+  --color-black: rgb(var(--color-black-rgb));
+  --color-black-20: rgba(var(--color-black-rgb), 0.2);
+  --color-white-rgb: 13, 13, 13;
   --color-white: #ffffff;
-  --color-grey-100: #d4d5d8;
-  --color-grey-100-20: #{adjust-color(#d4d5d8, $alpha: -0.8)};
-  --color-grey-200: #b4b6bb;
-  --color-grey-200-30: #{adjust-color(#b4b6bb, $alpha: -0.7)};
-  --color-grey-300: #61636b;
-  --color-grey-300-30: #{adjust-color(#61636b, $alpha: -0.7)};
-  --color-yellow: #e69c20;
-  --color-blue: #206ae6;
-  --color-slate: #656565;
+  --color-grey-100-rgb: 212, 213, 216;
+  --color-grey-100: rgb(var(--color-grey-100-rgb));
+  --color-grey-100-20: rgba(var(--color-grey-100-rgb), 0.2);
+  --color-grey-200-rgb: 180, 182, 187;
+  --color-grey-200: rgb(var(--color-grey-200-rgb));
+  --color-grey-200-30: rgba(var(--color-grey-200-rgb), 0.3);
+  --color-grey-300-rgb: 97, 99, 107;
+  --color-grey-300: rgb(var(--color-grey-300-rgb));
+  --color-grey-300-30: rgba(var(--color-grey-300-rgb), 0.3);
+  --color-yellow-rgb: 230, 156, 32;
+  --color-yellow: rgb(var(--color-yellow-rgb));
+  --color-blue-rgb: 32, 106, 230;
+  --color-blue: rgb(var(--color-blue-rgb));
+  --color-blue-20: rgba(var(--color-blue-rgb), 0.2);
 }

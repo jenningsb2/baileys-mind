@@ -19,10 +19,8 @@ const Home: React.FC = () => {
     <>
       <NextSeo {...SEO} />
       <div className={styles.container}>
-        <section className={styles.intro}>
-          <h1 className={classnames('fz-xl lh-tight', styles.headline)}>
-            Hey there,
-          </h1>
+        <section className='m-b-xl'>
+          <h1 className='fz-xl lh-tight m-b-lg'>Hey there,</h1>
           <p>
             Welcome to my personal site. You'll find notes on product
             management, customer research, strategy, life meaning, and any other

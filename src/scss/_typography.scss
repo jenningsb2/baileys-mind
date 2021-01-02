@@ -1,3 +1,4 @@
+@use "sass:math";
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -34,20 +35,22 @@
     url('/fonts/Inter-BoldItalic.woff') format('woff');
 }
 // Defining Custom Properties for typography
+$scale: 1.414;
+$base: 24px;
 :root {
   // *  Typeface
   --ff-primary: 'Inter', sans-serif;
 
   // * Font Sizes
-  --fz-super: 113px;
-  --fz-xxl: 80px;
-  --fz-xl: 56px;
-  --fz-lg: 40px;
-  --fz-md: 28px;
-  --fz-base: 20px;
-  --fz-sm: 14px;
-  --fz-xsm: 10px;
-  --fz-micro: 7px;
+  --fz-super: #{math.round($base * math.pow($scale, 5))}; // 136px
+  --fz-xxl: #{math.round($base * math.pow($scale, 4))}; // 96px
+  --fz-xl: #{math.round($base * math.pow($scale, 3))}; // 68px
+  --fz-lg: #{math.round($base * math.pow($scale, 2))}; // 48px
+  --fz-md: #{math.round($base * math.pow($scale, 1))}; // 34px
+  --fz-base: #{$base}; // 24px
+  --fz-sm: #{math.round($base / math.pow($scale, 1))}; // 17px
+  --fz-xsm: #{math.round($base / math.pow($scale, 2))}; // 12px
+  --fz-micro: #{math.round($base / math.pow($scale, 3))}; // 8px
 
   // * Line Height
   --lh-primary: 1.33;
@@ -98,7 +101,7 @@ p,
 .text-p {
   font-weight: 400;
   line-height: var(--lh-loose);
-  font-size: var(--fz-base);
+  font-size: var(--fz-sm);
   margin-bottom: 30px;
 }
 
@@ -111,5 +114,5 @@ a {
 li {
   font-weight: 400;
   line-height: var(--lh-loose);
-  font-size: var(--fz-base);
+  font-size: var(--fz-sm);
 }
