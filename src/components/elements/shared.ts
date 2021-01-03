@@ -1,6 +1,6 @@
 export const textElementReset = {
   lineHeight: '1',
-  m: '0',
+  ma: '0',
   fontWeight: 400,
   color: '$text1',
 };

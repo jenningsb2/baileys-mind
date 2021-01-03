@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { WritingsData } from '@/models/writings-data';
+import { WritingsData } from '@/types/writings-data';
 import { writingsFilePaths, WRITINGS_PATH } from './mdxUtils';
 
 export function getWritingsData(): WritingsData[] {

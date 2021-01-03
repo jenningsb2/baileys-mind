@@ -14,7 +14,7 @@ const LinkLine = styled(motion.div, {
   height: 1,
   width: '$full',
   position: 'absolute',
-  bottom: -3,
+  bottom: -4,
   left: 0,
 });
 

@@ -89,6 +89,7 @@ const theme = {
     $loose: '1.5',
   },
   // * Commenting out due to bug (is being tracked)
+  // TODO: Add once fixed
   // transitions: {
   //   $default: 'all 225ms cubic-bezier(0.4, 0, 0.2, 1)',
   // },
@@ -108,7 +109,7 @@ const darkTheme = {
 
 const utils = {
   // Margin
-  m: (_config: any) => (
+  ma: (_config: any) => (
     value: keyof typeof theme['space'] | (string & {}),
   ) => ({
     marginLeft: value,
@@ -149,7 +150,7 @@ const utils = {
     marginBottom: value,
   }),
   // Padding
-  p: (_config: any) => (
+  pa: (_config: any) => (
     value: keyof typeof theme['space'] | (string & {}),
   ) => ({
     paddingLeft: value,
@@ -279,6 +280,8 @@ export const { styled, css } = createStyled({
 });
 
 export const darkThemeClass = css.theme({ colors: darkTheme });
+
+// TODO: Add self hosted font (will be a feature in alpha)
 
 // * CSS RESET
 css.global({

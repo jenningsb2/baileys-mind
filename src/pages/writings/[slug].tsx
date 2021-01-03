@@ -9,9 +9,15 @@ import { writingsFilePaths, WRITINGS_PATH } from '@/utils/mdxUtils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { WritingLayout } from '@/components/layouts/WritingLayout/WritingLayout';
-import { CustomLink } from '@/components/CustomLink/CustomLink';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
+import { CustomLink } from '@/components/CustomLink/CustomLink';
+import { Heading } from '@/components/elements/Heading';
+import { Paragraph } from '@/components/elements/Paragraph';
+import { ListItem } from '@/components/elements/ListItem';
+import { List } from '@/components/elements/List';
+import { Hr } from '@/components/elements/Hr';
+import { BlockQuote } from '@/components/elements/BlockQuote';
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -19,6 +25,17 @@ import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 // here.
 const components: MdxRemote.Components = {
   a: CustomLink,
+  h1: (props) => <Heading as='h1' css={{ mb: '$5' }} {...props} />,
+  h2: (props) => <Heading as='h2' size='5' css={{ mb: '$5' }} {...props} />,
+  h3: (props) => <Heading as='h3' size='4' css={{ mb: '$5' }} {...props} />,
+  p: (props) => <Paragraph css={{ mb: '$4' }} {...props} />,
+  li: (props) => (
+    <ListItem css={{ ':first-of-type': { pt: '$3' } }} {...props} />
+  ),
+  ul: (props) => <List css={{ listStyle: 'disc', ml: '$6' }} {...props} />,
+  ol: (props) => <List as='ol' css={{ ml: '$6' }} {...props} />,
+  hr: (props) => <Hr {...props} />,
+  blockquote: (props) => <BlockQuote {...props} />,
 };
 
 type WritingPageProps = {
@@ -48,8 +65,7 @@ const WritingPage: React.FC<WritingPageProps> = ({ source, frontMatter }) => {
   return (
     <>
       <NextSeo {...SEO} />
-      <h1>{frontMatter.title}</h1>
-      {frontMatter.description ? <p>{frontMatter.description}</p> : null}
+      <Heading css={{ mb: '$3' }}>{frontMatter.title}</Heading>
       <main>{content}</main>
     </>
   );

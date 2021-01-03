@@ -1,7 +1,6 @@
 import { ReactComponent as InternalLinkIcon } from '@/assets/internal-link.svg';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import { motion } from 'framer-motion';
-import { Paths } from '@/data/paths';
 import Link from 'next/link';
 import { Heading } from '../elements/Heading';
 import { styled } from 'stitches.config';
@@ -20,6 +19,7 @@ interface PostProps {
   date: string;
   title: string;
   description: string;
+  href: string;
 }
 
 const StyledLink = styled('a', {
@@ -34,7 +34,7 @@ const PostWrapper = styled(motion.div, {
 
 const PostContainer = styled('div', {
   br: '$1',
-  p: '$3',
+  pa: '$3',
   display: 'inline-grid',
   cg: '$5',
   gridTemplateColumns: '134px 1fr',
@@ -72,9 +72,9 @@ const IconContainer = styled(motion.div, {
 
 const Box = styled('div', {});
 
-const Post: React.FC<PostProps> = ({ date, title, description }) => {
+const Post: React.FC<PostProps> = ({ date, title, description, href }) => {
   return (
-    <Link href={`/${Paths.writings}`} passHref>
+    <Link href={href} passHref>
       <StyledLink>
         <PostWrapper whileHover='hovered'>
           <PostContainer>
@@ -113,6 +113,7 @@ export const FeaturedPosts: React.FC = () => {
     date: 'December 14, 2020',
     title: 'You must dig',
     description: `Get to the motivations behind a request. 'Something' happened for that 'something' to be acknowledged as a problem by your...`,
+    href: '/writings/you-must-dig',
   };
   return (
     <section>
@@ -126,6 +127,7 @@ export const FeaturedPosts: React.FC = () => {
               date={data.date}
               title={data.title}
               description={data.description}
+              href={data.href}
             />
           </li>
         ))}
