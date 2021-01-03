@@ -4,6 +4,40 @@ import React from 'react';
 import { styled } from 'stitches.config';
 import { Text } from '@/components/elements/Text';
 
+const siteLinks: { label: string; href: string }[] = [
+  {
+    label: 'home',
+    href: `${Paths.home}`,
+  },
+  {
+    label: 'writing',
+    href: `/${Paths.writings}`,
+  },
+  {
+    label: 'reading',
+    href: `/${Paths.reading}`,
+  },
+  {
+    label: 'about',
+    href: `/${Paths.about}`,
+  },
+];
+
+const socialLinks: { label: string; href: string }[] = [
+  {
+    label: 'twitter',
+    href: 'https://twitter.com/Bailey_Jennings',
+  },
+  {
+    label: 'instagram',
+    href: 'https://www.instagram.com/b_jennings/',
+  },
+  {
+    label: 'linkedin',
+    href: 'https://www.linkedin.com/in/baileyjennings/',
+  },
+];
+
 const Box = styled('div', {});
 const StyledFooter = styled('footer', {
   pt: '$9',
@@ -16,16 +50,23 @@ const FooterContent = styled('div', {
   maxWidth: '$site',
   mx: '$7',
 });
+const FooterLinksContainer = styled('div', {
+  py: '$5',
+  mb: '$6',
+  display: 'flex',
+  jc: 'space-between',
+  bp1: { fd: 'column', spaceY: '$6' },
+});
 const List = styled('ul', {
   spaceY: '$2',
 });
-const LinkStyled = styled('a', {
+const FooterLink = styled('a', {
   display: 'block',
   ta: 'right',
   color: '$text1',
 });
 
-export const Footer: React.FC = ({ children }) => {
+export const Footer: React.FC = () => {
   const [year, setYear] = React.useState<number | null>(null);
 
   React.useEffect(() => {
@@ -33,56 +74,16 @@ export const Footer: React.FC = ({ children }) => {
     setYear(date.getFullYear());
   }, []);
 
-  const siteLinks: { label: string; href: string }[] = [
-    {
-      label: 'home',
-      href: `${Paths.home}`,
-    },
-    {
-      label: 'writing',
-      href: `/${Paths.writings}`,
-    },
-    {
-      label: 'reading',
-      href: `/${Paths.reading}`,
-    },
-    {
-      label: 'about',
-      href: `/${Paths.about}`,
-    },
-  ];
-  const socialLinks: { label: string; href: string }[] = [
-    {
-      label: 'twitter',
-      href: 'https://twitter.com/Bailey_Jennings',
-    },
-    {
-      label: 'instagram',
-      href: 'https://www.instagram.com/b_jennings/',
-    },
-    {
-      label: 'linkedin',
-      href: 'https://www.linkedin.com/in/baileyjennings/',
-    },
-  ];
-
   return (
     <StyledFooter>
       <FooterContent>
-        <Box
-          css={{
-            py: '$5',
-            mb: '$6',
-            display: 'flex',
-            jc: 'space-between',
-            bp1: { fd: 'column', spaceY: '$6' },
-          }}>
+        <FooterLinksContainer>
           <Box>
             <Link href={Paths.email} passHref>
-              <LinkStyled
+              <FooterLink
                 css={{ display: 'inline-block', ta: 'left', fz: '$3' }}>
                 jenningsebailey@gmail.com
-              </LinkStyled>
+              </FooterLink>
             </Link>
           </Box>
           <Box css={{ display: 'flex', spaceX: '$5' }}>
@@ -90,7 +91,7 @@ export const Footer: React.FC = ({ children }) => {
               {siteLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} passHref>
-                    <LinkStyled>{link.label}</LinkStyled>
+                    <FooterLink>{link.label}</FooterLink>
                   </Link>
                 </li>
               ))}
@@ -99,25 +100,25 @@ export const Footer: React.FC = ({ children }) => {
               {socialLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} passHref>
-                    <LinkStyled target='_blank' rel='noopener noreferrer'>
+                    <FooterLink target='_blank' rel='noopener noreferrer'>
                       {link.label}
-                    </LinkStyled>
+                    </FooterLink>
                   </Link>
                 </li>
               ))}
             </List>
           </Box>
-        </Box>
+        </FooterLinksContainer>
         <Box css={{ display: 'flex', jc: 'space-between', pb: '$4' }}>
           <Text size='2'>&copy; {year} copyright</Text>
           <Link href={Paths.hunter} passHref>
-            <LinkStyled
+            <FooterLink
               target='_blank'
               rel='noopener noreferrer'
               css={{ fontSize: '$2', lh: '$primary' }}>
               designed and developed <br />
               by hunter jennings
-            </LinkStyled>
+            </FooterLink>
           </Link>
         </Box>
       </FooterContent>

@@ -1,10 +1,11 @@
-import classnames from 'classnames';
-import styles from './FeaturedPosts.module.scss';
 import { ReactComponent as InternalLinkIcon } from '@/assets/internal-link.svg';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import { motion } from 'framer-motion';
 import { Paths } from '@/data/paths';
 import Link from 'next/link';
+import { Heading } from '../elements/Heading';
+import { styled } from 'stitches.config';
+import { Paragraph } from '../elements/Paragraph';
 
 const visibilityVariants = {
   hovered: {
@@ -21,44 +22,93 @@ interface PostProps {
   description: string;
 }
 
+const StyledLink = styled('a', {
+  display: 'inline-block',
+});
+
+const PostWrapper = styled(motion.div, {
+  display: 'inline-block',
+  position: 'relative',
+  zIndex: '$0',
+});
+
+const PostContainer = styled('div', {
+  br: '$1',
+  p: '$3',
+  display: 'inline-grid',
+  cg: '$5',
+  gridTemplateColumns: '134px 1fr',
+  position: 'relative',
+  zIndex: '$2',
+});
+
+const ContainerBg = styled(motion.div, {
+  width: '$full',
+  height: '$full',
+  top: 0,
+  left: 0,
+  position: 'absolute',
+  border: '1px solid $action',
+  br: '$1',
+  bc: '$action20',
+  zIndex: '$1',
+});
+
+const Time = styled('time', {
+  fz: '$2',
+  lh: '$tight',
+  color: '$text3',
+  fontWeight: '$bold',
+  textTransform: 'uppercase',
+});
+
+const IconContainer = styled(motion.div, {
+  width: '14px',
+  opacity: '0',
+  path: {
+    fill: '$action',
+  },
+});
+
+const Box = styled('div', {});
+
 const Post: React.FC<PostProps> = ({ date, title, description }) => {
   return (
-    <Link href={'/' + Paths.writings}>
-      <a className={classnames('link-reset', styles.link)}>
-        <motion.div whileHover='hovered' className={styles.postWrapper}>
-          <div className={classnames('p-xsm', styles.postContainer)}>
+    <Link href={`/${Paths.writings}`} passHref>
+      <StyledLink>
+        <PostWrapper whileHover='hovered'>
+          <PostContainer>
             <div>
-              <time dateTime={date} className={styles.time}>
-                {date}
-              </time>
+              <Time dateTime={date}>{date}</Time>
             </div>
-            <div className={classnames('space-x-md', styles.postContent)}>
-              <div className={styles.postContentText}>
-                <h1 className='fz-sm m-b-micro'>{title}</h1>
-                <p className='fz-sm m-b-none'>{description}</p>
-              </div>
-              <motion.div
-                initial='hidden'
-                variants={visibilityVariants}
-                className={styles.icon}>
+            <Box css={{ spaceX: '$5', display: 'flex' }}>
+              <Box css={{ maxWidth: '319px' }}>
+                <Heading size='3' css={{ mb: '$1' }}>
+                  {title}
+                </Heading>
+                <Paragraph size='3' css={{ mb: '$0' }}>
+                  {description}
+                </Paragraph>
+              </Box>
+              <IconContainer initial='hidden' variants={visibilityVariants}>
                 <SvgContainer svgWidth={14} svgHeight={14}>
                   <InternalLinkIcon />
                 </SvgContainer>
-              </motion.div>
-            </div>
-          </div>
-          <motion.div
-            initial='hidden'
-            variants={visibilityVariants}
-            className={styles.hoverBg}
-          />
-        </motion.div>
-      </a>
+              </IconContainer>
+            </Box>
+          </PostContainer>
+          <ContainerBg initial='hidden' variants={visibilityVariants} />
+        </PostWrapper>
+      </StyledLink>
     </Link>
   );
 };
 
-const FeaturedPosts: React.FC = () => {
+const List = styled('ul', {
+  spaceY: '$5',
+});
+
+export const FeaturedPosts: React.FC = () => {
   const data: PostProps = {
     date: 'December 14, 2020',
     title: 'You must dig',
@@ -66,8 +116,10 @@ const FeaturedPosts: React.FC = () => {
   };
   return (
     <section>
-      <h1 className={'text-h2 m-b-lg'}>Featured posts</h1>
-      <ul className='space-y-md'>
+      <Heading size='4' css={{ mb: '$6' }}>
+        Featured posts
+      </Heading>
+      <List>
         {Array.from(new Array(3)).map((_, idx) => (
           <li key={idx}>
             <Post
@@ -77,9 +129,7 @@ const FeaturedPosts: React.FC = () => {
             />
           </li>
         ))}
-      </ul>
+      </List>
     </section>
   );
 };
-
-export { FeaturedPosts };

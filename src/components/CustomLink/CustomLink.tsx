@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './CustomLink.module.scss';
+import { styled } from 'stitches.config';
 
 type CustomLinkProps = {
   as: string;
@@ -11,6 +11,16 @@ function isExternalLink(href: string): boolean {
   return regex.test(href);
 }
 
+const InternalLink = styled('a', {
+  color: '$action',
+  textDecoration: 'none',
+});
+
+const ExternalLink = styled('a', {
+  color: '$action',
+  textDecoration: 'none',
+});
+
 export const CustomLink: React.FC<CustomLinkProps> = ({
   as,
   href,
@@ -18,17 +28,15 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
   ...otherProps
 }) => {
   return (
-    <Link as={as} href={href}>
+    <Link as={as} href={href} passHref>
       {isExternalLink(href) ? (
-        <a {...otherProps} className={styles.link}>
-          {children}
-        </a>
+        <ExternalLink {...otherProps}>{children}</ExternalLink>
       ) : (
-        <a {...otherProps} className={styles.link}>
+        <InternalLink {...otherProps}>
           {'[['}
           {children}
           {']]'}
-        </a>
+        </InternalLink>
       )}
     </Link>
   );

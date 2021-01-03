@@ -1,6 +1,6 @@
 import { createStyled } from '@stitches/react';
 
-const rgb = {
+export const rgb = {
   black: '13, 13, 13',
   grey100: '212, 213, 216',
   grey200: '180, 182, 187',
@@ -36,6 +36,7 @@ const theme = {
     $text2: `rgb(${rgb.grey100})`,
     $text3: `rgb(${rgb.grey300})`,
     $action: `rgb(${rgb.blue})`,
+    $action20: `rgba(${rgb.blue}, 0.2)`,
   },
   fontSizes: {
     $1: '8px',
@@ -53,6 +54,7 @@ const theme = {
     $regular: '400',
   },
   space: {
+    $0: '0',
     $1: '5px',
     $2: '8px',
     $3: '10px',
@@ -74,6 +76,7 @@ const theme = {
     $pill: '9999px',
   },
   zIndices: {
+    $0: '0',
     $1: '10',
     $2: '20',
     $3: '30',
@@ -85,9 +88,10 @@ const theme = {
     $tight: '1',
     $loose: '1.5',
   },
-  transitions: {
-    $default: 'all 225ms cubic-bezier(0.4, 0, 0.2, 1)',
-  },
+  // * Commenting out due to bug (is being tracked)
+  // transitions: {
+  //   $default: 'all 225ms cubic-bezier(0.4, 0, 0.2, 1)',
+  // },
 };
 const darkTheme = {
   // Dark theme tokens
@@ -99,6 +103,7 @@ const darkTheme = {
   $text2: `rgb(${rgb.black})`,
   $text3: `rgb(${rgb.grey100})`,
   $action: `rgb(${rgb.yellow})`,
+  $action20: `rgba(${rgb.yellow}, 0.2)`,
 };
 
 const utils = {

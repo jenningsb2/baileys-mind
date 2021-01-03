@@ -3,6 +3,7 @@ import { NavigationLink } from '@/components/NavigationLink/NavigationLink';
 import { AnimateSharedLayout } from 'framer-motion';
 import { ThemeButton } from '../ThemeButton/ThemeButton';
 import { styled } from 'stitches.config';
+import { defaultTransition } from '@/styles/animation';
 
 const StyledNavigation = styled('nav', {
   py: '$5',
@@ -31,6 +32,7 @@ const NavigationLinks = styled('div', {
   px: '$5',
   br: '$1',
   spaceX: '$3',
+  transition: defaultTransition,
 });
 
 export const Navigation: React.FC = () => {

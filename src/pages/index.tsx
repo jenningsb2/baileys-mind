@@ -2,7 +2,6 @@ import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { NextSeo } from 'next-seo';
 
-import styles from '@scss/pages/Home.module.scss';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { FeaturedPosts } from '@/components/FeaturedPosts/FeaturedPosts';
 import { Heading } from '@/components/elements/Heading';

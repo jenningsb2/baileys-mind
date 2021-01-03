@@ -1,9 +1,27 @@
 import { useTheme } from '@/context/theme';
-import classnames from 'classnames';
-import { SvgContainer } from '../SvgContainer/SvgContainer';
-import styles from './ThemeButton.module.scss';
+import { SvgContainer } from '@/components/SvgContainer/SvgContainer';
 import { ReactComponent as MoonIcon } from '@/assets/moon.svg';
 import { ReactComponent as SunIcon } from '@/assets/sun.svg';
+import { styled } from 'stitches.config';
+import { defaultTransition } from '@/styles/animation';
+
+const StyledButton = styled('button', {
+  height: '45px',
+  width: '45px',
+  display: 'flex',
+  jc: 'center',
+  ai: 'center',
+  bc: '$surface3',
+  br: '$1',
+  transition: defaultTransition,
+});
+
+const Icon = styled('div', {
+  width: '24px',
+  path: {
+    fill: '$surface1',
+  },
+});
 
 export const ThemeButton: React.FC = () => {
   const { theme, setTheme } = useTheme();
@@ -11,19 +29,12 @@ export const ThemeButton: React.FC = () => {
     theme === 'dark' ? setTheme('light') : setTheme('dark');
   };
   return (
-    <button
-      className={classnames('button-reset', styles.btn)}
-      onClick={handleClick}>
-      <div className={styles.icon}>
+    <StyledButton onClick={handleClick}>
+      <Icon>
         <SvgContainer svgHeight={24} svgWidth={24}>
-          {/* TODO: Use AnimatePresence here */}
-          {theme === 'light' ? (
-            <MoonIcon key='light' />
-          ) : (
-            <SunIcon key='dark' />
-          )}
+          {theme === 'light' ? <MoonIcon /> : <SunIcon />}
         </SvgContainer>
-      </div>
-    </button>
+      </Icon>
+    </StyledButton>
   );
 };

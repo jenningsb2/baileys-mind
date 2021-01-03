@@ -1,4 +1,5 @@
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
+import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { Paths } from '@/data/paths';
 import Link from 'next/link';
@@ -15,6 +16,10 @@ const FourZeroFour: React.FC = () => {
 };
 
 (FourZeroFour as PageWithLayoutType).getLayout = (page) => {
-  return <RootLayout>{page}</RootLayout>;
+  return (
+    <RootLayout>
+      <PrimaryLayout>{page}</PrimaryLayout>
+    </RootLayout>
+  );
 };
 export default FourZeroFour;

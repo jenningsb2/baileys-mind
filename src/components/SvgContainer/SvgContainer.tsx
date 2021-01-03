@@ -1,4 +1,15 @@
-import styles from './SvgContainer.module.scss';
+import { styled } from 'stitches.config';
+
+const Wrapper = styled('div', {
+  position: 'relative',
+  width: '$full',
+  height: 0,
+  '> svg': {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+});
 
 interface SvgContainerProps {
   svgWidth?: number;
@@ -10,10 +21,8 @@ export const SvgContainer: React.FC<SvgContainerProps> = ({
   svgWidth = 1,
 }) => {
   return (
-    <div
-      className={styles.outer}
-      style={{ paddingTop: `${(svgHeight / svgWidth) * 100}%` }}>
+    <Wrapper style={{ paddingTop: `${(svgHeight / svgWidth) * 100}%` }}>
       {children}
-    </div>
+    </Wrapper>
   );
 };

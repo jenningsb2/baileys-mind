@@ -1,9 +1,19 @@
-import styles from './PrimaryLayout.module.scss';
+import { styled } from 'stitches.config';
+
+const Wrapper = styled('main', {
+  display: 'flex',
+  jc: 'center',
+});
+
+const Container = styled('div', {
+  width: '$full',
+  maxWidth: '$content',
+});
 
 export const PrimaryLayout: React.FC = ({ children }) => {
   return (
-    <main className={styles.wrapper}>
-      <div className={styles.container}>{children}</div>
-    </main>
+    <Wrapper>
+      <Container>{children}</Container>
+    </Wrapper>
   );
 };
