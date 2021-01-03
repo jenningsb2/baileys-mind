@@ -79,36 +79,6 @@ const Writings: React.FC<WritingsProps> = ({ writings }) => {
               ))}
             </List>
           </YearGroup>
-          <YearGroup>
-            <Box>
-              <Heading as='h2' size='4'>
-                2019
-              </Heading>
-            </Box>
-            <List>
-              {writings.map((writing) => (
-                <ListItem key={writing.filePath}>
-                  <Box>
-                    <CustomLink
-                      as={`${Paths.writings}/${writing.filePath.replace(
-                        /\.mdx?$/,
-                        '',
-                      )}`}
-                      href={`${Paths.writings}/[slug]`}>
-                      {writing.data.title}
-                    </CustomLink>
-                  </Box>
-                  <Text
-                    as='time'
-                    size='2'
-                    color='3'
-                    css={{ fontWeight: '$bold', ta: 'right' }}>
-                    2020-01-24
-                  </Text>
-                </ListItem>
-              ))}
-            </List>
-          </YearGroup>
         </Box>
       </Box>
     </>
