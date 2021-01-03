@@ -4,9 +4,9 @@ import { NextSeo } from 'next-seo';
 
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { FeaturedPosts } from '@/components/FeaturedPosts/FeaturedPosts';
-import { Heading } from '@/components/elements/Heading';
+import { Heading } from '@/components/primitives/Heading';
 import { styled } from 'stitches.config';
-import { Paragraph } from '@/components/elements/Paragraph';
+import { Paragraph } from '@/components/primitives/Paragraph';
 
 const Intro = styled('div', {
   mb: '$6',

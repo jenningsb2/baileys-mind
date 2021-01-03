@@ -2,7 +2,7 @@ import { Paths } from '@/data/paths';
 import Link from 'next/link';
 import React from 'react';
 import { styled } from 'stitches.config';
-import { Text } from '@/components/elements/Text';
+import { Text } from '@/components/primitives/Text';
 
 const siteLinks: { label: string; href: string }[] = [
   {

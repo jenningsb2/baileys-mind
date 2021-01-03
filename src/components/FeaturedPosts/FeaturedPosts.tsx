@@ -2,9 +2,9 @@ import { ReactComponent as InternalLinkIcon } from '@/assets/internal-link.svg';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Heading } from '../elements/Heading';
+import { Heading } from '../primitives/Heading';
 import { styled } from 'stitches.config';
-import { Paragraph } from '../elements/Paragraph';
+import { Paragraph } from '../primitives/Paragraph';
 
 const visibilityVariants = {
   hovered: {

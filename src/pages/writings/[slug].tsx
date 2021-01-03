@@ -12,12 +12,12 @@ import { WritingLayout } from '@/components/layouts/WritingLayout/WritingLayout'
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
-import { Heading } from '@/components/elements/Heading';
-import { Paragraph } from '@/components/elements/Paragraph';
-import { ListItem } from '@/components/elements/ListItem';
-import { List } from '@/components/elements/List';
-import { Hr } from '@/components/elements/Hr';
-import { BlockQuote } from '@/components/elements/BlockQuote';
+import { Heading } from '@/components/primitives/Heading';
+import { Paragraph } from '@/components/primitives/Paragraph';
+import { ListItem } from '@/components/primitives/ListItem';
+import { List } from '@/components/primitives/List';
+import { Hr } from '@/components/primitives/Hr';
+import { BlockQuote } from '@/components/primitives/BlockQuote';
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how

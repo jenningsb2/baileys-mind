@@ -1,7 +1,7 @@
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { NextSeo } from 'next-seo';
-import { Heading } from '@/components/elements/Heading';
+import { Heading } from '@/components/primitives/Heading';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 
 const Reading: React.FC = () => {

@@ -6,8 +6,8 @@ import { Paths } from '@/data/paths';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
 import { WritingsData } from '@/types/writings-data';
 import { getWritingsData } from '@/utils/get-writings-data';
-import { Heading } from '@/components/elements/Heading';
-import { Text } from '@/components/elements/Text';
+import { Heading } from '@/components/primitives/Heading';
+import { Text } from '@/components/primitives/Text';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { styled } from 'stitches.config';
 

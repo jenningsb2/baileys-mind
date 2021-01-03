@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { styled } from 'stitches.config';
-import { textElementReset } from '../elements/shared';
+import { textElementReset } from '../primitives/shared';
 
 type CustomLinkProps = {
   as: string;
