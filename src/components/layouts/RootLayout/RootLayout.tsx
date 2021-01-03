@@ -3,9 +3,7 @@ import SEO from 'next-seo.config';
 import { Navigation } from '@/components/Navigation/Navigation';
 import { ThemeProvider } from '@/context/theme';
 import { Footer } from '@/components/Footer/Footer';
-import { styled } from 'stitches.config';
-
-const Box = styled('div', {});
+import { Box } from '@/components/Box/Box';
 
 export const RootLayout: React.FC = ({ children }) => {
   return (

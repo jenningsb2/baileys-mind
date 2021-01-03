@@ -4,6 +4,7 @@ import { AnimateSharedLayout } from 'framer-motion';
 import { ThemeButton } from '../ThemeButton/ThemeButton';
 import { styled } from 'stitches.config';
 import { defaultTransition } from '@/styles/animation';
+import { Box } from '@/components/Box/Box';
 
 const StyledNavigation = styled('nav', {
   py: '$5',
@@ -34,8 +35,6 @@ const NavigationLinks = styled('div', {
   spaceX: '$3',
   transition: defaultTransition,
 });
-
-const Box = styled('div', {});
 
 export const Navigation: React.FC = () => {
   return (

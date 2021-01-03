@@ -7,11 +7,11 @@ import { FeaturedPosts } from '@/components/FeaturedPosts/FeaturedPosts';
 import { Heading } from '@/components/primitives/Heading';
 import { styled } from 'stitches.config';
 import { Paragraph } from '@/components/primitives/Paragraph';
+import { Box } from '@/components/Box/Box';
 
 const Intro = styled('div', {
   mb: '$6',
 });
-const Box = styled('div', {});
 
 const Home: React.FC = () => {
   const title = 'Bailey Jennings - Home';

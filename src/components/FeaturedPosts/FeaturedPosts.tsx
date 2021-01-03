@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Heading } from '../primitives/Heading';
 import { styled } from 'stitches.config';
 import { Paragraph } from '../primitives/Paragraph';
+import { Box } from '@/components/Box/Box';
 
 const visibilityVariants = {
   hovered: {
@@ -69,8 +70,6 @@ const IconContainer = styled(motion.div, {
     fill: '$action',
   },
 });
-
-const Box = styled('div', {});
 
 const Post: React.FC<PostProps> = ({ date, title, description, href }) => {
   return (

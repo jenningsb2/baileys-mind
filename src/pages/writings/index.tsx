@@ -10,6 +10,7 @@ import { Heading } from '@/components/primitives/Heading';
 import { Text } from '@/components/primitives/Text';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { styled } from 'stitches.config';
+import { Box } from '@/components/Box/Box';
 
 const YearGroup = styled('div', {
   spaceY: '$6',
@@ -25,7 +26,6 @@ const ListItem = styled('li', {
   gridTemplateColumns: '1fr auto',
   cg: '$5',
 });
-const Box = styled('div', {});
 
 type WritingsProps = {
   writings: WritingsData[];
