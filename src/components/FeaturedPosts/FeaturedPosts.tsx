@@ -78,9 +78,9 @@ const Post: React.FC<PostProps> = ({ date, title, description, href }) => {
       <StyledLink>
         <PostWrapper whileHover='hovered'>
           <PostContainer>
-            <div>
+            <Box>
               <Time dateTime={date}>{date}</Time>
-            </div>
+            </Box>
             <Box css={{ spaceX: '$5', display: 'flex' }}>
               <Box css={{ maxWidth: '319px' }}>
                 <Heading size='3' css={{ mb: '$1' }}>

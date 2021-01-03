@@ -11,6 +11,7 @@ import { Paragraph } from '@/components/elements/Paragraph';
 const Intro = styled('div', {
   mb: '$6',
 });
+const Box = styled('div', {});
 
 const Home: React.FC = () => {
   const title = 'Bailey Jennings - Home';
@@ -23,7 +24,7 @@ const Home: React.FC = () => {
   return (
     <>
       <NextSeo {...SEO} />
-      <div>
+      <Box>
         <Intro>
           <Heading size='7' css={{ mb: '$5' }}>
             Hey there,
@@ -35,7 +36,7 @@ const Home: React.FC = () => {
           </Paragraph>
         </Intro>
         <FeaturedPosts />
-      </div>
+      </Box>
     </>
   );
 };

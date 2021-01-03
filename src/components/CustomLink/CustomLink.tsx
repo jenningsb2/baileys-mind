@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import { styled } from 'stitches.config';
+import { textElementReset } from '../elements/shared';
 
 type CustomLinkProps = {
   as: string;
   href: string;
+  css?: any;
 };
 
 function isExternalLink(href: string): boolean {
@@ -11,15 +13,16 @@ function isExternalLink(href: string): boolean {
   return regex.test(href);
 }
 
-const InternalLink = styled('a', {
+const StyledLink = styled('a', {
+  ...textElementReset,
   color: '$action',
+  fz: '$3',
   textDecoration: 'none',
 });
 
-const ExternalLink = styled('a', {
-  color: '$action',
-  textDecoration: 'none',
-});
+const InternalLink = styled(StyledLink, {});
+
+const ExternalLink = styled(StyledLink, {});
 
 export const CustomLink: React.FC<CustomLinkProps> = ({
   as,

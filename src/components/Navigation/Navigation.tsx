@@ -35,11 +35,13 @@ const NavigationLinks = styled('div', {
   transition: defaultTransition,
 });
 
+const Box = styled('div', {});
+
 export const Navigation: React.FC = () => {
   return (
     <StyledNavigation>
       <NavigationContent>
-        <div>
+        <Box>
           <AnimateSharedLayout>
             <NavigationLinks>
               <NavigationLink href={Paths.home}>home</NavigationLink>
@@ -52,10 +54,10 @@ export const Navigation: React.FC = () => {
               <NavigationLink href={`/${Paths.about}`}>about</NavigationLink>
             </NavigationLinks>
           </AnimateSharedLayout>
-        </div>
-        <div>
+        </Box>
+        <Box>
           <ThemeButton />
-        </div>
+        </Box>
       </NavigationContent>
     </StyledNavigation>
   );

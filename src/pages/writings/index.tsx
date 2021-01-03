@@ -7,7 +7,25 @@ import { CustomLink } from '@/components/CustomLink/CustomLink';
 import { WritingsData } from '@/types/writings-data';
 import { getWritingsData } from '@/utils/get-writings-data';
 import { Heading } from '@/components/elements/Heading';
+import { Text } from '@/components/elements/Text';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
+import { styled } from 'stitches.config';
+
+const YearGroup = styled('div', {
+  spaceY: '$6',
+  display: 'grid',
+  gridTemplateColumns: '70px 1fr',
+  cg: '$5',
+});
+const List = styled('ul', {
+  spaceY: '$4',
+});
+const ListItem = styled('li', {
+  display: 'grid',
+  gridTemplateColumns: '1fr auto',
+  cg: '$5',
+});
+const Box = styled('div', {});
 
 type WritingsProps = {
   writings: WritingsData[];
@@ -24,20 +42,75 @@ const Writings: React.FC<WritingsProps> = ({ writings }) => {
     <>
       <NextSeo {...SEO} />
       <Heading css={{ mb: '$6' }}>Writings</Heading>
-      <ul>
-        {writings.map((writing) => (
-          <li key={writing.filePath}>
-            <CustomLink
-              as={`${Paths.writings}/${writing.filePath.replace(
-                /\.mdx?$/,
-                '',
-              )}`}
-              href={`${Paths.writings}/[slug]`}>
-              {writing.data.title}
-            </CustomLink>
-          </li>
-        ))}
-      </ul>
+      <Box>
+        <Box css={{ display: 'flex', jc: 'flex-end', mb: '$5' }}>
+          <Heading as='span' size='2' color='3'>
+            PUBLISHED
+          </Heading>
+        </Box>
+        <Box css={{ spaceY: '$6' }}>
+          <YearGroup>
+            <Box>
+              <Heading as='h2' size='4'>
+                2020
+              </Heading>
+            </Box>
+            <List>
+              {writings.map((writing) => (
+                <ListItem key={writing.filePath}>
+                  <Box>
+                    <CustomLink
+                      as={`${Paths.writings}/${writing.filePath.replace(
+                        /\.mdx?$/,
+                        '',
+                      )}`}
+                      href={`${Paths.writings}/[slug]`}>
+                      {writing.data.title}
+                    </CustomLink>
+                  </Box>
+                  <Text
+                    as='time'
+                    size='2'
+                    color='3'
+                    css={{ fontWeight: '$bold', ta: 'right' }}>
+                    2020-01-24
+                  </Text>
+                </ListItem>
+              ))}
+            </List>
+          </YearGroup>
+          <YearGroup>
+            <Box>
+              <Heading as='h2' size='4'>
+                2019
+              </Heading>
+            </Box>
+            <List>
+              {writings.map((writing) => (
+                <ListItem key={writing.filePath}>
+                  <Box>
+                    <CustomLink
+                      as={`${Paths.writings}/${writing.filePath.replace(
+                        /\.mdx?$/,
+                        '',
+                      )}`}
+                      href={`${Paths.writings}/[slug]`}>
+                      {writing.data.title}
+                    </CustomLink>
+                  </Box>
+                  <Text
+                    as='time'
+                    size='2'
+                    color='3'
+                    css={{ fontWeight: '$bold', ta: 'right' }}>
+                    2020-01-24
+                  </Text>
+                </ListItem>
+              ))}
+            </List>
+          </YearGroup>
+        </Box>
+      </Box>
     </>
   );
 };
