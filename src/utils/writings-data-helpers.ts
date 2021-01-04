@@ -5,6 +5,7 @@ import { WritingsData, WritingsMetaData } from '@/types/writings-data';
 import { writingsFilePaths, WRITINGS_PATH } from './mdxUtils';
 import readingTime from 'reading-time';
 import { FrontMatter } from '@/types/frontmatter';
+import { getYearFromDate } from './extract-year-from-date';
 
 function createDataObject(
   content: string,
@@ -15,6 +16,7 @@ function createDataObject(
     data: {
       ...data,
       readingTime: readingTime(content),
+      year: getYearFromDate(data.publishDate),
     } as WritingsMetaData,
   };
 }
@@ -38,8 +40,15 @@ export function getAllWritingsData(): WritingsData[] {
 
     const { content, data } = matter(source);
 
+    const formattedDate = data?.publishDate
+      ? Intl.DateTimeFormat().format(data?.publishDate as Date)
+      : null;
+
     return {
-      ...createDataObject(content, data as FrontMatter),
+      ...createDataObject(content, {
+        ...data,
+        publishDate: formattedDate,
+      } as FrontMatter),
       filePath,
     };
   });

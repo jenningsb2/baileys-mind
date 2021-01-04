@@ -17,7 +17,7 @@ import { ListItem } from '@/components/primitives/ListItem';
 import { List } from '@/components/primitives/List';
 import { Hr } from '@/components/primitives/Hr';
 import { BlockQuote } from '@/components/primitives/BlockQuote';
-import { getWritingDataFromSlug } from '@/utils/get-writings-data';
+import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
 import { WritingsMetaData } from '@/types/writings-data';
 
 // Custom components/renderers to pass to MDX.
