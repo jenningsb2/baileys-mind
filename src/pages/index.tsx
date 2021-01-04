@@ -13,7 +13,7 @@ const Intro = styled('div', {
   mb: '$6',
 });
 
-const Home: React.FC = () => {
+const Home: PageWithLayoutType<{}> = () => {
   const title = 'Bailey Jennings - Home';
   const SEO = {
     title,
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
   );
 };
 
-(Home as PageWithLayoutType).getLayout = (page) => {
+Home.getLayout = (page) => {
   return (
     <RootLayout>
       <PrimaryLayout>{page}</PrimaryLayout>

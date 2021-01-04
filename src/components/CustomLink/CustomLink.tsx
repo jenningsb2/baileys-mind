@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { styled } from 'stitches.config';
 import { textElementReset } from '../primitives/shared';
+import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
+import { Text } from '@/components/primitives/Text';
 
 type CustomLinkProps = {
   as: string;
@@ -20,9 +22,21 @@ const StyledLink = styled('a', {
   textDecoration: 'none',
 });
 
+const LinkIcon = styled('span', {
+  width: 14,
+  display: 'block',
+  path: {
+    fill: '$action',
+  },
+});
+
 const InternalLink = styled(StyledLink, {});
 
-const ExternalLink = styled(StyledLink, {});
+const ExternalLink = styled(StyledLink, {
+  display: 'inline-grid',
+  gridTemplateColumns: 'auto min-content',
+  cg: '$1',
+});
 
 export const CustomLink: React.FC<CustomLinkProps> = ({
   as,
@@ -33,7 +47,14 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
   return (
     <Link as={as} href={href} passHref>
       {isExternalLink(href) ? (
-        <ExternalLink {...otherProps}>{children}</ExternalLink>
+        <ExternalLink {...otherProps}>
+          <Text color='action' css={{ fontSize: 'inherit' }}>
+            {children}
+          </Text>
+          <LinkIcon>
+            <ExternalLinkIcon width='14px' height='14px' />
+          </LinkIcon>
+        </ExternalLink>
       ) : (
         <InternalLink {...otherProps}>
           {'[['}

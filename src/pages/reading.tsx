@@ -9,6 +9,7 @@ import { Box } from '@/components/Box/Box';
 import faker from 'faker';
 import { Paths } from '@/data/paths';
 import { Paragraph } from '@/components/primitives/Paragraph';
+import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
 
 function createFakeData() {
   return {
@@ -45,7 +46,17 @@ const ListItemContent = styled('div', {
   cg: '$2',
 });
 
-const Reading: React.FC = () => {
+type ReadingProps = {
+  data: {
+    id: () => string;
+    title: string;
+    description: string;
+    image: string;
+    href: string;
+  }[][];
+};
+
+const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
   const title = 'Bailey Jennings - Reading';
   const SEO = {
     title,
@@ -61,7 +72,7 @@ const Reading: React.FC = () => {
       <NextSeo {...SEO} />
       <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
       <Box css={{ spaceY: '$6' }}>
-        {mockData.map((block, idx) => (
+        {data.map((block, idx) => (
           <Box key={idx}>
             <Heading as='h2' size='5' css={{ mb: '$3' }}>
               Current
@@ -83,6 +94,7 @@ const Reading: React.FC = () => {
                       </Paragraph>
                     </Box>
                   </ListItemContent>
+                  <ExternalLinkIcon width='24px' height='24px' />
                 </BookListItem>
               ))}
             </List>
@@ -93,7 +105,12 @@ const Reading: React.FC = () => {
   );
 };
 
-(Reading as PageWithLayoutType).getLayout = (page) => {
+Reading.getInitialProps = async () => {
+  const data = mockData;
+  return { data };
+};
+
+Reading.getLayout = (page: any) => {
   return (
     <RootLayout>
       <PrimaryLayout>{page}</PrimaryLayout>

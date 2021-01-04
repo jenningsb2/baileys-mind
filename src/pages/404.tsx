@@ -4,7 +4,7 @@ import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { Paths } from '@/data/paths';
 import Link from 'next/link';
 
-const FourZeroFour: React.FC = () => {
+const FourZeroFour: PageWithLayoutType<{}> = () => {
   return (
     <>
       <h1>Oops, nothing to see here.</h1>
@@ -15,7 +15,7 @@ const FourZeroFour: React.FC = () => {
   );
 };
 
-(FourZeroFour as PageWithLayoutType).getLayout = (page) => {
+FourZeroFour.getLayout = (page) => {
   return (
     <RootLayout>
       <PrimaryLayout>{page}</PrimaryLayout>

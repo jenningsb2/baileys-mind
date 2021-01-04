@@ -47,7 +47,10 @@ type WritingPageProps = {
   };
 };
 
-const WritingPage: React.FC<WritingPageProps> = ({ source, frontMatter }) => {
+const WritingPage: PageWithLayoutType<WritingPageProps> = ({
+  source,
+  frontMatter,
+}) => {
   // Hydrating `WritingPage` component with content from mdx file
   const content = hydrate(source, { components });
 
@@ -110,7 +113,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-(WritingPage as PageWithLayoutType).getLayout = (page) => {
+WritingPage.getLayout = (page) => {
   return (
     <RootLayout>
       <WritingLayout>{page}</WritingLayout>

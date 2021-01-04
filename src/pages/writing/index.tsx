@@ -30,7 +30,7 @@ const ListItem = styled('li', {
 type WritingProps = {
   writings: WritingData[];
 };
-const Writing: React.FC<WritingProps> = ({ writings }) => {
+const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
   const title = 'Bailey Jennings - Writing';
   const SEO = {
     title,
@@ -89,7 +89,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { writings: getWritingsData() } };
 };
 
-(Writing as PageWithLayoutType).getLayout = (page) => {
+Writing.getLayout = (page) => {
   return (
     <RootLayout>
       <PrimaryLayout>{page}</PrimaryLayout>

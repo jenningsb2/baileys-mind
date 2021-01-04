@@ -3,7 +3,7 @@ import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { useHunterCreditsLog } from '@/utils/hunter-credits-log';
 
 type MyAppProps = {
-  Component: PageWithLayoutType;
+  Component: PageWithLayoutType<any>;
   pageProps: any;
 };
 

@@ -4,7 +4,7 @@ import { NextSeo } from 'next-seo';
 import { Heading } from '@/components/primitives/Heading';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 
-const About: React.FC = () => {
+const About: PageWithLayoutType<{}> = () => {
   const title = 'Bailey Jennings - About';
   const SEO = {
     title,
@@ -20,7 +20,7 @@ const About: React.FC = () => {
   );
 };
 
-(About as PageWithLayoutType).getLayout = (page) => {
+About.getLayout = (page) => {
   return (
     <RootLayout>
       <PrimaryLayout>{page}</PrimaryLayout>
