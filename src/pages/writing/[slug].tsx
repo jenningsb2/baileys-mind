@@ -25,9 +25,9 @@ import { BlockQuote } from '@/components/primitives/BlockQuote';
 // here.
 const components: MdxRemote.Components = {
   a: CustomLink,
-  h1: (props) => <Heading as='h1' css={{ mb: '$5' }} {...props} />,
-  h2: (props) => <Heading as='h2' size='5' css={{ mb: '$5' }} {...props} />,
-  h3: (props) => <Heading as='h3' size='4' css={{ mb: '$5' }} {...props} />,
+  h1: (props) => <Heading as='h1' size='5' css={{ mb: '$5' }} {...props} />,
+  h2: (props) => <Heading as='h2' size='4' css={{ mb: '$5' }} {...props} />,
+  h3: (props) => <Heading as='h3' size='3' css={{ mb: '$5' }} {...props} />,
   p: (props) => <Paragraph css={{ mb: '$4' }} {...props} />,
   li: (props) => (
     <ListItem css={{ ':first-of-type': { pt: '$3' } }} {...props} />
@@ -65,7 +65,9 @@ const WritingPage: React.FC<WritingPageProps> = ({ source, frontMatter }) => {
   return (
     <>
       <NextSeo {...SEO} />
-      <Heading css={{ mb: '$3' }}>{frontMatter.title}</Heading>
+      <Heading size='5' css={{ mb: '$3' }}>
+        {frontMatter.title}
+      </Heading>
       <main>{content}</main>
     </>
   );
