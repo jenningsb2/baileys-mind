@@ -32,8 +32,10 @@ const components: MdxRemote.Components = {
   li: (props) => (
     <ListItem css={{ ':first-of-type': { pt: '$3' } }} {...props} />
   ),
-  ul: (props) => <List css={{ listStyle: 'disc', ml: '$6' }} {...props} />,
-  ol: (props) => <List as='ol' css={{ ml: '$6' }} {...props} />,
+  ul: (props) => (
+    <List css={{ listStyle: 'disc', ml: '$6', mb: '$5' }} {...props} />
+  ),
+  ol: (props) => <List as='ol' css={{ ml: '$6', mb: '$5' }} {...props} />,
   hr: (props) => <Hr {...props} />,
   blockquote: (props) => <BlockQuote {...props} />,
 };
