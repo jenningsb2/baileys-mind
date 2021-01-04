@@ -44,7 +44,7 @@ export const Navigation: React.FC = () => {
           <AnimateSharedLayout>
             <NavigationLinks>
               <NavigationLink href={Paths.home}>home</NavigationLink>
-              <NavigationLink href={`/${Paths.writings}`}>
+              <NavigationLink href={`/${Paths.writing}`}>
                 writing
               </NavigationLink>
               <NavigationLink href={`/${Paths.reading}`}>

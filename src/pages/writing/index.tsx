@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { Paths } from '@/data/paths';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
-import { WritingsData } from '@/types/writings-data';
+import { WritingData } from '@/types/writings-data';
 import { getWritingsData } from '@/utils/get-writings-data';
 import { Heading } from '@/components/primitives/Heading';
 import { Text } from '@/components/primitives/Text';
@@ -27,11 +27,11 @@ const ListItem = styled('li', {
   cg: '$5',
 });
 
-type WritingsProps = {
-  writings: WritingsData[];
+type WritingProps = {
+  writings: WritingData[];
 };
-const Writings: React.FC<WritingsProps> = ({ writings }) => {
-  const title = 'Bailey Jennings - Writings';
+const Writing: React.FC<WritingProps> = ({ writings }) => {
+  const title = 'Bailey Jennings - Writing';
   const SEO = {
     title,
     openGraph: {
@@ -41,7 +41,7 @@ const Writings: React.FC<WritingsProps> = ({ writings }) => {
   return (
     <>
       <NextSeo {...SEO} />
-      <Heading css={{ mb: '$6' }}>Writings</Heading>
+      <Heading css={{ mb: '$6' }}>Writing</Heading>
       <Box>
         <Box css={{ display: 'flex', jc: 'flex-end', mb: '$5' }}>
           <Heading as='span' size='2' color='3'>
@@ -60,11 +60,11 @@ const Writings: React.FC<WritingsProps> = ({ writings }) => {
                 <ListItem key={writing.filePath}>
                   <Box>
                     <CustomLink
-                      as={`${Paths.writings}/${writing.filePath.replace(
+                      as={`/${Paths.writing}/${writing.filePath.replace(
                         /\.mdx?$/,
                         '',
                       )}`}
-                      href={`${Paths.writings}/[slug]`}>
+                      href={`/${Paths.writing}/[slug]`}>
                       {writing.data.title}
                     </CustomLink>
                   </Box>
@@ -89,11 +89,11 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { writings: getWritingsData() } };
 };
 
-(Writings as PageWithLayoutType).getLayout = (page) => {
+(Writing as PageWithLayoutType).getLayout = (page) => {
   return (
     <RootLayout>
       <PrimaryLayout>{page}</PrimaryLayout>
     </RootLayout>
   );
 };
-export default Writings;
+export default Writing;

@@ -112,7 +112,7 @@ export const FeaturedPosts: React.FC = () => {
     date: 'December 14, 2020',
     title: 'You must dig',
     description: `Get to the motivations behind a request. 'Something' happened for that 'something' to be acknowledged as a problem by your...`,
-    href: '/writings/you-must-dig',
+    href: '/writing/you-must-dig',
   };
   return (
     <section>

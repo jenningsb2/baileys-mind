@@ -1,4 +1,4 @@
-export interface WritingsData {
+export interface WritingData {
   content: string;
   data: {
     [key: string]: any;

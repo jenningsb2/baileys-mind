@@ -12,7 +12,7 @@ const siteLinks: { label: string; href: string }[] = [
   },
   {
     label: 'writing',
-    href: `/${Paths.writings}`,
+    href: `/${Paths.writing}`,
   },
   {
     label: 'reading',

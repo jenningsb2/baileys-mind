@@ -11,10 +11,11 @@ const StyledLink = styled('a', {
 
 const LinkLine = styled(motion.div, {
   bc: '$action',
-  height: 1,
+  height: 2,
   width: '$full',
+  br: '$pill',
   position: 'absolute',
-  bottom: -4,
+  bottom: -12,
   left: 0,
 });
 

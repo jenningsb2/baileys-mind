@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { WritingsData } from '@/types/writings-data';
+import { WritingData } from '@/types/writings-data';
 import { writingsFilePaths, WRITINGS_PATH } from './mdxUtils';
 
-export function getWritingsData(): WritingsData[] {
+export function getWritingsData(): WritingData[] {
   // Creating an array of writings from `writings/` directory
   const writings = writingsFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(WRITINGS_PATH, filePath));
