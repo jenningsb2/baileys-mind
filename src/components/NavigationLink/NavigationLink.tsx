@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import { useState, useEffect, MouseEvent } from 'react';
+import React, { MouseEvent } from 'react';
 import { styled } from 'stitches.config';
 import { Text } from '@/components/primitives/Text';
 
@@ -27,10 +27,12 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   children,
   href,
 }) => {
-  const [linkState, setLinkState] = useState<NavigationLinkState>('inactive');
+  const [linkState, setLinkState] = React.useState<NavigationLinkState>(
+    'inactive',
+  );
   const router = useRouter();
 
-  useEffect(() => {
+  React.useEffect(() => {
     router.pathname === href
       ? setLinkState('active')
       : setLinkState('inactive');
