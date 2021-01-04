@@ -74,8 +74,8 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
       <NextSeo {...SEO} />
       <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
       <Box css={{ spaceY: '$6' }}>
-        {data.map((block, idx) => (
-          <Box key={idx}>
+        {data.map((block, i) => (
+          <Box key={i}>
             <Heading as='h2' size='5' css={{ mb: '$3' }}>
               Current
             </Heading>

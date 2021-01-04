@@ -4,8 +4,8 @@ import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { Paths } from '@/data/paths';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
-import { WritingData } from '@/types/writings-data';
-import { getWritingsData } from '@/utils/get-writings-data';
+import { WritingsData } from '@/types/writings-data';
+import { getAllWritingsData } from '@/utils/get-writings-data';
 import { Heading } from '@/components/primitives/Heading';
 import { Text } from '@/components/primitives/Text';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
@@ -29,7 +29,7 @@ const ListItem = styled('li', {
 });
 
 type WritingProps = {
-  writings: WritingData[];
+  writings: WritingsData[];
 };
 const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
   useScrollToTop();
@@ -67,7 +67,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
                         '',
                       )}`}
                       href={`/${Paths.writing}/[slug]`}>
-                      {writing.data.title}
+                      {writing?.data?.title}
                     </CustomLink>
                   </Box>
                   <Text
@@ -75,7 +75,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
                     size='2'
                     color='3'
                     css={{ fontWeight: '$bold', ta: 'right' }}>
-                    2020-01-24
+                    {writing?.data?.publishDate ?? 'XXXX-XX-XX'}
                   </Text>
                 </ListItem>
               ))}
@@ -88,7 +88,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  return { props: { writings: getWritingsData() } };
+  return { props: { writings: getAllWritingsData() } };
 };
 
 Writing.getLayout = (page) => {

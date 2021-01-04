@@ -1,6 +1,4 @@
-import fs from 'fs';
-import matter from 'gray-matter';
-import path from 'path';
+import React from 'react';
 import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
 import { MdxRemote } from 'next-mdx-remote/types';
@@ -19,6 +17,8 @@ import { ListItem } from '@/components/primitives/ListItem';
 import { List } from '@/components/primitives/List';
 import { Hr } from '@/components/primitives/Hr';
 import { BlockQuote } from '@/components/primitives/BlockQuote';
+import { getWritingDataFromSlug } from '@/utils/get-writings-data';
+import { WritingsMetaData } from '@/types/writings-data';
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -43,9 +43,7 @@ const components: MdxRemote.Components = {
 
 type WritingPageProps = {
   source: MdxRemote.Source;
-  frontMatter: {
-    [key: string]: any;
-  };
+  frontMatter: WritingsMetaData;
 };
 
 const WritingPage: PageWithLayoutType<WritingPageProps> = ({
@@ -56,9 +54,22 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
   // Hydrating `WritingPage` component with content from mdx file
   const content = hydrate(source, { components });
 
+  // Handling undefined front matter
+  // TODO: Create a proper error boundary
+  // TODO: Make this into a custom hook
+  React.useEffect(function checkForUndefinedFrontMatter() {
+    if (process.env.NODE_ENV === 'development') {
+      if (!(Object.keys(frontMatter).length > 0)) {
+        throw new Error('Need to add front matter to mdx file');
+      }
+    }
+  }, []);
+
   // Grabbing information from frontmatter
-  const title = `Bailey Jennings - ${frontMatter.title}`;
-  const description = frontMatter?.description;
+  const title = `Bailey Jennings - ${frontMatter?.title ?? 'Writing'}`;
+  const description =
+    frontMatter?.description ??
+    'Bailey Jennings is a Product Manager based in Richmond, Virginia';
 
   const SEO = {
     title,
@@ -73,25 +84,20 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
     <>
       <NextSeo {...SEO} />
       <Heading size='5' css={{ mb: '$3' }}>
-        {frontMatter.title}
+        {frontMatter?.title}
       </Heading>
+      <Paragraph>{frontMatter.readingTime.text}</Paragraph>
       <main>{content}</main>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // rebuilding filename from 'slug' which is passed as a link param
-  // (which was created in the `getStaticPaths` method)
-  const writingFilePath = path.join(WRITINGS_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(writingFilePath);
-
-  // MDX is parsed by 'gray-matter' lib
-  const { content, data } = matter(source);
+  const { content, data } = getWritingDataFromSlug(params.slug as string);
 
   const mdxSource: MdxRemote.Source = await renderToString(content, {
     components,
-    scope: data,
+    scope: data as any,
   });
 
   return {
