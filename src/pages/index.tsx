@@ -8,12 +8,14 @@ import { Heading } from '@/components/primitives/Heading';
 import { styled } from 'stitches.config';
 import { Paragraph } from '@/components/primitives/Paragraph';
 import { Box } from '@/components/Box/Box';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
 
 const Intro = styled('div', {
   mb: '$6',
 });
 
 const Home: PageWithLayoutType<{}> = () => {
+  useScrollToTop();
   const title = 'Bailey Jennings - Home';
   const SEO = {
     title,

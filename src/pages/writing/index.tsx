@@ -11,6 +11,7 @@ import { Text } from '@/components/primitives/Text';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { styled } from 'stitches.config';
 import { Box } from '@/components/Box/Box';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
 
 const YearGroup = styled('div', {
   spaceY: '$6',
@@ -31,6 +32,7 @@ type WritingProps = {
   writings: WritingData[];
 };
 const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
+  useScrollToTop();
   const title = 'Bailey Jennings - Writing';
   const SEO = {
     title,

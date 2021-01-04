@@ -10,6 +10,7 @@ import faker from 'faker';
 import { Paths } from '@/data/paths';
 import { Paragraph } from '@/components/primitives/Paragraph';
 import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
 
 function createFakeData() {
   return {
@@ -57,6 +58,7 @@ type ReadingProps = {
 };
 
 const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
+  useScrollToTop();
   const title = 'Bailey Jennings - Reading';
   const SEO = {
     title,

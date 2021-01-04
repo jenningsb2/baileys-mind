@@ -10,6 +10,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { WritingLayout } from '@/components/layouts/WritingLayout/WritingLayout';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
 import { Heading } from '@/components/primitives/Heading';
@@ -51,6 +52,7 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
   source,
   frontMatter,
 }) => {
+  useScrollToTop();
   // Hydrating `WritingPage` component with content from mdx file
   const content = hydrate(source, { components });
 
