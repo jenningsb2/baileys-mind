@@ -32,7 +32,11 @@ type WritingProps = {
   writingsData: WritingsData[];
 };
 const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
+  // TODO: Write sort and grouping presenter for the `writingsData`
+  // passed to this page
+
   useScrollToTop();
+
   const title = 'Bailey Jennings - Writing';
   const SEO = {
     title,

@@ -33,9 +33,6 @@ export function getWritingDataFromSlug(slug: string): WritingsData {
 
   // MDX is parsed by 'gray-matter' lib
   const { content, data } = matter(source);
-  // const formattedDate = data?.publishDate
-  //   ? formatDate(data.publishDate as Date)
-  //   : null;
 
   return {
     ...createDataObject(content, { ...data } as FrontMatter, fileName),
@@ -48,10 +45,6 @@ export function getAllWritingsData(): WritingsData[] {
     const source = fs.readFileSync(path.join(WRITINGS_PATH, fileName));
 
     const { content, data } = matter(source);
-
-    // const formattedDate = data?.publishDate
-    //   ? formatDate(data.publishDate as Date)
-    //   : null;
 
     return {
       ...createDataObject(

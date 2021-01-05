@@ -10,36 +10,13 @@ import { WritingLayout } from '@/components/layouts/WritingLayout/WritingLayout'
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
-import { CustomLink } from '@/components/CustomLink/CustomLink';
 import { Heading } from '@/components/primitives/Heading';
 import { Paragraph } from '@/components/primitives/Paragraph';
-import { ListItem } from '@/components/primitives/ListItem';
-import { List } from '@/components/primitives/List';
-import { Hr } from '@/components/primitives/Hr';
-import { BlockQuote } from '@/components/primitives/BlockQuote';
+import { Box } from '@/components/Box/Box';
 import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
 import { WritingsMetaData } from '@/types/writings-data';
-
-// Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
-const components: MdxRemote.Components = {
-  a: CustomLink,
-  h1: (props) => <Heading as='h1' size='5' css={{ mb: '$5' }} {...props} />,
-  h2: (props) => <Heading as='h2' size='4' css={{ mb: '$5' }} {...props} />,
-  h3: (props) => <Heading as='h3' size='3' css={{ mb: '$5' }} {...props} />,
-  p: (props) => <Paragraph css={{ mb: '$4' }} {...props} />,
-  li: (props) => (
-    <ListItem css={{ ':first-of-type': { pt: '$3' } }} {...props} />
-  ),
-  ul: (props) => (
-    <List css={{ listStyle: 'disc', ml: '$6', mb: '$5' }} {...props} />
-  ),
-  ol: (props) => <List as='ol' css={{ ml: '$6', mb: '$5' }} {...props} />,
-  hr: (props) => <Hr {...props} />,
-  blockquote: (props) => <BlockQuote {...props} />,
-};
+import { components } from '@/utils/mdx-components';
+import { Avatar } from '@/components/Avatar/Avatar';
 
 interface WritingPageProps {
   source: MdxRemote.Source;
@@ -51,7 +28,11 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
   writingMetaData,
 }) => {
   useScrollToTop();
-  // Hydrating `WritingPage` component with content from mdx file
+
+  /* 
+  * Hydrating `WritingPage` component with content from mdx file
+    Custom components/renderers to pass to MDX. Since the MDX files aren't loaded by webpack, they have no knowledge of how to handle import statements. Instead, you must include components in scope here.
+  */
   const content = hydrate(source, { components });
 
   // Handling undefined front matter
@@ -63,10 +44,6 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
         throw new Error('Need to add front matter to mdx file');
       }
     }
-  }, []);
-
-  React.useEffect(() => {
-    console.log(writingMetaData);
   }, []);
 
   // Grabbing information from frontmatter
@@ -87,10 +64,17 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
   return (
     <>
       <NextSeo {...SEO} />
-      <Heading size='5' css={{ mb: '$3' }}>
-        {writingMetaData?.title}
-      </Heading>
-      <Paragraph>{writingMetaData.readingTime.text}</Paragraph>
+      <Box as='header' css={{ mb: '$3' }}>
+        <Heading size='5' css={{ mb: '$3' }}>
+          {writingMetaData?.title}
+        </Heading>
+        <Box>
+          <Box>{/* <Avatar imgSrc='/images/bailey-headshot.jpg' /> */}</Box>
+          <Box>
+            <Paragraph>{writingMetaData.readingTime.text}</Paragraph>
+          </Box>
+        </Box>
+      </Box>
       <main>{content}</main>
     </>
   );
