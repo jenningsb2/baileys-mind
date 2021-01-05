@@ -11,6 +11,7 @@ import { Paths } from '@/data/paths';
 import { Paragraph } from '@/components/primitives/Paragraph';
 import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { ExpansionPanel } from '@/components/ExpansionPanel/ExpansionPanel';
 
 function createFakeData() {
   return {
@@ -46,6 +47,12 @@ const ListItemContent = styled('div', {
   gridTemplateColumns: 'auto 1fr',
   cg: '$2',
 });
+const BookImage = styled('img', {
+  bc: '$surface3',
+  width: '50px',
+  height: '74px',
+  display: 'block',
+});
 
 type ReadingProps = {
   data: {
@@ -73,7 +80,8 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
     <>
       <NextSeo {...SEO} />
       <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
-      <Box css={{ spaceY: '$6' }}>
+      {/* <ExpansionPanel></ExpansionPanel> */}
+      {/* <Box css={{ spaceY: '$6' }}>
         {data.map((block, i) => (
           <Box key={i}>
             <Heading as='h2' size='5' css={{ mb: '$3' }}>
@@ -83,7 +91,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
               {block.map((data, i) => (
                 <BookListItem key={i}>
                   <ListItemContent>
-                    <img src={data.image} alt='' />
+                    <BookImage src={data.image} alt='' width='50' height='74' />
                     <Box>
                       <Heading
                         as='h3'
@@ -102,7 +110,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
             </List>
           </Box>
         ))}
-      </Box>
+      </Box> */}
     </>
   );
 };
