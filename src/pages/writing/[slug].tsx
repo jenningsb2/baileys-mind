@@ -11,7 +11,7 @@ import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { Heading } from '@/components/primitives/Heading';
-import { Paragraph } from '@/components/primitives/Paragraph';
+import { Text } from '@/components/primitives/Text';
 import { Box } from '@/components/Box/Box';
 import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
 import { WritingsMetaData } from '@/types/writings-data';
@@ -64,17 +64,27 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
   return (
     <>
       <NextSeo {...SEO} />
-      <Box as='header' css={{ mb: '$3' }}>
-        <Heading size='5' css={{ mb: '$3' }}>
+      <Box as='header' css={{ mb: '$6' }}>
+        <Heading size='5' css={{ mb: '$5' }}>
           {writingMetaData?.title}
         </Heading>
-        <Box css={{ display: 'flex', spaceX: '$2', ai: 'center' }}>
-          <Box>
-            <Avatar imgSrc='/images/bailey-headshot.jpg' />
+        <Box css={{ display: 'flex', jc: 'space-between', ai: 'center' }}>
+          <Box css={{ display: 'flex', spaceX: '$2', ai: 'center' }}>
+            <Box>
+              <Avatar
+                imgSrc='/images/bailey-headshot.jpg'
+                alt='headshot of Bailey Jennings'
+              />
+            </Box>
+            <Box>
+              <Text color='3' size='3'>
+                {writingMetaData?.publishDate ?? 'XX-XX-XXXX'}
+              </Text>
+            </Box>
           </Box>
-          <Box>
-            <Paragraph>{writingMetaData.readingTime.text}</Paragraph>
-          </Box>
+          <Text color='3' size='3'>
+            {writingMetaData?.readingTime?.text}
+          </Text>
         </Box>
       </Box>
       <main>{content}</main>

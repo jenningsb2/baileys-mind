@@ -3,6 +3,7 @@ export const textElementReset = {
   ma: '0',
   fontWeight: 400,
   color: '$text1',
+  fz: '$3',
 };
 
 export const sizeVariants = {
