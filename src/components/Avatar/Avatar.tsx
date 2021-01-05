@@ -6,6 +6,7 @@ const StyledAvatar = styled('div', {
   width: '15px',
   br: '$round',
   overflow: 'hidden',
+  position: 'relative',
 });
 interface AvatarProps {
   imgSrc: string;
@@ -13,8 +14,7 @@ interface AvatarProps {
 export const Avatar: React.FC<AvatarProps> = ({ imgSrc }) => {
   return (
     <StyledAvatar>
-      {/* <Image src={imgSrc} layout='fill' objectFit='cover' /> */}
-      <Image src={imgSrc} height={400} width={400} />
+      <Image src={imgSrc} layout='fill' objectFit='cover' />
     </StyledAvatar>
   );
 };
