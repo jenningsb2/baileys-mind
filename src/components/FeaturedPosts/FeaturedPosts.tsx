@@ -85,9 +85,7 @@ const Post: React.FC<PostProps> = ({ date, title, description, href }) => {
                 <Heading size='3' css={{ mb: '$1' }}>
                   {title}
                 </Heading>
-                <Paragraph size='3' css={{ mb: '$0' }}>
-                  {description}
-                </Paragraph>
+                <Paragraph size='3'>{description}</Paragraph>
               </Box>
               <IconContainer initial='hidden' variants={visibilityVariants}>
                 <SvgContainer svgWidth={14} svgHeight={14}>

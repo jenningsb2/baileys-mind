@@ -68,8 +68,10 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
         <Heading size='5' css={{ mb: '$3' }}>
           {writingMetaData?.title}
         </Heading>
-        <Box>
-          <Box>{/* <Avatar imgSrc='/images/bailey-headshot.jpg' /> */}</Box>
+        <Box css={{ display: 'flex', spaceX: '$2', ai: 'center' }}>
+          <Box>
+            <Avatar imgSrc='/images/bailey-headshot.jpg' />
+          </Box>
           <Box>
             <Paragraph>{writingMetaData.readingTime.text}</Paragraph>
           </Box>

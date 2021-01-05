@@ -6,7 +6,6 @@ export const Paragraph = styled('p', {
   fontSize: '$3',
   fontWeight: '$regular',
   lineHeight: '$primary',
-  mb: '$4',
   variants: {
     ...sizeVariants,
     ...colorVariants,

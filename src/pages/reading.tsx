@@ -99,7 +99,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
                         css={{ mb: '$2', lh: '$primary' }}>
                         {data.title}
                       </Heading>
-                      <Paragraph css={{ mb: '$0' }}>
+                      <Paragraph>
                         {data.description}
                       </Paragraph>
                     </Box>

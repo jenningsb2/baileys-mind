@@ -33,6 +33,7 @@
     "sass": "^1.29.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
     "@svgr/webpack": "^5.5.0",
     "@types/classnames": "^2.2.11",
     "@types/faker": "^5.1.5",
