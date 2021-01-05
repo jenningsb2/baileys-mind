@@ -3,7 +3,7 @@ import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
 import { MdxRemote } from 'next-mdx-remote/types';
 
-import { writingsFilePaths, WRITINGS_PATH } from '@/utils/mdxUtils';
+import { writingsFilePaths } from '@/utils/mdxUtils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { WritingLayout } from '@/components/layouts/WritingLayout/WritingLayout';
@@ -41,14 +41,14 @@ const components: MdxRemote.Components = {
   blockquote: (props) => <BlockQuote {...props} />,
 };
 
-type WritingPageProps = {
+interface WritingPageProps {
   source: MdxRemote.Source;
-  frontMatter: WritingsMetaData;
-};
+  writingMetaData: WritingsMetaData;
+}
 
 const WritingPage: PageWithLayoutType<WritingPageProps> = ({
   source,
-  frontMatter,
+  writingMetaData,
 }) => {
   useScrollToTop();
   // Hydrating `WritingPage` component with content from mdx file
@@ -59,16 +59,20 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
   // TODO: Make this into a custom hook
   React.useEffect(function checkForUndefinedFrontMatter() {
     if (process.env.NODE_ENV === 'development') {
-      if (!(Object.keys(frontMatter).length > 0)) {
+      if (!(Object.keys(writingMetaData).length > 0)) {
         throw new Error('Need to add front matter to mdx file');
       }
     }
   }, []);
 
+  React.useEffect(() => {
+    console.log(writingMetaData);
+  }, []);
+
   // Grabbing information from frontmatter
-  const title = `Bailey Jennings - ${frontMatter?.title ?? 'Writing'}`;
+  const title = `Bailey Jennings - ${writingMetaData?.title ?? 'Writing'}`;
   const description =
-    frontMatter?.description ??
+    writingMetaData?.description ??
     'Bailey Jennings is a Product Manager based in Richmond, Virginia';
 
   const SEO = {
@@ -84,26 +88,26 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
     <>
       <NextSeo {...SEO} />
       <Heading size='5' css={{ mb: '$3' }}>
-        {frontMatter?.title}
+        {writingMetaData?.title}
       </Heading>
-      <Paragraph>{frontMatter.readingTime.text}</Paragraph>
+      <Paragraph>{writingMetaData.readingTime.text}</Paragraph>
       <main>{content}</main>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { content, data } = getWritingDataFromSlug(params.slug as string);
+  const { content, metaData } = getWritingDataFromSlug(params.slug as string);
 
   const mdxSource: MdxRemote.Source = await renderToString(content, {
     components,
-    scope: data as any,
+    scope: metaData as any,
   });
 
   return {
     props: {
       source: mdxSource,
-      frontMatter: data,
+      writingMetaData: metaData,
     },
   };
 };

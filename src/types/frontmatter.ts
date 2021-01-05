@@ -12,5 +12,5 @@
 export interface FrontMatter {
   title: string;
   description: string;
-  publishDate: string;
+  publishDate: string | null;
 }

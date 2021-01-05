@@ -29,9 +29,9 @@ const ListItem = styled('li', {
 });
 
 type WritingProps = {
-  writings: WritingsData[];
+  writingsData: WritingsData[];
 };
-const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
+const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
   useScrollToTop();
   const title = 'Bailey Jennings - Writing';
   const SEO = {
@@ -58,16 +58,16 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
               </Heading>
             </Box>
             <List>
-              {writings.map((writing) => (
-                <ListItem key={writing.filePath}>
+              {writingsData.map((writingData) => (
+                <ListItem key={writingData.fileName}>
                   <Box>
                     <CustomLink
-                      as={`/${Paths.writing}/${writing.filePath.replace(
+                      as={`/${Paths.writing}/${writingData.fileName.replace(
                         /\.mdx?$/,
                         '',
                       )}`}
                       href={`/${Paths.writing}/[slug]`}>
-                      {writing?.data?.title}
+                      {writingData?.metaData?.title}
                     </CustomLink>
                   </Box>
                   <Text
@@ -75,7 +75,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
                     size='2'
                     color='3'
                     css={{ fontWeight: '$bold', ta: 'right' }}>
-                    {writing?.data?.publishDate ?? 'XXXX-XX-XX'}
+                    {writingData?.metaData?.publishDate ?? 'XX-XX-XXXX'}
                   </Text>
                 </ListItem>
               ))}
@@ -88,7 +88,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writings }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  return { props: { writings: getAllWritingsData() } };
+  return { props: { writingsData: getAllWritingsData() } };
 };
 
 Writing.getLayout = (page) => {

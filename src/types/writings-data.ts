@@ -9,11 +9,11 @@ interface IReadingTimeResults {
 
 export type WritingsMetaData = FrontMatter & {
   readingTime: IReadingTimeResults;
-  year: string;
+  year: string | null;
 };
 
 export interface WritingsData {
   content: string;
-  data: WritingsMetaData;
-  filePath: string;
+  metaData: WritingsMetaData;
+  fileName: string;
 }
