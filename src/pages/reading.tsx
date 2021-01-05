@@ -80,8 +80,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
     <>
       <NextSeo {...SEO} />
       <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
-      {/* <ExpansionPanel></ExpansionPanel> */}
-      {/* <Box css={{ spaceY: '$6' }}>
+      <Box css={{ spaceY: '$6' }}>
         {data.map((block, i) => (
           <Box key={i}>
             <Heading as='h2' size='5' css={{ mb: '$3' }}>
@@ -99,9 +98,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
                         css={{ mb: '$2', lh: '$primary' }}>
                         {data.title}
                       </Heading>
-                      <Paragraph>
-                        {data.description}
-                      </Paragraph>
+                      <Paragraph>{data.description}</Paragraph>
                     </Box>
                   </ListItemContent>
                   <ExternalLinkIcon width='24px' height='24px' />
@@ -110,7 +107,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
             </List>
           </Box>
         ))}
-      </Box> */}
+      </Box>
     </>
   );
 };
