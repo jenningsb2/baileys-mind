@@ -12,8 +12,13 @@ export type WritingsMetaData = FrontMatter & {
   year: string | null;
 };
 
+export type LinkedArticle = Pick<FrontMatter, 'title' | 'description'> & {
+  link: string;
+};
+
 export interface WritingsData {
   content: string;
   metaData: WritingsMetaData;
   fileName: string;
+  linkedArticles?: LinkedArticle[];
 }

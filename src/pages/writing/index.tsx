@@ -79,7 +79,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
                     size='2'
                     color='3'
                     css={{ fontWeight: '$bold', ta: 'right' }}>
-                    {writingData?.metaData?.publishDate ?? 'XX-XX-XXXX'}
+                    {writingData?.metaData?.publishDate}
                   </Text>
                 </ListItem>
               ))}

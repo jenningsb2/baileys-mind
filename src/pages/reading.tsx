@@ -11,7 +11,6 @@ import { Paths } from '@/data/paths';
 import { Paragraph } from '@/components/primitives/Paragraph';
 import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
-import { ExpansionPanel } from '@/components/ExpansionPanel/ExpansionPanel';
 
 function createFakeData() {
   return {

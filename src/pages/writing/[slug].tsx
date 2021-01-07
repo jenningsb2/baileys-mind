@@ -14,18 +14,20 @@ import { Heading } from '@/components/primitives/Heading';
 import { Text } from '@/components/primitives/Text';
 import { Box } from '@/components/Box/Box';
 import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
-import { WritingsMetaData } from '@/types/writings-data';
+import { LinkedArticle, WritingsMetaData } from '@/types/writings-data';
 import { components } from '@/utils/mdx-components';
 import { Avatar } from '@/components/Avatar/Avatar';
 
 interface WritingPageProps {
   source: MdxRemote.Source;
   writingMetaData: WritingsMetaData;
+  linkedArticles: LinkedArticle[];
 }
 
 const WritingPage: PageWithLayoutType<WritingPageProps> = ({
   source,
   writingMetaData,
+  linkedArticles,
 }) => {
   useScrollToTop();
 
@@ -78,7 +80,7 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
             </Box>
             <Box>
               <Text color='3' size='3'>
-                {writingMetaData?.publishDate ?? 'XX-XX-XXXX'}
+                {writingMetaData?.publishDate}
               </Text>
             </Box>
           </Box>
@@ -93,7 +95,9 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { content, metaData } = getWritingDataFromSlug(params.slug as string);
+  const { content, metaData, linkedArticles } = getWritingDataFromSlug(
+    params.slug as string,
+  );
 
   const mdxSource: MdxRemote.Source = await renderToString(content, {
     components,
@@ -104,6 +108,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       source: mdxSource,
       writingMetaData: metaData,
+      linkedArticles,
     },
   };
 };

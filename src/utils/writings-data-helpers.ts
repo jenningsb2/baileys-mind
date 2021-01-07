@@ -1,7 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { WritingsData, WritingsMetaData } from '@/types/writings-data';
+import {
+  LinkedArticle,
+  WritingsData,
+  WritingsMetaData,
+} from '@/types/writings-data';
 import { writingsFilePaths, WRITINGS_PATH } from './mdxUtils';
 import readingTime from 'reading-time';
 import { FrontMatter } from '@/types/frontmatter';
@@ -15,13 +19,41 @@ function createDataObject(
   return {
     content,
     fileName,
+    linkedArticles: parseLinkedArticlesData(data.linked),
     metaData: {
       ...data,
-      publishDate: formatDate((<unknown>data.publishDate) as Date),
+      publishDate:
+        formatDate((<unknown>data.publishDate) as Date) ?? 'XX-XX-XXXX',
       readingTime: readingTime(content),
-      year: getYearFromDate(data.publishDate),
+      year: getYearFromDate(data.publishDate) ?? 'XXXX',
+      linked: data.linked ?? null,
     } as WritingsMetaData,
   };
+}
+
+function parseLinkedArticlesData(linked: string[]): LinkedArticle[] {
+  if (!linked || !Array.isArray(linked)) return null;
+
+  return linked
+    .map((link) => {
+      // TODO: DRY this up
+      const fileName = `${link}.mdx`;
+      const writingFilePath = path.join(WRITINGS_PATH, fileName);
+      const source = fs?.readFileSync(writingFilePath);
+
+      // MDX is parsed by 'gray-matter' lib
+      const { data } = matter(source);
+
+      return {
+        ...(data as FrontMatter),
+        link,
+      };
+    })
+    .map((data) => ({
+      title: data?.title,
+      description: data?.description,
+      link: data?.link,
+    }));
 }
 
 export function getWritingDataFromSlug(slug: string): WritingsData {
