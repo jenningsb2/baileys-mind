@@ -276,6 +276,7 @@ export const { styled, css } = createStyled({
     bp3: (rule) => `@media (max-width: 1024px) { ${rule} }`,
     bp4: (rule) => `@media (max-width: 1280px) { ${rule} }`,
     bp5: (rule) => `@media (max-width: 1440px) { ${rule} }`,
+    bpWriting: (rule) => `@media (max-width: 1150px) { ${rule} }`,
   },
 });
 

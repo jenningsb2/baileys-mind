@@ -11,9 +11,5 @@ const Container = styled('div', {
 });
 
 export const WritingLayout: React.FC = ({ children }) => {
-  return (
-    <Wrapper>
-      <Container>{children}</Container>
-    </Wrapper>
-  );
+  return <Wrapper>{children}</Wrapper>;
 };

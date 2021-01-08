@@ -43,6 +43,8 @@ const StyledFooter = styled('footer', {
   pt: '$9',
   display: 'flex',
   jc: 'center',
+  position: 'relative',
+  zIndex: '$1',
 });
 const FooterContent = styled('div', {
   borderTop: '1px solid $surface1',

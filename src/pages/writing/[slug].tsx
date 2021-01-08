@@ -17,6 +17,19 @@ import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
 import { LinkedArticle, WritingsMetaData } from '@/types/writings-data';
 import { components } from '@/utils/mdx-components';
 import { Avatar } from '@/components/Avatar/Avatar';
+import { styled } from 'stitches.config';
+import { LinkedArticles } from '@/components/LinkedArticles/LinkedArticles';
+
+const Container = styled('div', {
+  width: '$full',
+  maxWidth: '$content',
+  mx: 'auto',
+});
+const BodyContentContainer = styled(Container, {
+  bpWriting: {
+    pr: 'calc(163px + 15px)',
+  },
+});
 
 interface WritingPageProps {
   source: MdxRemote.Source;
@@ -65,31 +78,52 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
 
   return (
     <>
-      <NextSeo {...SEO} />
-      <Box as='header' css={{ mb: '$6' }}>
-        <Heading size='5' css={{ mb: '$5' }}>
-          {writingMetaData?.title}
-        </Heading>
-        <Box css={{ display: 'flex', jc: 'space-between', ai: 'center' }}>
-          <Box css={{ display: 'flex', spaceX: '$2', ai: 'center' }}>
-            <Box>
-              <Avatar
-                imgSrc='/images/bailey-headshot.jpg'
-                alt='headshot of Bailey Jennings'
-              />
-            </Box>
-            <Box>
+      <Box css={{ width: '$full' }}>
+        <NextSeo {...SEO} />
+        <Container>
+          <Box as='header' css={{ mb: '$6' }}>
+            <Heading size='5' css={{ mb: '$5' }}>
+              {writingMetaData?.title}
+            </Heading>
+            <Box css={{ display: 'flex', jc: 'space-between', ai: 'center' }}>
+              <Box css={{ display: 'flex', spaceX: '$2', ai: 'center' }}>
+                <Box>
+                  <Avatar
+                    imgSrc='/images/bailey-headshot.jpg'
+                    alt='headshot of Bailey Jennings'
+                  />
+                </Box>
+                <Box>
+                  <Text color='3' size='3'>
+                    {writingMetaData?.publishDate}
+                  </Text>
+                </Box>
+              </Box>
               <Text color='3' size='3'>
-                {writingMetaData?.publishDate}
+                {writingMetaData?.readingTime?.text}
               </Text>
             </Box>
           </Box>
-          <Text color='3' size='3'>
-            {writingMetaData?.readingTime?.text}
-          </Text>
+        </Container>
+        <Box css={{ position: 'relative' }}>
+          <BodyContentContainer>
+            <main>{content}</main>
+          </BodyContentContainer>
+          {linkedArticles ? (
+            <Box
+              css={{
+                position: 'absolute',
+                height: '100%',
+                top: 0,
+                right: 0,
+              }}>
+              <Box css={{ position: 'sticky', top: 95 }}>
+                <LinkedArticles links={linkedArticles} />
+              </Box>
+            </Box>
+          ) : null}
         </Box>
       </Box>
-      <main>{content}</main>
     </>
   );
 };
