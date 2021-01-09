@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { Paths } from '@/data/paths';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
-import { WritingsData } from '@/types/writings-data';
+import { WritingsData } from '@/@types/writings-data';
 import { getAllWritingsData } from '@/utils/writings-data-helpers';
 import { Heading } from '@/components/primitives/Heading';
 import { Text } from '@/components/primitives/Text';

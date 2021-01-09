@@ -1,3 +1,4 @@
+import React from 'react';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
 import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { NextSeo } from 'next-seo';
@@ -11,24 +12,8 @@ import { Paths } from '@/data/paths';
 import { Paragraph } from '@/components/primitives/Paragraph';
 import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
-
-function createFakeData() {
-  return {
-    id: faker.random.uuid,
-    title: faker.lorem.sentence(),
-    description: faker.lorem.sentence(),
-    image: faker.image.abstract(50, 74),
-    href: `/${Paths.reading}`,
-  };
-}
-
-const mockData = new Array(3)
-  .fill(null)
-  .map(() =>
-    new Array(faker.random.number({ min: 2, max: 5 }))
-      .fill(null)
-      .map(createFakeData),
-  );
+import { readingGroups } from '@/data/reading';
+import { IReadingGroup } from '@/@types/reading.types';
 
 const BookListItem = styled('li', {
   py: '$5',
@@ -54,13 +39,7 @@ const BookImage = styled('img', {
 });
 
 type ReadingProps = {
-  data: {
-    id: () => string;
-    title: string;
-    description: string;
-    image: string;
-    href: string;
-  }[][];
+  data: IReadingGroup[];
 };
 
 const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
@@ -74,30 +53,32 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
   };
 
   // TODO: Design for max number of items and offer a 'show more' feature?
-  // ? Pagination perhaps (maybe it's not that deep tho...)
   return (
     <>
       <NextSeo {...SEO} />
       <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
       <Box css={{ spaceY: '$6' }}>
-        {data.map((block, i) => (
+        {data.map((group, i) => (
           <Box key={i}>
-            <Heading as='h2' size='5' css={{ mb: '$3' }}>
-              Current
+            <Heading
+              as='h2'
+              size='5'
+              css={{ mb: '$3', textTransform: 'capitalize' }}>
+              {group.type.toString()}
             </Heading>
             <List>
-              {block.map((data, i) => (
+              {group.books.map((book, i) => (
                 <BookListItem key={i}>
                   <ListItemContent>
-                    <BookImage src={data.image} alt='' width='50' height='74' />
+                    <BookImage src={book.image} alt='' width='50' height='74' />
                     <Box>
                       <Heading
                         as='h3'
                         size='4'
                         css={{ mb: '$2', lh: '$primary' }}>
-                        {data.title}
+                        {book.title}
                       </Heading>
-                      <Paragraph>{data.description}</Paragraph>
+                      <Paragraph>{book.description}</Paragraph>
                     </Box>
                   </ListItemContent>
                   <ExternalLinkIcon width='24px' height='24px' />
@@ -112,7 +93,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
 };
 
 Reading.getInitialProps = async () => {
-  const data = mockData;
+  const data = readingGroups;
   return { data };
 };
 

@@ -14,7 +14,7 @@ import { Heading } from '@/components/primitives/Heading';
 import { Text } from '@/components/primitives/Text';
 import { Box } from '@/components/Box/Box';
 import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
-import { LinkedArticle, WritingsMetaData } from '@/types/writings-data';
+import { LinkedArticle, WritingsMetaData } from '@/@types/writings-data';
 import { components } from '@/utils/mdx-components';
 import { Avatar } from '@/components/Avatar/Avatar';
 import { styled } from 'stitches.config';

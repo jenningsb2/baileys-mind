@@ -5,10 +5,10 @@ import {
   LinkedArticle,
   WritingsData,
   WritingsMetaData,
-} from '@/types/writings-data';
+} from '@/@types/writings-data';
 import { writingsFilePaths, WRITINGS_PATH } from './mdxUtils';
 import readingTime from 'reading-time';
-import { FrontMatter } from '@/types/frontmatter';
+import { FrontMatter } from '@/@types/frontmatter';
 import { formatDate, getYearFromDate } from './date-helpers';
 
 function createDataObject(

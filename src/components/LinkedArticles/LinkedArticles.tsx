@@ -4,7 +4,7 @@ import { Box } from '@/components/Box/Box';
 import { Heading } from '@/components/primitives/Heading';
 import { List } from '@/components/primitives/List';
 import { ListItem } from '@/components/primitives/ListItem';
-import { LinkedArticle } from '@/types/writings-data';
+import { LinkedArticle } from '@/@types/writings-data';
 import { Paragraph } from '../primitives/Paragraph';
 import { styled } from 'stitches.config';
 import { defaultTransition } from '@/styles/animation';

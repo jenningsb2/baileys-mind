@@ -1,4 +1,4 @@
-import { FrontMatter } from '@/types/frontmatter';
+import { FrontMatter } from '@/@types/frontmatter';
 
 interface IReadingTimeResults {
   text: string;
