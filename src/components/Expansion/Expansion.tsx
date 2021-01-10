@@ -1,18 +1,22 @@
 import React from 'react';
 import { ExpansionProvider, useExpansion } from '@/context/expansion';
-import { styled } from 'stitches.config';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { styled } from 'stitches.config';
 
-const ExpansionTrigger = styled('button', {});
+const TriggerButton = styled(motion.button, {
+  ':focus': {
+    outlineColor: '$action',
+    outlineWidth: '1px',
+    outlineStyle: 'auto',
+  },
+});
 
-const Header: React.FC = ({ children }) => {
+const Trigger: React.FC = ({ children }) => {
   const { dispatch } = useExpansion();
   return (
-    <motion.div layout>
-      <ExpansionTrigger onClick={() => dispatch({ type: 'TOGGLE' })}>
-        {children}
-      </ExpansionTrigger>
-    </motion.div>
+    <TriggerButton layout onClick={() => dispatch({ type: 'TOGGLE' })}>
+      {children}
+    </TriggerButton>
   );
 };
 
@@ -36,7 +40,7 @@ const Item: React.FC = ({ children }) => {
 };
 
 interface IExpansionComposed {
-  Header: React.FC<any>;
+  Trigger: React.FC<any>;
   Body: React.FC<any>;
   Item: React.FC<any>;
 }
@@ -45,7 +49,7 @@ const Expansion: React.FC & IExpansionComposed = ({ children }) => {
   return <AnimateSharedLayout>{children}</AnimateSharedLayout>;
 };
 
-Expansion.Header = Header;
+Expansion.Trigger = Trigger;
 Expansion.Body = Body;
 Expansion.Item = Item;
 

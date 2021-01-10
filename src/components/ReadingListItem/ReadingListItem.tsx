@@ -1,0 +1,173 @@
+import {
+  IReadingListItemExpansion,
+  IReadingListItemLink,
+} from '@/@types/reading.types';
+import { styled } from 'stitches.config';
+import { Heading } from '@/components/primitives/Heading';
+import { Paragraph } from '../primitives/Paragraph';
+import { SvgContainer } from '../SvgContainer/SvgContainer';
+import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
+import { ReactComponent as CaretIcon } from '@/assets/caret.svg';
+import { Expansion } from '../Expansion/Expansion';
+import { Box } from '../Box/Box';
+import { motion } from 'framer-motion';
+import { useExpansion } from '@/context/expansion';
+import { List } from '../primitives/List';
+import { ListItem } from '../primitives/ListItem';
+import { CustomLink } from '../CustomLink/CustomLink';
+
+const Wrapper = styled('li', {
+  py: '$5',
+  px: '$2',
+  borderBottom: '1px solid $surface1',
+  ':last-of-type': {
+    border: 'none',
+  },
+});
+const Container = styled('div', {
+  display: 'grid',
+  gridTemplateColumns: 'auto 1fr auto',
+  cg: '$3',
+});
+const Content = styled(motion.div, {});
+
+// TODO: Validate these image dimensions (height is random, I think)
+const ImageWrapper = styled(motion.div, {
+  width: '50px',
+  height: '74px',
+  bc: '$action',
+});
+
+const LinkIconContainer = styled('div', {
+  width: '24px',
+  path: {
+    fill: '$action',
+  },
+});
+const CaretIconContainer = styled(motion.div, {
+  width: '24px',
+  transform: 'rotate(180deg)',
+  path: {
+    fill: '$surface1',
+  },
+});
+
+interface ReadingListItemLinkProps {
+  book: IReadingListItemLink;
+}
+
+const ReadingListItemRoot: React.FC = ({ children }) => {
+  return (
+    <Wrapper as={motion.li} layout>
+      <Container as={motion.div} layout>
+        {children}
+      </Container>
+    </Wrapper>
+  );
+};
+
+export const ReadingListItemLink: React.FC<ReadingListItemLinkProps> = ({
+  book,
+}) => {
+  return (
+    <Expansion.Item>
+      <ReadingListItemRoot>
+        <ImageWrapper layout></ImageWrapper>
+        <Content layout>
+          <Heading
+            as={motion.h3}
+            layout
+            size='4'
+            css={{ lh: '$primary', mb: '$1' }}>
+            {book.title}
+          </Heading>
+          <Paragraph as={motion.p} layout>
+            {book.description}
+          </Paragraph>
+        </Content>
+        <LinkIconContainer>
+          <SvgContainer svgWidth={24} svgHeight={24}>
+            <ExternalLinkIcon />
+          </SvgContainer>
+        </LinkIconContainer>
+      </ReadingListItemRoot>
+    </Expansion.Item>
+  );
+};
+
+interface ReadingListItemExpansionProps {
+  book: IReadingListItemExpansion;
+}
+const ReadingListExpansionTrigger: React.FC = () => {
+  const { state } = useExpansion();
+  return (
+    <Expansion.Trigger>
+      <CaretIconContainer
+        initial='closed'
+        animate={state.status}
+        variants={{
+          opened: {
+            rotate: '0deg',
+          },
+          closed: {
+            rotate: '180deg',
+          },
+        }}>
+        <SvgContainer svgWidth={24} svgHeight={24}>
+          <CaretIcon />
+        </SvgContainer>
+      </CaretIconContainer>
+    </Expansion.Trigger>
+  );
+};
+
+const Note = styled(ListItem, {});
+
+export const ReadingListItemExpansion: React.FC<ReadingListItemExpansionProps> = ({
+  book,
+}) => {
+  return (
+    <Expansion.Item>
+      <ReadingListItemRoot>
+        <ImageWrapper layout></ImageWrapper>
+        <Content layout>
+          <Box as={motion.header} layout>
+            <Heading as={motion.h3} size='4' css={{ lh: '$primary', mb: '$1' }}>
+              {book.title}
+            </Heading>
+            <Paragraph as={motion.p} layout>
+              {book.description}
+            </Paragraph>
+          </Box>
+          <Expansion.Body>
+            <Box
+              as={motion.div}
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              css={{
+                pt: '$5',
+              }}
+              layout>
+              <Heading size='3' css={{ mb: '$3' }}>
+                Notes
+              </Heading>
+              <List>
+                {book.notes.map((note) => (
+                  <Note key={note.title}>
+                    <CustomLink as={note.href} href={note.href}>
+                      {note.title}
+                    </CustomLink>
+                  </Note>
+                ))}
+              </List>
+            </Box>
+          </Expansion.Body>
+        </Content>
+        <Box>
+          <ReadingListExpansionTrigger />
+        </Box>
+      </ReadingListItemRoot>
+    </Expansion.Item>
+  );
+};

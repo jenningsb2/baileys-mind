@@ -11,6 +11,7 @@ export interface IReadingListItemLink extends IBookData {
   type: 'link';
 }
 
+// TODO: Add external link to book in addition to note
 export interface IReadingListItemExpansion extends IBookData {
   type: 'expansion';
   notes: [

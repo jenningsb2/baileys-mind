@@ -14,6 +14,11 @@ const StyledButton = styled('button', {
   bc: '$surface3',
   br: '$1',
   transition: defaultTransition,
+  ':focus': {
+    outlineColor: '$action',
+    outlineWidth: '1px',
+    outlineStyle: 'auto',
+  },
 });
 
 const Icon = styled('div', {
