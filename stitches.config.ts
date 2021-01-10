@@ -338,5 +338,10 @@ css.global({
   a: {
     textDecoration: 'none',
     color: 'inherit',
+    ':focus': {
+      outlineColor: '$action',
+      outlineWidth: '1px',
+      outlineStyle: 'auto',
+    },
   },
 });

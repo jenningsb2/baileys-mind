@@ -2,6 +2,7 @@ import {
   IReadingListItemExpansion,
   IReadingListItemLink,
 } from '@/@types/reading.types';
+import Link from 'next/link';
 import { styled } from 'stitches.config';
 import { Heading } from '@/components/primitives/Heading';
 import { Paragraph } from '../primitives/Paragraph';
@@ -86,9 +87,13 @@ export const ReadingListItemLink: React.FC<ReadingListItemLinkProps> = ({
           </Paragraph>
         </Content>
         <LinkIconContainer>
-          <SvgContainer svgWidth={24} svgHeight={24}>
-            <ExternalLinkIcon />
-          </SvgContainer>
+          <Link href={book.href} passHref>
+            <a style={{ display: 'block' }}>
+              <SvgContainer svgWidth={24} svgHeight={24}>
+                <ExternalLinkIcon />
+              </SvgContainer>
+            </a>
+          </Link>
         </LinkIconContainer>
       </ReadingListItemRoot>
     </Expansion.Item>
