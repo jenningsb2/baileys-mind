@@ -20,16 +20,8 @@ const Body: React.FC = ({ children }) => {
   const { state } = useExpansion();
   return (
     <AnimatePresence exitBeforeEnter>
-      {state.status === 'closed' ? (
-        <motion.div layout />
-      ) : (
-        <motion.div
-          layout
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}>
-          {children}
-        </motion.div>
+      {state.status === 'closed' ? null : (
+        <motion.div layout>{children}</motion.div>
       )}
     </AnimatePresence>
   );

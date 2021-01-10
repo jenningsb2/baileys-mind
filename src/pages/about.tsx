@@ -5,7 +5,8 @@ import { Heading } from '@/components/primitives/Heading';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { Expansion } from '@/components/Expansion/Expansion';
-import { motion } from 'framer-motion';
+import { Box } from '@/components/Box/Box';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const About: PageWithLayoutType<{}> = () => {
   useScrollToTop();
@@ -26,12 +27,28 @@ const About: PageWithLayoutType<{}> = () => {
             <div style={{ height: '40px' }}>click me!</div>
           </Expansion.Header>
           <Expansion.Body>
-            <motion.p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-              dolorem similique nesciunt provident qui explicabo, nam numquam
-              vitae ea rerum ab nulla, doloribus illum ad aut dolores laboriosam
-              voluptatibus! Aspernatur.
-            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                type: 'spring',
+                delay: 0.25,
+              }}>
+              <Box
+                css={{
+                  bc: '$blue',
+                  pa: '$4',
+                  br: '$1',
+                }}>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Incidunt dolorem similique nesciunt provident qui explicabo,
+                  nam numquam vitae ea rerum ab nulla, doloribus illum ad aut
+                  dolores laboriosam voluptatibus! Aspernatur.
+                </p>
+              </Box>
+            </motion.div>
           </Expansion.Body>
         </Expansion.Item>
         <Expansion.Item>
