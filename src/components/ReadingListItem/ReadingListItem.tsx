@@ -20,10 +20,6 @@ import { CustomLink } from '../CustomLink/CustomLink';
 const Wrapper = styled('li', {
   py: '$5',
   px: '$2',
-  borderBottom: '1px solid $surface1',
-  ':last-of-type': {
-    border: 'none',
-  },
 });
 const Container = styled('div', {
   display: 'grid',

@@ -48,7 +48,7 @@ function createLink(): IReadingListItemLink {
 export const readingGroups: IReadingGroup[] = groups.map((group) => {
   return {
     type: group,
-    books: new Array(generateRandomNumber(2, 5)).fill(null).map(() => {
+    books: new Array(generateRandomNumber(2, 8)).fill(null).map(() => {
       if (linkOrExpansion() === 'link') {
         return {
           ...createLink(),
