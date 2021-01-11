@@ -32,12 +32,10 @@ function createExpansionItem(): IReadingListItemExpansion {
   return {
     ...createBookData(),
     type: 'expansion',
-    notes: [
-      {
-        title: faker.lorem.sentence(),
-        href: `/${Paths.reading}`,
-      },
-    ],
+    notes: Array.from(new Array(generateRandomNumber(1, 3))).map(() => ({
+      title: faker.lorem.sentence(),
+      href: `/${Paths.reading}`,
+    })),
   };
 }
 function createLink(): IReadingListItemLink {
