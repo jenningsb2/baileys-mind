@@ -78,7 +78,7 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
 
   return (
     <>
-      <Box css={{ width: '$full' }}>
+      <Box as='article' css={{ width: '$full' }}>
         <NextSeo {...SEO} />
         <Container>
           <Box as='header' css={{ mb: '$6' }}>
