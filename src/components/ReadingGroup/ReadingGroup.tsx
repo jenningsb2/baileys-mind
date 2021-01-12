@@ -57,7 +57,7 @@ export const ReadingGroup: React.FC<ReadingGroupProps> = ({ group }) => {
         {group.type.toString()}
       </Heading>
       <ReadingList layout>
-        {booksToRender.map((book) => {
+        {(booksToRender as IReadingListItem[]).map((book) => {
           switch (book.type) {
             case 'link': {
               return <ReadingListItemLink key={book.title} book={book} />;
