@@ -40,7 +40,7 @@ const PostContainer = styled('div', {
   pa: '$3',
   display: 'inline-grid',
   cg: '$5',
-  gridTemplateColumns: '134px 1fr',
+  gridTemplateColumns: 'auto 1fr',
   position: 'relative',
   zIndex: '$2',
 });

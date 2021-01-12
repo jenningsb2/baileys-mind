@@ -4,7 +4,7 @@
  * ---
  * title: You must dig
  * description: This is a description
- * publishDate: 2021-01-04
+ * publishDate: '2021-01-04'
  * featured: true
  * linked: ['some-path', 'another-path']
  * ---

@@ -9,7 +9,7 @@ import {
 import { writingsFilePaths, WRITINGS_PATH } from './mdxUtils';
 import readingTime from 'reading-time';
 import { FrontMatter } from '@/@types/frontmatter';
-import { formatDate, getYearFromDate } from './date-helpers';
+import { getYearFromDate } from './date-helpers';
 
 function createDataObject(
   content: string,
@@ -22,8 +22,7 @@ function createDataObject(
     linkedArticles: parseLinkedArticlesData(data.linked),
     metaData: {
       ...data,
-      publishDate:
-        formatDate((<unknown>data.publishDate) as Date) ?? 'XX-XX-XXXX',
+      publishDate: data.publishDate ?? 'XXXX-XX-XX',
       readingTime: readingTime(content),
       year: getYearFromDate(data.publishDate) ?? 'XXXX',
       featured: data?.featured ? true : false,
