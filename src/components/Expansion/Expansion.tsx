@@ -34,7 +34,7 @@ const Body: React.FC = ({ children }) => {
 const Item: React.FC = ({ children }) => {
   return (
     <ExpansionProvider>
-      <motion.div layout>{children}</motion.div>
+      <>{children}</>
     </ExpansionProvider>
   );
 };

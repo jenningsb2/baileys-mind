@@ -8,23 +8,8 @@ import { Box } from '@/components/Box/Box';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { readingGroups } from '@/data/reading';
 import { IReadingGroup } from '@/@types/reading.types';
-import {
-  ReadingListItemLink,
-  ReadingListItemExpansion,
-} from '@/components/ReadingListItem/ReadingListItem';
 import { Expansion } from '@/components/Expansion/Expansion';
-import { motion } from 'framer-motion';
-import { styled } from 'stitches.config';
 import { ReadingGroup } from '@/components/ReadingGroup/ReadingGroup';
-
-const ReadingList = styled(motion.ul, {
-  '> *': {
-    borderBottom: '1px solid $surface1',
-    ':last-of-type': {
-      border: 'none',
-    },
-  },
-});
 
 type ReadingProps = {
   data: IReadingGroup[];
@@ -46,7 +31,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
       <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
 
       <Expansion>
-        <Box css={{ spaceY: '$6' }}>
+        <Box css={{ spaceY: '$7' }}>
           {data.map((group) => (
             <ReadingGroup key={group.type} group={group} />
           ))}

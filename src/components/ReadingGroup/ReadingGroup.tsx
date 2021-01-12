@@ -12,7 +12,7 @@ import { chunkArray } from '@/utils/chunk-array';
 
 const ReadingList = styled(motion.ul, {
   '> *': {
-    borderBottom: '1px solid $surface1',
+    borderBottom: '2px solid $surface1',
     ':last-of-type': {
       border: 'none',
     },
@@ -72,11 +72,16 @@ export const ReadingGroup: React.FC<ReadingGroupProps> = ({ group }) => {
         })}
       </ReadingList>
       {showMoreIndex < chunkedBooksArray.length - 1 ? (
-        <ShowMoreButton
-          onClick={() => handleShowMoreClick(showMoreIndex)}
+        <Box
+          as={motion.div}
+          css={{ width: '$full', py: '$3', bc: '$uiBackground' }}
           layout>
-          Show more...
-        </ShowMoreButton>
+          <ShowMoreButton
+            onClick={() => handleShowMoreClick(showMoreIndex)}
+            layout>
+            Show more...
+          </ShowMoreButton>
+        </Box>
       ) : null}
     </Box>
   );
