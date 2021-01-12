@@ -3,18 +3,23 @@ import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout'
 import { NextSeo } from 'next-seo';
 
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { FeaturedPosts } from '@/components/FeaturedPosts/FeaturedPosts';
+import { FeaturedWritings } from '@/components/FeaturedWritings/FeaturedWritings';
 import { Heading } from '@/components/primitives/Heading';
 import { styled } from 'stitches.config';
 import { Paragraph } from '@/components/primitives/Paragraph';
 import { Box } from '@/components/Box/Box';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { WritingsMetaData, WritingsData } from '@/@types/writings-data';
+import { GetStaticProps } from 'next';
+import { getAllWritingsData } from '@/utils/writings-data-helpers';
 
 const Intro = styled('div', {
   mb: '$6',
 });
-
-const Home: PageWithLayoutType<{}> = () => {
+interface HomeProps {
+  featuredWritings: WritingsData[];
+}
+const Home: PageWithLayoutType<HomeProps> = ({ featuredWritings }) => {
   useScrollToTop();
   const title = 'Bailey Jennings - Home';
   const SEO = {
@@ -37,12 +42,21 @@ const Home: PageWithLayoutType<{}> = () => {
             topics that I find myself learning about.
           </Paragraph>
         </Intro>
-        <FeaturedPosts />
+        <FeaturedWritings writings={featuredWritings} />
       </Box>
     </>
   );
 };
 
+export const getStaticProps: GetStaticProps = async () => {
+  const writingsData = getAllWritingsData();
+
+  const featuredWritings: WritingsData[] = writingsData.filter(
+    (writing) => writing?.metaData?.featured,
+  );
+
+  return { props: { featuredWritings } };
+};
 Home.getLayout = (page) => {
   return (
     <RootLayout>

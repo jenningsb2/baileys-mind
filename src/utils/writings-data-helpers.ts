@@ -26,6 +26,7 @@ function createDataObject(
         formatDate((<unknown>data.publishDate) as Date) ?? 'XX-XX-XXXX',
       readingTime: readingTime(content),
       year: getYearFromDate(data.publishDate) ?? 'XXXX',
+      featured: data?.featured ? true : false,
       linked: data.linked ?? null,
     } as WritingsMetaData,
   };

@@ -6,6 +6,8 @@ import { Heading } from '../primitives/Heading';
 import { styled } from 'stitches.config';
 import { Paragraph } from '../primitives/Paragraph';
 import { Box } from '@/components/Box/Box';
+import { WritingsData } from '@/@types/writings-data';
+import { Paths } from '@/data/paths';
 
 const visibilityVariants = {
   hovered: {
@@ -71,21 +73,29 @@ const IconContainer = styled(motion.div, {
   },
 });
 
-const Post: React.FC<PostProps> = ({ date, title, description, href }) => {
+interface WritingProps {
+  writing: WritingsData;
+}
+const Writing: React.FC<WritingProps> = ({ writing }) => {
+  const writingData = writing.metaData;
   return (
-    <Link href={href} passHref>
+    <Link
+      href={`/${Paths.writing}/${writing.fileName.replace(/\.mdx?$/, '')}`}
+      passHref>
       <StyledLink>
         <PostWrapper whileHover='hovered'>
           <PostContainer>
             <Box>
-              <Time dateTime={date}>{date}</Time>
+              <Time dateTime={writingData.publishDate}>
+                {writingData.publishDate}
+              </Time>
             </Box>
             <Box css={{ spaceX: '$5', display: 'flex' }}>
               <Box css={{ maxWidth: '319px' }}>
-                <Heading size='3' css={{ mb: '$1' }}>
-                  {title}
+                <Heading size='3' css={{ mb: '$1', lh: '$primary' }}>
+                  {writingData.title}
                 </Heading>
-                <Paragraph size='3'>{description}</Paragraph>
+                <Paragraph size='3'>{writingData.description}</Paragraph>
               </Box>
               <IconContainer initial='hidden' variants={visibilityVariants}>
                 <SvgContainer svgWidth={14} svgHeight={14}>
@@ -104,28 +114,22 @@ const Post: React.FC<PostProps> = ({ date, title, description, href }) => {
 const List = styled('ul', {
   spaceY: '$5',
 });
-
-export const FeaturedPosts: React.FC = () => {
-  const data: PostProps = {
-    date: 'December 14, 2020',
-    title: 'You must dig',
-    description: `Get to the motivations behind a request. 'Something' happened for that 'something' to be acknowledged as a problem by your...`,
-    href: '/writing/you-must-dig',
-  };
+interface FeaturedWritingsProps {
+  writings: WritingsData[];
+}
+export const FeaturedWritings: React.FC<FeaturedWritingsProps> = ({
+  writings,
+}) => {
+  // TODO: Eventually some sort of sorting logic would be nice here
   return (
     <section>
       <Heading size='4' css={{ mb: '$6' }}>
-        Featured posts
+        Featured writings
       </Heading>
       <List>
-        {Array.from(new Array(3)).map((_, idx) => (
-          <li key={idx}>
-            <Post
-              date={data.date}
-              title={data.title}
-              description={data.description}
-              href={data.href}
-            />
+        {writings.map((writing) => (
+          <li key={writing.fileName}>
+            <Writing writing={writing} />
           </li>
         ))}
       </List>
