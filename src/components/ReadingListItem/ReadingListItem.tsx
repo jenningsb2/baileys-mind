@@ -49,6 +49,14 @@ const CaretIconContainer = styled(motion.div, {
   },
 });
 
+const Description = styled(Paragraph, {
+  display: '-webkit-box',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+});
+
 interface ReadingListItemLinkProps {
   book: IReadingListItemLink;
 }
@@ -78,13 +86,16 @@ export const ReadingListItemLink: React.FC<ReadingListItemLinkProps> = ({
             css={{ lh: '$primary', mb: '$1' }}>
             {book.title}
           </Heading>
-          <Paragraph as={motion.p} layout>
+          <Description as={motion.p} layout>
             {book.description}
-          </Paragraph>
+          </Description>
         </Content>
         <LinkIconContainer>
           <Link href={book.href} passHref>
-            <a style={{ display: 'block' }}>
+            <a
+              target='_blank'
+              rel='noopener noreferrer'
+              style={{ display: 'block' }}>
               <SvgContainer svgWidth={24} svgHeight={24}>
                 <ExternalLinkIcon />
               </SvgContainer>
@@ -136,9 +147,9 @@ export const ReadingListItemExpansion: React.FC<ReadingListItemExpansionProps> =
             <Heading as={motion.h3} size='4' css={{ lh: '$primary', mb: '$1' }}>
               {book.title}
             </Heading>
-            <Paragraph as={motion.p} layout>
+            <Description as={motion.p} layout>
               {book.description}
-            </Paragraph>
+            </Description>
           </Box>
           <Expansion.Body>
             <Box

@@ -37,7 +37,8 @@ const PostWrapper = styled(motion.div, {
 
 const PostContainer = styled('div', {
   br: '$1',
-  pa: '$3',
+  px: '$3',
+  py: '$4',
   display: 'inline-grid',
   cg: '$5',
   gridTemplateColumns: 'auto 1fr',
@@ -73,6 +74,14 @@ const IconContainer = styled(motion.div, {
   },
 });
 
+const Description = styled(Paragraph, {
+  display: '-webkit-box',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+});
+
 interface WritingProps {
   writing: WritingsData;
 }
@@ -95,7 +104,7 @@ const Writing: React.FC<WritingProps> = ({ writing }) => {
                 <Heading size='3' css={{ mb: '$1', lh: '$primary' }}>
                   {writingData.title}
                 </Heading>
-                <Paragraph size='3'>{writingData.description}</Paragraph>
+                <Description size='3'>{writingData.description}</Description>
               </Box>
               <IconContainer initial='hidden' variants={visibilityVariants}>
                 <SvgContainer svgWidth={14} svgHeight={14}>
@@ -123,7 +132,7 @@ export const FeaturedWritings: React.FC<FeaturedWritingsProps> = ({
   // TODO: Eventually some sort of sorting logic would be nice here
   return (
     <section>
-      <Heading size='4' css={{ mb: '$6' }}>
+      <Heading size='4' css={{ mb: '$5' }}>
         Featured writings
       </Heading>
       <List>

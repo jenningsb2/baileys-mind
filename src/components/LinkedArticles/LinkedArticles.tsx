@@ -9,7 +9,13 @@ import { Paragraph } from '../primitives/Paragraph';
 import { styled } from 'stitches.config';
 import { defaultTransition } from '@/styles/animation';
 
-const Description = styled(Paragraph, {});
+const Description = styled(Paragraph, {
+  display: '-webkit-box',
+  WebkitLineClamp: 3,
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+});
 const StyledListItem = styled(ListItem, {
   ma: '$0',
   borderTop: '1px solid $surface1',
