@@ -1,27 +1,26 @@
-import Link from 'next/link';
-import fs from 'fs';
-import matter from 'gray-matter';
-import path from 'path';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
+import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { NextSeo } from 'next-seo';
 
-import { notesFilePaths, NOTES_PATH } from '../utils/mdxUtils';
-
-import styles from '@scss/pages/Home.module.scss';
-import { GetStaticProps } from 'next';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
+import { FeaturedWritings } from '@/components/FeaturedWritings/FeaturedWritings';
+import { Heading } from '@/components/primitives/Heading';
+import { styled } from 'stitches.config';
+import { Paragraph } from '@/components/primitives/Paragraph';
+import { Box } from '@/components/Box/Box';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { WritingsMetaData, WritingsData } from '@/@types/writings-data';
+import { GetStaticProps } from 'next';
+import { getAllWritingsData } from '@/utils/writings-data-helpers';
 
-type HomeProps = {
-  notes: {
-    content: string;
-    data: {
-      [key: string]: any;
-    };
-    filePath: string;
-  }[];
-};
-
-const Home: React.FC<HomeProps> = ({ notes }) => {
+const Intro = styled('div', {
+  mb: '$6',
+});
+interface HomeProps {
+  featuredWritings: WritingsData[];
+}
+const Home: PageWithLayoutType<HomeProps> = ({ featuredWritings }) => {
+  useScrollToTop();
   const title = 'Bailey Jennings - Home';
   const SEO = {
     title,
@@ -32,43 +31,38 @@ const Home: React.FC<HomeProps> = ({ notes }) => {
   return (
     <>
       <NextSeo {...SEO} />
-      <div className={styles.container}>
-        <h1>Home</h1>
-        <ul>
-          {notes.map((note) => (
-            <li key={note.filePath}>
-              <Link
-                as={`notes/${note.filePath.replace(/\.mdx?$/, '')}`}
-                href={`notes/[slug]`}>
-                <a>{note.data.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Box>
+        <Intro>
+          <Heading size='7' css={{ mb: '$5' }}>
+            Hey there,
+          </Heading>
+          <Paragraph size='4'>
+            Welcome to my personal site. You'll find notes on product
+            management, customer research, strategy, life meaning, and any other
+            topics that I find myself learning about.
+          </Paragraph>
+        </Intro>
+        <FeaturedWritings writings={featuredWritings} />
+      </Box>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Creating an array of notes from `notes/` directory
-  const notes = notesFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(NOTES_PATH, filePath));
+  const writingsData = getAllWritingsData();
 
-    const { content, data } = matter(source);
+  const featuredWritings: WritingsData[] = writingsData.filter(
+    (writing) => writing?.metaData?.featured,
+  );
 
-    return {
-      content,
-      data,
-      filePath,
-    };
-  });
-
-  return { props: { notes } };
+  return { props: { featuredWritings } };
 };
-
-(Home as PageWithLayoutType).getLayout = (page) => {
-  return <MainLayout>{page}</MainLayout>;
+Home.getLayout = (page) => {
+  return (
+    <RootLayout>
+      <PrimaryLayout>{page}</PrimaryLayout>
+    </RootLayout>
+  );
 };
 
 export default Home;

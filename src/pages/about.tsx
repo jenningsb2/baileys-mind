@@ -1,8 +1,12 @@
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
 import { NextSeo } from 'next-seo';
+import { Heading } from '@/components/primitives/Heading';
+import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
 
-const About: React.FC = () => {
+const About: PageWithLayoutType<{}> = () => {
+  useScrollToTop();
   const title = 'Bailey Jennings - About';
   const SEO = {
     title,
@@ -13,12 +17,16 @@ const About: React.FC = () => {
   return (
     <>
       <NextSeo {...SEO} />
-      <h1>About</h1>
+      <Heading css={{ mb: '$6' }}>About</Heading>
     </>
   );
 };
 
-(About as PageWithLayoutType).getLayout = (page) => {
-  return <MainLayout>{page}</MainLayout>;
+About.getLayout = (page) => {
+  return (
+    <RootLayout>
+      <PrimaryLayout>{page}</PrimaryLayout>
+    </RootLayout>
+  );
 };
 export default About;

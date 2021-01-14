@@ -1,16 +1,17 @@
-import type { AppProps } from 'next/app';
-import '@scss/globals.scss';
 import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
+import { useHunterCreditsLog } from '@/utils/hunter-credits-log';
 
 type MyAppProps = {
-  Component: PageWithLayoutType;
+  Component: PageWithLayoutType<any>;
   pageProps: any;
 };
 
 const MyApp: React.FC<MyAppProps> = ({ Component, pageProps }) => {
   const getLayout =
-    Component.getLayout || ((page) => <MainLayout>{page}</MainLayout>);
+    Component.getLayout || ((page) => <RootLayout>{page}</RootLayout>);
+
+  useHunterCreditsLog();
 
   return getLayout(<Component {...pageProps} />);
 };
