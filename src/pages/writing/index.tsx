@@ -12,6 +12,7 @@ import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout'
 import { styled } from 'stitches.config';
 import { Box } from '@/components/Box/Box';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { groupDatesByYear, sortWritingsByDateDesc } from '@/utils/date-helpers';
 
 const YearGroup = styled('div', {
   spaceY: '$6',
@@ -44,6 +45,8 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
       title,
     },
   };
+  const sortedDates = sortWritingsByDateDesc(writingsData);
+  const groupedDates = groupDatesByYear(sortedDates);
   return (
     <>
       <NextSeo {...SEO} />
@@ -55,40 +58,42 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
           </Heading>
         </Box>
         <Box css={{ spaceY: '$6' }}>
-          <YearGroup>
-            <Box>
-              <Heading as='h2' size='4'>
-                2020
-              </Heading>
-            </Box>
-            <List>
-              {writingsData.map((writingData) => (
-                <ListItem key={writingData.fileName}>
-                  <Box>
-                    <CustomLink
-                      as={`/${Paths.writing}/${writingData.fileName.replace(
-                        /\.mdx?$/,
-                        '',
-                      )}`}
-                      href={`/${Paths.writing}/[slug]`}>
-                      {writingData?.metaData?.title}
-                    </CustomLink>
-                  </Box>
-                  <Text
-                    as='time'
-                    size='2'
-                    color='3'
-                    css={{
-                      fontFamily: '$mono',
-                      fontWeight: '$bold',
-                      ta: 'right',
-                    }}>
-                    {writingData?.metaData?.publishDate}
-                  </Text>
-                </ListItem>
-              ))}
-            </List>
-          </YearGroup>
+          {groupedDates.map(({ year, writings }) => (
+            <YearGroup key={year}>
+              <Box>
+                <Heading as='h2' size='4'>
+                  {year}
+                </Heading>
+              </Box>
+              <List>
+                {writings.map((writingData) => (
+                  <ListItem key={writingData.fileName}>
+                    <Box>
+                      <CustomLink
+                        as={`/${Paths.writing}/${writingData.fileName.replace(
+                          /\.mdx?$/,
+                          '',
+                        )}`}
+                        href={`/${Paths.writing}/[slug]`}>
+                        {writingData?.metaData?.title}
+                      </CustomLink>
+                    </Box>
+                    <Text
+                      as='time'
+                      size='2'
+                      color='3'
+                      css={{
+                        fontFamily: '$mono',
+                        fontWeight: '$bold',
+                        ta: 'right',
+                      }}>
+                      {writingData?.metaData?.publishDate}
+                    </Text>
+                  </ListItem>
+                ))}
+              </List>
+            </YearGroup>
+          ))}
         </Box>
       </Box>
     </>
