@@ -64,6 +64,8 @@ const Time = styled('time', {
   color: '$text3',
   fontWeight: '$bold',
   textTransform: 'uppercase',
+  fontFamily: '$mono',
+  fw: '$bold',
 });
 
 const IconContainer = styled(motion.div, {

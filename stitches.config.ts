@@ -12,6 +12,7 @@ export const rgb = {
 const theme = {
   fonts: {
     $primary: "'Inter', sans-serif",
+    $mono: "'JetBrains Mono', monospace",
   },
   colors: {
     // Values
