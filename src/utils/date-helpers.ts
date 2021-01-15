@@ -1,6 +1,5 @@
 import { WritingsData } from '@/@types/writings-data';
 import { compareDesc } from 'date-fns';
-import _ from 'lodash';
 
 export function getYearFromDate(date: string): string {
   const year = date ? new Date(date).getFullYear().toString() : null;
@@ -21,9 +20,18 @@ export function sortWritingsByDateDesc(
 }
 
 export function groupDatesByYear(writings: WritingsData[]) {
-  return _(writings)
-    .groupBy((writing) => writing.metaData.year)
-    .map((value, key) => ({ year: key, writings: value }))
-    .value()
+  return Object.entries(
+    writings.reduce((result, value) => {
+      if (!result[value.metaData.year]) {
+        result[value.metaData.year] = [];
+      }
+      result[value.metaData.year].push(value);
+      return result;
+    }, {} as { [x: string]: WritingsData[] }),
+  )
+    .map(([key, value]) => ({
+      year: key,
+      writings: value,
+    }))
     .reverse();
 }
