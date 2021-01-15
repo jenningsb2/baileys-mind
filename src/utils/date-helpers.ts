@@ -13,6 +13,8 @@ export function getYearFromDate(date: string): string {
 export function sortWritingsByDateDesc(
   writings: WritingsData[],
 ): WritingsData[] {
+  if (!Array.isArray(writings)) return [];
+
   return [...writings].sort(({ metaData: a }, { metaData: b }) =>
     compareDesc(new Date(a.publishDate), new Date(b.publishDate)),
   );

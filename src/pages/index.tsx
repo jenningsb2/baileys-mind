@@ -9,9 +9,10 @@ import { styled } from 'stitches.config';
 import { Paragraph } from '@/components/primitives/Paragraph';
 import { Box } from '@/components/Box/Box';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
-import { WritingsMetaData, WritingsData } from '@/@types/writings-data';
+import { WritingsData } from '@/@types/writings-data';
 import { GetStaticProps } from 'next';
 import { getAllWritingsData } from '@/utils/writings-data-helpers';
+import { sortWritingsByDateDesc } from '@/utils/date-helpers';
 
 const Intro = styled('div', {
   mb: '$6',
@@ -49,13 +50,15 @@ const Home: PageWithLayoutType<HomeProps> = ({ featuredWritings }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const writingsData = getAllWritingsData();
+  const writingsData = sortWritingsByDateDesc(getAllWritingsData());
 
   const featuredWritings: WritingsData[] = writingsData.filter(
     (writing) => writing?.metaData?.featured,
   );
 
-  return { props: { featuredWritings } };
+  return {
+    props: { featuredWritings },
+  };
 };
 Home.getLayout = (page) => {
   return (

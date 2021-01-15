@@ -45,8 +45,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
       title,
     },
   };
-  const sortedDates = sortWritingsByDateDesc(writingsData);
-  const groupedDates = groupDatesByYear(sortedDates);
+  const groupedDates = groupDatesByYear(writingsData);
   return (
     <>
       <NextSeo {...SEO} />
@@ -101,7 +100,9 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  return { props: { writingsData: getAllWritingsData() } };
+  return {
+    props: { writingsData: sortWritingsByDateDesc(getAllWritingsData()) },
+  };
 };
 
 Writing.getLayout = (page) => {
