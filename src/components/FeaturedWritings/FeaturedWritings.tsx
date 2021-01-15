@@ -131,7 +131,6 @@ interface FeaturedWritingsProps {
 export const FeaturedWritings: React.FC<FeaturedWritingsProps> = ({
   writings,
 }) => {
-  // TODO: Eventually some sort of sorting logic would be nice here
   return (
     <section>
       <Heading size='4' css={{ mb: '$5' }}>
