@@ -6,10 +6,10 @@ import { Heading } from '@/components/primitives/Heading';
 import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
 import { Box } from '@/components/Box/Box';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
-import { readingGroups } from '@/data/reading';
 import { IReadingGroup } from '@/@types/reading.types';
 import { Expansion } from '@/components/Expansion/Expansion';
 import { ReadingGroup } from '@/components/ReadingGroup/ReadingGroup';
+import { useBooks } from '@/utils/use-books';
 
 type ReadingProps = {
   data: IReadingGroup[];
@@ -24,26 +24,22 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
       title,
     },
   };
-
+  const { books, isLoading } = useBooks();
   return (
     <>
       <NextSeo {...SEO} />
       <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
-
-      <Expansion>
-        <Box css={{ spaceY: '$7' }}>
-          {data.map((group) => (
-            <ReadingGroup key={group.type} group={group} />
-          ))}
-        </Box>
-      </Expansion>
+      {!isLoading ? (
+        <Expansion>
+          <Box css={{ spaceY: '$7' }}>
+            {books.map((group) => (
+              <ReadingGroup key={group.type} group={group} />
+            ))}
+          </Box>
+        </Expansion>
+      ) : null}
     </>
   );
-};
-
-Reading.getInitialProps = async () => {
-  const data = readingGroups;
-  return { data };
 };
 
 Reading.getLayout = (page: any) => {

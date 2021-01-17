@@ -34,6 +34,9 @@ const ImageWrapper = styled(motion.div, {
   height: '74px',
   bc: '$action',
 });
+const Image = styled('img', {
+  objectFit: 'contain',
+});
 
 const LinkIconContainer = styled('div', {
   width: '24px',
@@ -77,7 +80,9 @@ export const ReadingListItemLink: React.FC<ReadingListItemLinkProps> = ({
   return (
     <Expansion.Item>
       <ReadingListItemRoot>
-        <ImageWrapper layout></ImageWrapper>
+        <ImageWrapper layout>
+          <Image src={book.image} />
+        </ImageWrapper>
         <Content layout>
           <Heading
             as={motion.h3}
@@ -141,7 +146,9 @@ export const ReadingListItemExpansion: React.FC<ReadingListItemExpansionProps> =
   return (
     <Expansion.Item>
       <ReadingListItemRoot>
-        <ImageWrapper layout></ImageWrapper>
+        <ImageWrapper layout>
+          <Image src={book.image} />
+        </ImageWrapper>
         <Content layout>
           <Box as={motion.header} layout>
             <Heading as={motion.h3} size='4' css={{ lh: '$primary', mb: '$1' }}>

@@ -1,4 +1,5 @@
 export function chunkArray<T>(arr: T[], size: number): T[][] {
+  if (!Array.isArray(arr)) return [];
   const newArray: T[][] = [];
 
   const arrCopy = [...arr];
