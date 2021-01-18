@@ -10,6 +10,38 @@ import { IReadingGroup } from '@/@types/reading.types';
 import { Expansion } from '@/components/Expansion/Expansion';
 import { ReadingGroup } from '@/components/ReadingGroup/ReadingGroup';
 import { useBooks } from '@/utils/use-books';
+import { styled } from 'stitches.config';
+
+const SkeletonTitle = styled('div', {
+  height: '34px',
+  width: '130px',
+  bc: '$surface1',
+  br: '$pill',
+  mb: '$6',
+});
+
+const SkeletonBody = styled('div', {
+  height: '80px',
+  width: '$full',
+  bc: '$surface3',
+  br: '$1',
+});
+
+const Skeleton: React.FC = () => {
+  return (
+    <Box css={{ spaceY: '$7' }}>
+      {new Array(3).fill(null).map((_, idx) => (
+        <Box key={idx}>
+          <SkeletonTitle />
+          <Box css={{ spaceY: '$4' }}>
+            <SkeletonBody />
+            <SkeletonBody />
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
+};
 
 type ReadingProps = {
   data: IReadingGroup[];
@@ -37,7 +69,9 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
             ))}
           </Box>
         </Expansion>
-      ) : null}
+      ) : (
+        <Skeleton />
+      )}
     </>
   );
 };
