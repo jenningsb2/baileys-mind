@@ -1,6 +1,7 @@
 export type ReadingGroupType = 'current' | 'next' | 'read';
 
 export interface IBookData {
+  id: string;
   description: string;
   title: string;
   image: string;

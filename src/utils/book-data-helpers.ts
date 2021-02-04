@@ -1,6 +1,8 @@
 import {
+  IBookData,
   IReadingGroup,
   IReadingListItem,
+  IReadingListItemExpansion,
   ReadingGroupType,
 } from '@/@types/reading.types';
 import { booksData } from '@/data/reading';
@@ -11,7 +13,7 @@ const shelveMap: { [x: number]: string } = {
   2: 'read',
 };
 
-function getNotes(book: any) {
+function getNotes(book: IBookData): IReadingListItemExpansion {
   const b = booksData.find((data) => data.id === book.id);
   return {
     ...book,
@@ -20,16 +22,14 @@ function getNotes(book: any) {
   };
 }
 
-function hasNotes(book: any): boolean {
+function hasNotes(book: IBookData): boolean {
   const idMatch = booksData.find((data) => data.id === book.id);
 
-  return idMatch ? true : false;
+  return idMatch != null ? true : false;
 }
 
-function parseGoogleBookData(
-  books: any[],
-): (IReadingListItem & { id: string })[] {
-  if (!books || !Array.isArray(books)) return [];
+function parseGoogleBookData(books: any[]): IReadingListItem[] {
+  if (books == null || !Array.isArray(books)) return [];
 
   return books
     .map(({ volumeInfo, id }) => {
@@ -42,9 +42,9 @@ function parseGoogleBookData(
         href: `https://books.google.com/books?id=${id}`,
       };
     })
-    .reduce((result, curr) => {
+    .reduce((result: IReadingListItem[], curr: IBookData) => {
       if (hasNotes(curr)) {
-        result.push({ ...curr, ...getNotes(curr) });
+        result.push(getNotes(curr));
       } else {
         result.push({ ...curr, type: 'link' });
       }
@@ -57,7 +57,7 @@ export function transformBookData(data: any[]): IReadingGroup[] {
 
   return data.map((shelve, idx) => {
     return {
-      type: shelveMap[idx] as ReadingGroupType,
+      type: <ReadingGroupType>shelveMap[idx],
       books: parseGoogleBookData(shelve.items),
     };
   });
