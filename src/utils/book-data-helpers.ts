@@ -28,7 +28,7 @@ function hasNotes(book: IBookData): boolean {
   return idMatch != null ? true : false;
 }
 
-function parseGoogleBookData(books: any[]): IReadingListItem[] {
+function parseGoogleBookData(books: any[]): IReadingListItem[] | [] {
   if (books == null || !Array.isArray(books)) return [];
 
   return books
@@ -52,8 +52,8 @@ function parseGoogleBookData(books: any[]): IReadingListItem[] {
     }, []);
 }
 
-export function transformBookData(data: any[]): IReadingGroup[] {
-  if (!data) return [];
+export function transformBookData(data: any[]): IReadingGroup[] | [] {
+  if (data == null) return [];
 
   return data.map((shelve, idx) => {
     return {

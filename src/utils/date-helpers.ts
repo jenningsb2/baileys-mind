@@ -22,7 +22,7 @@ export function sortWritingsByDateDesc(
 export function groupDatesByYear(writings: WritingsData[]) {
   return Object.entries(
     writings.reduce((result, value) => {
-      if (!result[value.metaData.year]) {
+      if (result[value.metaData.year] === undefined) {
         result[value.metaData.year] = [];
       }
       result[value.metaData.year].push(value);

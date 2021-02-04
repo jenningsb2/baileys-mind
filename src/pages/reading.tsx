@@ -11,6 +11,7 @@ import { Expansion } from '@/components/Expansion/Expansion';
 import { ReadingGroup } from '@/components/ReadingGroup/ReadingGroup';
 import { useBooks } from '@/utils/use-books';
 import { styled } from 'stitches.config';
+import { Paragraph } from '@/components/primitives/Paragraph';
 
 const SkeletonTitle = styled('div', {
   height: '34px',
@@ -56,6 +57,7 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
       title,
     },
   };
+  // const { books, isLoading } = useBooks();
   const { books, isLoading } = useBooks();
   return (
     <>
@@ -64,9 +66,13 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
       {!isLoading ? (
         <Expansion>
           <Box css={{ spaceY: '$7' }}>
-            {books.map((group) => (
-              <ReadingGroup key={group.type} group={group} />
-            ))}
+            {books.length > 1 ? (
+              (books as IReadingGroup[]).map((group) => (
+                <ReadingGroup key={group.type} group={group} />
+              ))
+            ) : (
+              <Paragraph>No books to display at the moment...</Paragraph>
+            )}
           </Box>
         </Expansion>
       ) : (

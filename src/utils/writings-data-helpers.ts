@@ -32,7 +32,7 @@ function createDataObject(
 }
 
 function parseLinkedArticlesData(linked: string[]): LinkedArticle[] {
-  if (!linked || !Array.isArray(linked)) return null;
+  if (linked == null || !Array.isArray(linked)) return null;
 
   return linked
     .map((link) => {

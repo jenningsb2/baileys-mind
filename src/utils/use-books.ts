@@ -30,6 +30,6 @@ export function useBooks() {
   return {
     books,
     isLoading: !error && !(<any>data),
-    isError: error,
+    isError: error, // TODO: Should actually use error in the UI
   };
 }
