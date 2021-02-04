@@ -31,6 +31,17 @@ const ThemeProvider: React.FC = ({ children }) => {
     [theme],
   );
 
+  React.useEffect(() => {
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }, []);
+
   return (
     <ThemeContext.Provider value={value}>
       <Box
