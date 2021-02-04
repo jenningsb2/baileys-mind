@@ -16,6 +16,9 @@ export const fetcher = async (url: string) => {
   ).then((responses) => {
     return Promise.all(
       responses.map((res) => {
+        if (!res.ok) {
+          throw new Error('An error occurred while fetching the data.');
+        }
         return res.json();
       }),
     );

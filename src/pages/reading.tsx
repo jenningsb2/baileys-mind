@@ -57,24 +57,26 @@ const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
       title,
     },
   };
-  // const { books, isLoading } = useBooks();
-  const { books, isLoading } = useBooks();
+  const { books, isLoading, isError } = useBooks();
+
   return (
     <>
       <NextSeo {...SEO} />
       <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
       {!isLoading ? (
-        <Expansion>
-          <Box css={{ spaceY: '$7' }}>
-            {books.length > 1 ? (
-              (books as IReadingGroup[]).map((group) => (
-                <ReadingGroup key={group.type} group={group} />
-              ))
-            ) : (
-              <Paragraph>No books to display at the moment...</Paragraph>
-            )}
-          </Box>
-        </Expansion>
+        <>
+          {isError === undefined ? (
+            <Expansion>
+              <Box css={{ spaceY: '$7' }}>
+                {(books as IReadingGroup[]).map((group) => (
+                  <ReadingGroup key={group.type} group={group} />
+                ))}
+              </Box>
+            </Expansion>
+          ) : (
+            <Paragraph>{isError?.message}</Paragraph>
+          )}
+        </>
       ) : (
         <Skeleton />
       )}
