@@ -8,6 +8,7 @@ import { Box } from '@/components/Box/Box';
 import { Paragraph } from '@/components/primitives/Paragraph';
 import { styled } from 'stitches.config';
 import { CustomLink } from '@/components/CustomLink/CustomLink';
+import { Button } from '@/components/common/Button/Button';
 import { Paths } from '@/data/paths';
 
 const ParagraphText = styled(Paragraph, {
@@ -56,9 +57,12 @@ const About: PageWithLayoutType<{}> = () => {
             </ParagraphText>
           </Box>
           <Box>
-            <Heading as='h3' size='3'>
+            <Heading as='h3' size='3' css={{ mb: '$6' }}>
               Professional Milestones
             </Heading>
+            <Button type='link' href='/'>
+              Curriculum Vitae
+            </Button>
           </Box>
         </Box>
         <Box as='section'>
