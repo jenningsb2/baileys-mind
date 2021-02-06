@@ -44,11 +44,7 @@ const Skeleton: React.FC = () => {
   );
 };
 
-type ReadingProps = {
-  data: IReadingGroup[];
-};
-
-const Reading: PageWithLayoutType<ReadingProps> = ({ data }) => {
+const Reading: PageWithLayoutType<{}> = () => {
   useScrollToTop();
   const title = 'Bailey Jennings - Reading';
   const SEO = {

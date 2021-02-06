@@ -27,15 +27,15 @@ const siteLinks: { label: string; href: string }[] = [
 const socialLinks: { label: string; href: string }[] = [
   {
     label: 'twitter',
-    href: 'https://twitter.com/Bailey_Jennings',
+    href: Paths.twitter,
   },
   {
     label: 'instagram',
-    href: 'https://www.instagram.com/b_jennings/',
+    href: Paths.instagram,
   },
   {
     label: 'linkedin',
-    href: 'https://www.linkedin.com/in/baileyjennings/',
+    href: Paths.linkedin,
   },
 ];
 

@@ -4,15 +4,10 @@ import { textElementReset } from '../primitives/shared';
 import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
 import { Text } from '@/components/primitives/Text';
 
-type CustomLinkProps = {
-  as: string;
-  href: string;
-  css?: any;
-};
-
 function isExternalLink(href: string): boolean {
-  const regex = /^https?:\/\//;
-  return regex.test(href);
+  const externalLinkRegex = /^https?:\/\//;
+  const mailToRegex = /^mailto\:/;
+  return externalLinkRegex.test(href) || mailToRegex.test(href);
 }
 
 const StyledLink = styled('a', {
@@ -38,6 +33,11 @@ const ExternalLink = styled(StyledLink, {
   cg: '$1',
 });
 
+interface CustomLinkProps {
+  as: string;
+  href: string;
+  css?: any;
+}
 export const CustomLink: React.FC<CustomLinkProps> = ({
   as,
   href,
