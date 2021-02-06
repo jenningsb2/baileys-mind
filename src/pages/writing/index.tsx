@@ -8,6 +8,7 @@ import { WritingsData } from '@/@types/writings-data';
 import { getAllWritingsData } from '@/utils/writings-data-helpers';
 import { Heading } from '@/components/common/primitives/Heading';
 import { Text } from '@/components/common/primitives/Text';
+import { PageHeadline } from '@/components/common/PageHeadline/PageHeadline';
 import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
 import { styled } from 'stitches.config';
 import { Box } from '@/components/common/Box/Box';
@@ -46,7 +47,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
   return (
     <>
       <NextSeo {...SEO} />
-      <Heading css={{ mb: '$6' }}>Writing</Heading>
+      <PageHeadline>Writing</PageHeadline>
       <Box>
         <Box css={{ display: 'flex', jc: 'flex-end', mb: '$5' }}>
           <Heading as='span' size='2' color='3'>

@@ -15,6 +15,9 @@ const StyledNavigation = styled('nav', {
   display: 'flex',
   jc: 'center',
   position: 'fixed',
+  bp1: {
+    px: '$3',
+  },
 });
 
 const NavigationContent = styled('div', {
@@ -23,6 +26,9 @@ const NavigationContent = styled('div', {
   display: 'flex',
   jc: 'flex-end',
   spaceX: '$3',
+  bp1: {
+    jc: 'center',
+  },
 });
 
 const NavigationLinks = styled('div', {

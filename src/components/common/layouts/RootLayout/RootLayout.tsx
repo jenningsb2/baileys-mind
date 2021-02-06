@@ -17,7 +17,7 @@ export const RootLayout: React.FC = ({ children }) => {
           position: 'relative',
           zIndex: '$0',
         }}>
-        <Box css={{ height: '95px', postion: 'relative', zIndex: '$2' }}>
+        <Box css={{ height: 95, position: 'relative', zIndex: '$2' }}>
           <Navigation />
         </Box>
         <Box
@@ -28,8 +28,17 @@ export const RootLayout: React.FC = ({ children }) => {
             jc: 'center',
             position: 'relative',
             zIndex: '$1',
+            bp1: {
+              pt: '$5',
+            },
           }}>
-          <Box css={{ width: '$full', maxWidth: '$site', mx: '$7' }}>
+          <Box
+            css={{
+              width: '$full',
+              maxWidth: '$site',
+              mx: '$7',
+              bp1: { mx: '$5' },
+            }}>
             {children}
           </Box>
         </Box>

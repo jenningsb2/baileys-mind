@@ -27,12 +27,18 @@ interface PostProps {
 
 const StyledLink = styled('a', {
   display: 'inline-block',
+  bp1: {
+    display: 'block',
+  },
 });
 
 const PostWrapper = styled(motion.div, {
   display: 'inline-block',
   position: 'relative',
   zIndex: '$0',
+  bp1: {
+    display: 'block',
+  },
 });
 
 const PostContainer = styled('div', {
@@ -44,6 +50,11 @@ const PostContainer = styled('div', {
   gridTemplateColumns: 'auto 1fr',
   position: 'relative',
   zIndex: '$2',
+  bp1: {
+    display: 'flex',
+    fd: 'column',
+    spaceY: '$4',
+  },
 });
 
 const ContainerBg = styled(motion.div, {
@@ -100,7 +111,7 @@ const Writing: React.FC<WritingProps> = ({ writing }) => {
                 {writingData.publishDate}
               </Time>
             </Box>
-            <Box css={{ spaceX: '$5', display: 'flex' }}>
+            <Box css={{ spaceX: '$5', display: 'flex', jc: 'space-between' }}>
               <Box css={{ maxWidth: '319px' }}>
                 <Heading size='3' css={{ mb: '$1', lh: '$primary' }}>
                   {writingData.title}
@@ -132,7 +143,7 @@ export const FeaturedWritings: React.FC<FeaturedWritingsProps> = ({
 }) => {
   return (
     <section>
-      <Heading size='4' css={{ mb: '$5' }}>
+      <Heading size='4' css={{ mb: '$5', bp1: { fz: '$3' } }}>
         Featured writings
       </Heading>
       <List>

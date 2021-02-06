@@ -34,10 +34,12 @@ const Home: PageWithLayoutType<HomeProps> = ({ featuredWritings }) => {
       <NextSeo {...SEO} />
       <Box>
         <Intro>
-          <Heading size='7' css={{ mb: '$5' }}>
+          <Heading size='7' css={{ mb: '$5', bp1: { fz: '$6' } }}>
             Hey there,
           </Heading>
-          <Paragraph size='4'>
+          <Paragraph
+            size='4'
+            css={{ lh: '$primary', bp1: { fz: '$3', lh: '$loose' } }}>
             Welcome to my personal site. You'll find notes on product
             management, customer research, strategy, life meaning, and any other
             topics that I find myself learning about.

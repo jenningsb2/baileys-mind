@@ -51,6 +51,9 @@ const FooterContent = styled('div', {
   width: '100%',
   maxWidth: '$site',
   mx: '$7',
+  bp1: {
+    mx: '$5',
+  },
 });
 const FooterLinksContainer = styled('div', {
   py: '$5',

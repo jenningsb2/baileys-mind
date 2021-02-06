@@ -7,6 +7,9 @@ import { Text } from '@/components/common/primitives/Text';
 const StyledLink = styled('a', {
   color: '$text1',
   position: 'relative',
+  bp1: {
+    fz: '$3',
+  },
 });
 
 const LinkLine = styled(motion.div, {
@@ -45,7 +48,7 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
 
   return (
     <StyledLink href={href} onClick={handleClick}>
-      <Text>{children}</Text>
+      <Text css={{ fz: 'inherit' }}>{children}</Text>
       {linkState === 'active' ? <LinkLine layoutId='link-bg' /> : null}
     </StyledLink>
   );

@@ -12,6 +12,7 @@ import { ReadingGroup } from '@/components/reading/ReadingGroup/ReadingGroup';
 import { useBooks } from '@/utils/use-books';
 import { styled } from 'stitches.config';
 import { Paragraph } from '@/components/common/primitives/Paragraph';
+import { PageHeadline } from '@/components/common/PageHeadline/PageHeadline';
 
 const SkeletonTitle = styled('div', {
   height: '34px',
@@ -58,7 +59,7 @@ const Reading: PageWithLayoutType<{}> = () => {
   return (
     <>
       <NextSeo {...SEO} />
-      <Heading css={{ mb: '$6' }}>What I'm reading</Heading>
+      <PageHeadline>What I'm reading</PageHeadline>
       {!isLoading ? (
         <>
           {isError === undefined ? (

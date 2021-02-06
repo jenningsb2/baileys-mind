@@ -9,7 +9,9 @@ import { Paragraph } from '@/components/common/primitives/Paragraph';
 import { styled } from 'stitches.config';
 import { CustomLink } from '@/components/common/CustomLink/CustomLink';
 import { Button } from '@/components/common/Button/Button';
+import { Milestones } from '@/components/about/Milestones/Milestones';
 import { Paths } from '@/data/paths';
+import { PageHeadline } from '@/components/common/PageHeadline/PageHeadline';
 
 const ParagraphText = styled(Paragraph, {
   lh: '$loose',
@@ -27,7 +29,7 @@ const About: PageWithLayoutType<{}> = () => {
   return (
     <>
       <NextSeo {...SEO} />
-      <Heading css={{ mb: '$6' }}>About</Heading>
+      <PageHeadline>About</PageHeadline>
       <Box css={{ spaceY: '$7' }}>
         <Box>
           <ParagraphText css={{ mb: '$4' }}>
@@ -60,6 +62,10 @@ const About: PageWithLayoutType<{}> = () => {
             <Heading as='h3' size='3' css={{ mb: '$6' }}>
               Professional Milestones
             </Heading>
+            <Milestones />
+            {/* 
+              // TODO: link to actual pdf 
+            */}
             <Button type='link' href='/'>
               Curriculum Vitae
             </Button>

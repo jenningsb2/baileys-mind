@@ -5,7 +5,7 @@ export const Paragraph = styled('p', {
   ...textElementReset,
   fontSize: '$3',
   fontWeight: '$regular',
-  lineHeight: '$primary',
+  lineHeight: '$loose',
   variants: {
     ...sizeVariants,
     ...colorVariants,
