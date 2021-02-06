@@ -6,19 +6,19 @@ import { MdxRemote } from 'next-mdx-remote/types';
 import { writingsFilePaths } from '@/utils/mdxUtils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
-import { WritingLayout } from '@/components/layouts/WritingLayout/WritingLayout';
-import { PageWithLayoutType } from '@/components/layouts/layouts.model';
+import { WritingLayout } from '@/components/common/layouts/WritingLayout/WritingLayout';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
-import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
-import { Heading } from '@/components/primitives/Heading';
-import { Text } from '@/components/primitives/Text';
-import { Box } from '@/components/Box/Box';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
+import { Heading } from '@/components/common/primitives/Heading';
+import { Text } from '@/components/common/primitives/Text';
+import { Box } from '@/components/common/Box/Box';
 import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
 import { LinkedArticle, WritingsMetaData } from '@/@types/writings-data';
 import { components } from '@/utils/mdx-components';
-import { Avatar } from '@/components/Avatar/Avatar';
+import { Avatar } from '@/components/common/Avatar/Avatar';
 import { styled } from 'stitches.config';
-import { LinkedArticles } from '@/components/LinkedArticles/LinkedArticles';
+import { LinkedArticles } from '@/components/writing/LinkedArticles/LinkedArticles';
 
 const Container = styled('div', {
   width: '$full',

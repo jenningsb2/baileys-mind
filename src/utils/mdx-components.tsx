@@ -1,10 +1,10 @@
-import { CustomLink } from '@/components/CustomLink/CustomLink';
-import { Heading } from '@/components/primitives/Heading';
-import { Paragraph } from '@/components/primitives/Paragraph';
-import { ListItem } from '@/components/primitives/ListItem';
-import { List } from '@/components/primitives/List';
-import { Hr } from '@/components/primitives/Hr';
-import { BlockQuote } from '@/components/primitives/BlockQuote';
+import { CustomLink } from '@/components/common/CustomLink/CustomLink';
+import { Heading } from '@/components/common/primitives/Heading';
+import { Paragraph } from '@/components/common/primitives/Paragraph';
+import { ListItem } from '@/components/common/primitives/ListItem';
+import { List } from '@/components/common/primitives/List';
+import { Hr } from '@/components/common/primitives/Hr';
+import { BlockQuote } from '@/components/common/primitives/BlockQuote';
 import { MdxRemote } from 'next-mdx-remote/types';
 
 /**

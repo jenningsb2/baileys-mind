@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { styled } from 'stitches.config';
 import { textElementReset } from '../primitives/shared';
 import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
-import { Text } from '@/components/primitives/Text';
+import { Text } from '@/components/common/primitives/Text';
 
 function isExternalLink(href: string): boolean {
   const externalLinkRegex = /^https?:\/\//;

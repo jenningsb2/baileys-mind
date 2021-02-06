@@ -1,16 +1,16 @@
-import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
 import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { Paths } from '@/data/paths';
-import { CustomLink } from '@/components/CustomLink/CustomLink';
+import { CustomLink } from '@/components/common/CustomLink/CustomLink';
 import { WritingsData } from '@/@types/writings-data';
 import { getAllWritingsData } from '@/utils/writings-data-helpers';
-import { Heading } from '@/components/primitives/Heading';
-import { Text } from '@/components/primitives/Text';
-import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
+import { Heading } from '@/components/common/primitives/Heading';
+import { Text } from '@/components/common/primitives/Text';
+import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
 import { styled } from 'stitches.config';
-import { Box } from '@/components/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { groupDatesByYear, sortWritingsByDateDesc } from '@/utils/date-helpers';
 

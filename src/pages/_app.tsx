@@ -1,5 +1,5 @@
-import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
 import { useHunterCreditsLog } from '@/utils/hunter-credits-log';
 
 type MyAppProps = {

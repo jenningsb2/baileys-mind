@@ -2,8 +2,8 @@ import { Paths } from '@/data/paths';
 import Link from 'next/link';
 import React from 'react';
 import { styled } from 'stitches.config';
-import { Text } from '@/components/primitives/Text';
-import { Box } from '@/components/Box/Box';
+import { Text } from '@/components/common/primitives/Text';
+import { Box } from '@/components/common/Box/Box';
 
 const siteLinks: { label: string; href: string }[] = [
   {

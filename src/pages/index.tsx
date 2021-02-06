@@ -1,13 +1,13 @@
-import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
-import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
+import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
 import { NextSeo } from 'next-seo';
 
-import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { FeaturedWritings } from '@/components/FeaturedWritings/FeaturedWritings';
-import { Heading } from '@/components/primitives/Heading';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
+import { FeaturedWritings } from '@/components/home/FeaturedWritings/FeaturedWritings';
+import { Heading } from '@/components/common/primitives/Heading';
 import { styled } from 'stitches.config';
-import { Paragraph } from '@/components/primitives/Paragraph';
-import { Box } from '@/components/Box/Box';
+import { Paragraph } from '@/components/common/primitives/Paragraph';
+import { Box } from '@/components/common/Box/Box';
 import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { WritingsData } from '@/@types/writings-data';
 import { GetStaticProps } from 'next';

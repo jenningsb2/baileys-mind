@@ -1,5 +1,5 @@
 import { useTheme } from '@/context/theme';
-import { SvgContainer } from '@/components/SvgContainer/SvgContainer';
+import { SvgContainer } from '@/components/common/SvgContainer/SvgContainer';
 import { ReactComponent as MoonIcon } from '@/assets/moon.svg';
 import { ReactComponent as SunIcon } from '@/assets/sun.svg';
 import { styled } from 'stitches.config';

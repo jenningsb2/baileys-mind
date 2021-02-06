@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Paths } from '@data/paths';
-import { Box } from '@/components/Box/Box';
-import { Heading } from '@/components/primitives/Heading';
-import { List } from '@/components/primitives/List';
-import { ListItem } from '@/components/primitives/ListItem';
+import { Box } from '@/components/common/Box/Box';
+import { Heading } from '@/components/common/primitives/Heading';
+import { List } from '@/components/common/primitives/List';
+import { ListItem } from '@/components/common/primitives/ListItem';
 import { LinkedArticle } from '@/@types/writings-data';
-import { Paragraph } from '../primitives/Paragraph';
+import { Paragraph } from '@/components/common/primitives/Paragraph';
 import { styled } from 'stitches.config';
 import { defaultTransition } from '@/styles/animation';
 

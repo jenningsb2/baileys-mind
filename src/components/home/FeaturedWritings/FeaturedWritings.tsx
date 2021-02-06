@@ -1,11 +1,11 @@
 import { ReactComponent as InternalLinkIcon } from '@/assets/internal-link.svg';
-import { SvgContainer } from '../SvgContainer/SvgContainer';
+import { SvgContainer } from '@/components/common/SvgContainer/SvgContainer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Heading } from '../primitives/Heading';
+import { Heading } from '@/components/common/primitives/Heading';
 import { styled } from 'stitches.config';
-import { Paragraph } from '../primitives/Paragraph';
-import { Box } from '@/components/Box/Box';
+import { Paragraph } from '@/components/common/primitives/Paragraph';
+import { Box } from '@/components/common/Box/Box';
 import { WritingsData } from '@/@types/writings-data';
 import { Paths } from '@/data/paths';
 

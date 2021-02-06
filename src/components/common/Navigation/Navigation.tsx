@@ -1,10 +1,10 @@
 import { Paths } from '@data/paths';
-import { NavigationLink } from '@/components/NavigationLink/NavigationLink';
+import { NavigationLink } from '@/components/common/NavigationLink/NavigationLink';
 import { AnimateSharedLayout } from 'framer-motion';
 import { ThemeButton } from '../ThemeButton/ThemeButton';
 import { styled } from 'stitches.config';
 import { defaultTransition } from '@/styles/animation';
-import { Box } from '@/components/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 
 const StyledNavigation = styled('nav', {
   py: '$5',

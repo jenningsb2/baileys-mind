@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import React, { MouseEvent } from 'react';
 import { styled } from 'stitches.config';
-import { Text } from '@/components/primitives/Text';
+import { Text } from '@/components/common/primitives/Text';
 
 const StyledLink = styled('a', {
   color: '$text1',

@@ -1,6 +1,6 @@
-import { PageWithLayoutType } from '@/components/layouts/layouts.model';
-import { PrimaryLayout } from '@/components/layouts/PrimaryLayout/PrimaryLayout';
-import { RootLayout } from '@/components/layouts/RootLayout/RootLayout';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
+import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
 import { Paths } from '@/data/paths';
 import Link from 'next/link';
 

@@ -3,9 +3,9 @@ import { IReadingGroup, IReadingListItem } from '@/@types/reading.types';
 import {
   ReadingListItemLink,
   ReadingListItemExpansion,
-} from '@/components/ReadingListItem/ReadingListItem';
-import { Box } from '@/components/Box/Box';
-import { Heading } from '@/components/primitives/Heading';
+} from '@/components/reading/ReadingListItem/ReadingListItem';
+import { Box } from '@/components/common/Box/Box';
+import { Heading } from '@/components/common/primitives/Heading';
 import { motion } from 'framer-motion';
 import { styled } from 'stitches.config';
 import { chunkArray } from '@/utils/chunk-array';
