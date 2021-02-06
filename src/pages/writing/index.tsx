@@ -16,13 +16,15 @@ import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { groupDatesByYear, sortWritingsByDateDesc } from '@/utils/date-helpers';
 
 const YearGroup = styled('div', {
-  spaceY: '$6',
   display: 'grid',
   gridTemplateColumns: '70px 1fr',
-  cg: '$5',
+  g: '$5',
+  bp1: {
+    gridTemplateColumns: '1fr',
+  },
 });
 const List = styled('ul', {
-  spaceY: '$4',
+  spaceY: '$5',
 });
 const ListItem = styled('li', {
   display: 'grid',
@@ -54,7 +56,7 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
             PUBLISHED
           </Heading>
         </Box>
-        <Box css={{ spaceY: '$6' }}>
+        <Box css={{ spaceY: '$7' }}>
           {groupedDates.map(({ year, writings }) => (
             <YearGroup key={year}>
               <Box>

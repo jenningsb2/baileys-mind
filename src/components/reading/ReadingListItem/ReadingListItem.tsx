@@ -88,7 +88,7 @@ export const ReadingListItemLink: React.FC<ReadingListItemLinkProps> = ({
             as={motion.h3}
             layout
             size='4'
-            css={{ lh: '$primary', mb: '$1' }}>
+            css={{ lh: '$primary', mb: '$1', bp1: { fz: '$3' } }}>
             {book.title}
           </Heading>
           <Description as={motion.p} layout>

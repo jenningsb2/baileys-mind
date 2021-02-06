@@ -12,6 +12,7 @@ const StyledNavigation = styled('nav', {
   width: '$full',
   bc: '$surface2',
   backdropFilter: 'blur(4px)',
+  WebkitBackdropFilter: 'blur(4px)',
   display: 'flex',
   jc: 'center',
   position: 'fixed',

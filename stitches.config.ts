@@ -272,12 +272,12 @@ export const { styled, css } = createStyled({
   tokens: theme,
   utils,
   breakpoints: {
+    bpWriting: (rule) => `@media (max-width: 1150px) { ${rule} }`,
     bp1: (rule) => `@media (max-width: 640px) { ${rule} }`,
     bp2: (rule) => `@media (max-width: 768px) { ${rule} }`,
     bp3: (rule) => `@media (max-width: 1024px) { ${rule} }`,
     bp4: (rule) => `@media (max-width: 1280px) { ${rule} }`,
     bp5: (rule) => `@media (max-width: 1440px) { ${rule} }`,
-    bpWriting: (rule) => `@media (max-width: 1150px) { ${rule} }`,
   },
 });
 
@@ -287,11 +287,12 @@ export const darkThemeClass = css.theme({ colors: darkTheme });
 
 // * CSS RESET
 css.global({
-  'html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6': {
+  'html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6, span': {
     margin: 0,
     padding: 0,
     textAlign: 'left',
     fontSize: '$3',
+    wordBreak: 'break-word',
   },
   'h1, h2, h3, h4, h5, h6': {
     fontSize: '100%',
@@ -339,6 +340,7 @@ css.global({
   a: {
     textDecoration: 'none',
     color: 'inherit',
+    wordBreak: 'break-word',
     ':focus': {
       outlineColor: '$action',
       outlineWidth: '1px',

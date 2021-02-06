@@ -36,7 +36,10 @@ const StyledListItem = styled(ListItem, {
   },
   display: 'grid',
   gridTemplateColumns: '144px 1fr',
-  cg: '$5',
+  g: '$5',
+  bp1: {
+    gridTemplateColumns: '1fr',
+  },
 });
 
 const Time = styled('time', {

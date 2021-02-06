@@ -53,7 +53,7 @@ export const ReadingGroup: React.FC<ReadingGroupProps> = ({ group }) => {
         as={motion.h1}
         layout
         size='5'
-        css={{ mb: '$3', textTransform: 'capitalize' }}>
+        css={{ mb: '$3', textTransform: 'capitalize', bp1: { fz: '$4' } }}>
         {group.type.toString()}
       </Heading>
       <ReadingList layout>

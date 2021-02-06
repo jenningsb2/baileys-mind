@@ -29,6 +29,18 @@ const BodyContentContainer = styled(Container, {
   bpWriting: {
     pr: 'calc(163px + 15px)',
   },
+  bp1: {
+    pr: '$0',
+  },
+});
+
+const Time = styled('time', {
+  fz: '$2',
+  lh: '$tight',
+  color: '$text3',
+  fontWeight: '$bold',
+  textTransform: 'uppercase',
+  fontFamily: '$mono',
 });
 
 interface WritingPageProps {
@@ -82,7 +94,7 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
         <NextSeo {...SEO} />
         <Container>
           <Box as='header' css={{ mb: '$6' }}>
-            <Heading size='5' css={{ mb: '$5' }}>
+            <Heading size='5' css={{ mb: '$5', bp1: { fz: '$4' } }}>
               {writingMetaData?.title}
             </Heading>
             <Box css={{ display: 'flex', jc: 'space-between', ai: 'center' }}>
@@ -94,9 +106,9 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
                   />
                 </Box>
                 <Box>
-                  <Text color='3' size='3'>
+                  <Time dateTime={writingMetaData?.publishDate}>
                     {writingMetaData?.publishDate}
-                  </Text>
+                  </Time>
                 </Box>
               </Box>
               <Text color='3' size='3'>
@@ -116,6 +128,9 @@ const WritingPage: PageWithLayoutType<WritingPageProps> = ({
                 height: '100%',
                 top: 0,
                 right: 0,
+                bp1: {
+                  display: 'none',
+                },
               }}>
               <Box css={{ position: 'sticky', top: 95 }}>
                 <LinkedArticles links={linkedArticles} />

@@ -34,7 +34,7 @@ const Home: PageWithLayoutType<HomeProps> = ({ featuredWritings }) => {
       <NextSeo {...SEO} />
       <Box>
         <Intro>
-          <Heading size='7' css={{ mb: '$5', bp1: { fz: '$6' } }}>
+          <Heading size='7' css={{ mb: '$5', bp1: { fz: '$5', mb: '$6' } }}>
             Hey there,
           </Heading>
           <Paragraph

@@ -75,23 +75,26 @@ const About: PageWithLayoutType<{}> = () => {
           <Heading as='h2' size='4' css={{ mb: '$5' }}>
             Get in Touch
           </Heading>
-          <Paragraph size='4'>
+          <Paragraph size='4' css={{ bp1: { fz: '$3' } }}>
             You can contact me via{' '}
-            <CustomLink as={Paths.email} href={Paths.email} css={{ fz: '$4' }}>
+            <CustomLink
+              as={Paths.email}
+              href={Paths.email}
+              css={{ fz: '$4', bp1: { fz: '$3' } }}>
               email
             </CustomLink>
             , or follow me on{' '}
             <CustomLink
               as={Paths.twitter}
               href={Paths.twitter}
-              css={{ fz: '$4' }}>
+              css={{ fz: '$4', bp1: { fz: '$3' } }}>
               Twitter
             </CustomLink>{' '}
             or{' '}
             <CustomLink
               as={Paths.instagram}
               href={Paths.instagram}
-              css={{ fz: '$4' }}>
+              css={{ fz: '$4', bp1: { fz: '$3' } }}>
               Instagram
             </CustomLink>
             .
