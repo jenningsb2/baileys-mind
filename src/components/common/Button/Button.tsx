@@ -1,6 +1,6 @@
 import { defaultTransition } from '@/styles/animation';
-import { styled } from 'stitches.config';
 import Link from 'next/link';
+import { styled } from 'stitches.config';
 
 const StyledButton = styled('button', {
   color: '$action',

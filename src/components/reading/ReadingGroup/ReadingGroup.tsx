@@ -1,14 +1,14 @@
-import React from 'react';
 import { IReadingGroup, IReadingListItem } from '@/@types/reading.types';
-import {
-  ReadingListItemLink,
-  ReadingListItemExpansion,
-} from '@/components/reading/ReadingListItem/ReadingListItem';
 import { Box } from '@/components/common/Box/Box';
 import { Heading } from '@/components/common/primitives/Heading';
-import { motion } from 'framer-motion';
-import { styled } from 'stitches.config';
+import {
+  ReadingListItemExpansion,
+  ReadingListItemLink,
+} from '@/components/reading/ReadingListItem/ReadingListItem';
 import { chunkArray } from '@/utils/chunk-array';
+import { motion } from 'framer-motion';
+import React from 'react';
+import { styled } from 'stitches.config';
 
 const ReadingList = styled(motion.ul, {
   '> *': {

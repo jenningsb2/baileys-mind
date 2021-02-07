@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,json}'"
+    "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css,scss,json}'"
   },
   "husky": {
     "hooks": {
@@ -14,8 +14,7 @@
     }
   },
   "lint-staged": {
-    "./**/*.{js,jsx,ts,tsx,css,scss}": [
-      "organize-imports-cli",
+    "./src/**/*.{js,jsx,ts,tsx,css,scss}": [
       "prettier --write"
     ]
   },
@@ -46,8 +45,8 @@
     "globby": "^11.0.1",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
-    "organize-imports-cli": "^0.8.0",
     "prettier": "^2.1.2",
+    "prettier-plugin-organize-imports": "^1.1.1",
     "typescript": "^4.0.5",
     "url-loader": "^4.1.1"
   }

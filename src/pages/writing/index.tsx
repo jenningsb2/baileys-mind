@@ -1,19 +1,19 @@
-import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
-import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
-import { GetStaticProps } from 'next';
-import { NextSeo } from 'next-seo';
-import { Paths } from '@/data/paths';
-import { CustomLink } from '@/components/common/CustomLink/CustomLink';
 import { WritingsData } from '@/@types/writings-data';
-import { getAllWritingsData } from '@/utils/writings-data-helpers';
+import { Box } from '@/components/common/Box/Box';
+import { CustomLink } from '@/components/common/CustomLink/CustomLink';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
+import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
+import { PageHeadline } from '@/components/common/PageHeadline/PageHeadline';
 import { Heading } from '@/components/common/primitives/Heading';
 import { Text } from '@/components/common/primitives/Text';
-import { PageHeadline } from '@/components/common/PageHeadline/PageHeadline';
-import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
-import { styled } from 'stitches.config';
-import { Box } from '@/components/common/Box/Box';
-import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { Paths } from '@/data/paths';
 import { groupDatesByYear, sortWritingsByDateDesc } from '@/utils/date-helpers';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { getAllWritingsData } from '@/utils/writings-data-helpers';
+import { GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
+import { styled } from 'stitches.config';
 
 const YearGroup = styled('div', {
   display: 'grid',

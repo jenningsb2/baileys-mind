@@ -1,17 +1,17 @@
-import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
-import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
-import { NextSeo } from 'next-seo';
-import { Heading } from '@/components/common/primitives/Heading';
-import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
-import { useScrollToTop } from '@/utils/use-scroll-to-top';
-import { Box } from '@/components/common/Box/Box';
-import { Paragraph } from '@/components/common/primitives/Paragraph';
-import { styled } from 'stitches.config';
-import { CustomLink } from '@/components/common/CustomLink/CustomLink';
-import { Button } from '@/components/common/Button/Button';
 import { Milestones } from '@/components/about/Milestones/Milestones';
-import { Paths } from '@/data/paths';
+import { Box } from '@/components/common/Box/Box';
+import { Button } from '@/components/common/Button/Button';
+import { CustomLink } from '@/components/common/CustomLink/CustomLink';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
+import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
 import { PageHeadline } from '@/components/common/PageHeadline/PageHeadline';
+import { Heading } from '@/components/common/primitives/Heading';
+import { Paragraph } from '@/components/common/primitives/Paragraph';
+import { Paths } from '@/data/paths';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { NextSeo } from 'next-seo';
+import { styled } from 'stitches.config';
 
 const ParagraphText = styled(Paragraph, {
   lh: '$loose',

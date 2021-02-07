@@ -1,18 +1,17 @@
-import React from 'react';
-import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
-import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
-import { NextSeo } from 'next-seo';
-import { Heading } from '@/components/common/primitives/Heading';
-import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
-import { Box } from '@/components/common/Box/Box';
-import { useScrollToTop } from '@/utils/use-scroll-to-top';
 import { IReadingGroup } from '@/@types/reading.types';
+import { Box } from '@/components/common/Box/Box';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
+import { PrimaryLayout } from '@/components/common/layouts/PrimaryLayout/PrimaryLayout';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
+import { PageHeadline } from '@/components/common/PageHeadline/PageHeadline';
+import { Paragraph } from '@/components/common/primitives/Paragraph';
 import { Expansion } from '@/components/reading/Expansion/Expansion';
 import { ReadingGroup } from '@/components/reading/ReadingGroup/ReadingGroup';
 import { useBooks } from '@/utils/use-books';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 import { styled } from 'stitches.config';
-import { Paragraph } from '@/components/common/primitives/Paragraph';
-import { PageHeadline } from '@/components/common/PageHeadline/PageHeadline';
 
 const SkeletonTitle = styled('div', {
   height: '34px',

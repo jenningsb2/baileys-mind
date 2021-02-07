@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { SetStateAction, MutableRefObject } from 'react';
+import React, { MutableRefObject, SetStateAction } from 'react';
 import { darkThemeClass, styled } from '../../stitches.config';
 
 export type AppThemes = 'dark' | 'light';

@@ -1,15 +1,15 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import { FrontMatter } from '@/@types/frontmatter';
 import {
   LinkedArticle,
   WritingsData,
   WritingsMetaData,
 } from '@/@types/writings-data';
-import { writingsFilePaths, WRITINGS_PATH } from './mdxUtils';
+import fs from 'fs';
+import matter from 'gray-matter';
+import path from 'path';
 import readingTime from 'reading-time';
-import { FrontMatter } from '@/@types/frontmatter';
 import { getYearFromDate } from './date-helpers';
+import { writingsFilePaths, WRITINGS_PATH } from './mdxUtils';
 
 function createDataObject(
   content: string,

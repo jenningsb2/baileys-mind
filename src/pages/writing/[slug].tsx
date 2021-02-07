@@ -1,24 +1,23 @@
-import React from 'react';
+import { LinkedArticle, WritingsMetaData } from '@/@types/writings-data';
+import { Avatar } from '@/components/common/Avatar/Avatar';
+import { Box } from '@/components/common/Box/Box';
+import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
+import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
+import { WritingLayout } from '@/components/common/layouts/WritingLayout/WritingLayout';
+import { Heading } from '@/components/common/primitives/Heading';
+import { Text } from '@/components/common/primitives/Text';
+import { LinkedArticles } from '@/components/writing/LinkedArticles/LinkedArticles';
+import { components } from '@/utils/mdx-components';
+import { writingsFilePaths } from '@/utils/mdxUtils';
+import { useScrollToTop } from '@/utils/use-scroll-to-top';
+import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
 import { MdxRemote } from 'next-mdx-remote/types';
-
-import { writingsFilePaths } from '@/utils/mdxUtils';
-import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
-import { WritingLayout } from '@/components/common/layouts/WritingLayout/WritingLayout';
-import { PageWithLayoutType } from '@/components/common/layouts/layouts.model';
-import { useScrollToTop } from '@/utils/use-scroll-to-top';
-import { RootLayout } from '@/components/common/layouts/RootLayout/RootLayout';
-import { Heading } from '@/components/common/primitives/Heading';
-import { Text } from '@/components/common/primitives/Text';
-import { Box } from '@/components/common/Box/Box';
-import { getWritingDataFromSlug } from '@/utils/writings-data-helpers';
-import { LinkedArticle, WritingsMetaData } from '@/@types/writings-data';
-import { components } from '@/utils/mdx-components';
-import { Avatar } from '@/components/common/Avatar/Avatar';
+import React from 'react';
 import { styled } from 'stitches.config';
-import { LinkedArticles } from '@/components/writing/LinkedArticles/LinkedArticles';
 
 const Container = styled('div', {
   width: '$full',

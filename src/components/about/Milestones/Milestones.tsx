@@ -1,9 +1,8 @@
-import { List } from '@/components/common/primitives/List';
-import { ListItem } from '@/components/common/primitives/ListItem';
 import { Box } from '@/components/common/Box/Box';
 import { Heading } from '@/components/common/primitives/Heading';
+import { List } from '@/components/common/primitives/List';
+import { ListItem } from '@/components/common/primitives/ListItem';
 import { Paragraph } from '@/components/common/primitives/Paragraph';
-
 import { styled } from 'stitches.config';
 
 const milestones = [

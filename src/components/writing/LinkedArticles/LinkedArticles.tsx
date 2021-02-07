@@ -1,13 +1,13 @@
-import Link from 'next/link';
-import { Paths } from '@data/paths';
+import { LinkedArticle } from '@/@types/writings-data';
 import { Box } from '@/components/common/Box/Box';
 import { Heading } from '@/components/common/primitives/Heading';
 import { List } from '@/components/common/primitives/List';
 import { ListItem } from '@/components/common/primitives/ListItem';
-import { LinkedArticle } from '@/@types/writings-data';
 import { Paragraph } from '@/components/common/primitives/Paragraph';
-import { styled } from 'stitches.config';
 import { defaultTransition } from '@/styles/animation';
+import { Paths } from '@data/paths';
+import Link from 'next/link';
+import { styled } from 'stitches.config';
 
 const Description = styled(Paragraph, {
   display: '-webkit-box',

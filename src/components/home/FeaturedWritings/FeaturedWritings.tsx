@@ -1,13 +1,13 @@
+import { WritingsData } from '@/@types/writings-data';
 import { ReactComponent as InternalLinkIcon } from '@/assets/internal-link.svg';
+import { Box } from '@/components/common/Box/Box';
+import { Heading } from '@/components/common/primitives/Heading';
+import { Paragraph } from '@/components/common/primitives/Paragraph';
 import { SvgContainer } from '@/components/common/SvgContainer/SvgContainer';
+import { Paths } from '@/data/paths';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Heading } from '@/components/common/primitives/Heading';
 import { styled } from 'stitches.config';
-import { Paragraph } from '@/components/common/primitives/Paragraph';
-import { Box } from '@/components/common/Box/Box';
-import { WritingsData } from '@/@types/writings-data';
-import { Paths } from '@/data/paths';
 
 const visibilityVariants = {
   hovered: {

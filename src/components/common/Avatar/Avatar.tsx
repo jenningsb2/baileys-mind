@@ -1,6 +1,6 @@
-import { styled } from 'stitches.config';
-import Image from 'next/image';
 import { useTheme } from '@/context/theme';
+import Image from 'next/image';
+import { styled } from 'stitches.config';
 
 const StyledAvatar = styled('div', {
   height: '20px',

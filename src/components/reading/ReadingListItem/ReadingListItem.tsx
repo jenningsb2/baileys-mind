@@ -2,20 +2,20 @@ import {
   IReadingListItemExpansion,
   IReadingListItemLink,
 } from '@/@types/reading.types';
-import Link from 'next/link';
-import { styled } from 'stitches.config';
-import { Heading } from '@/components/common/primitives/Heading';
-import { Paragraph } from '@/components/common/primitives/Paragraph';
-import { SvgContainer } from '@/components/common/SvgContainer/SvgContainer';
-import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
 import { ReactComponent as CaretIcon } from '@/assets/caret.svg';
-import { Expansion } from '../Expansion/Expansion';
+import { ReactComponent as ExternalLinkIcon } from '@/assets/external-link.svg';
 import { Box } from '@/components/common/Box/Box';
-import { motion } from 'framer-motion';
-import { useExpansion } from '@/context/expansion';
+import { CustomLink } from '@/components/common/CustomLink/CustomLink';
+import { Heading } from '@/components/common/primitives/Heading';
 import { List } from '@/components/common/primitives/List';
 import { ListItem } from '@/components/common/primitives/ListItem';
-import { CustomLink } from '@/components/common/CustomLink/CustomLink';
+import { Paragraph } from '@/components/common/primitives/Paragraph';
+import { SvgContainer } from '@/components/common/SvgContainer/SvgContainer';
+import { useExpansion } from '@/context/expansion';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { styled } from 'stitches.config';
+import { Expansion } from '../Expansion/Expansion';
 
 const Wrapper = styled('li', {
   py: '$5',

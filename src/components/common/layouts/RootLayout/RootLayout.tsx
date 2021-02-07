@@ -1,9 +1,9 @@
-import { DefaultSeo } from 'next-seo';
-import SEO from 'next-seo.config';
+import { Box } from '@/components/common/Box/Box';
+import { Footer } from '@/components/common/Footer/Footer';
 import { Navigation } from '@/components/common/Navigation/Navigation';
 import { ThemeProvider } from '@/context/theme';
-import { Footer } from '@/components/common/Footer/Footer';
-import { Box } from '@/components/common/Box/Box';
+import { DefaultSeo } from 'next-seo';
+import SEO from 'next-seo.config';
 
 export const RootLayout: React.FC = ({ children }) => {
   return (

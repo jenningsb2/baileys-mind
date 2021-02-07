@@ -1,6 +1,6 @@
-import React from 'react';
 import { ExpansionProvider, useExpansion } from '@/context/expansion';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import React from 'react';
 import { styled } from 'stitches.config';
 
 const TriggerButton = styled(motion.button, {
