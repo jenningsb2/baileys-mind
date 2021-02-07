@@ -50,7 +50,7 @@ export const ReadingGroup: React.FC<ReadingGroupProps> = ({ group }) => {
   return (
     <Box>
       <Heading
-        as={motion.h1}
+        as={motion.h2}
         layout
         size='5'
         css={{ mb: '$3', textTransform: 'capitalize', bp1: { fz: '$4' } }}>

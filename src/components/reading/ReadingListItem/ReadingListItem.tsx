@@ -81,7 +81,7 @@ export const ReadingListItemLink: React.FC<ReadingListItemLinkProps> = ({
     <Expansion.Item>
       <ReadingListItemRoot>
         <ImageWrapper layout>
-          <Image src={book.image} />
+          <Image src={book.image} alt={`Book cover of: ${book.title}`} />
         </ImageWrapper>
         <Content layout>
           <Heading
@@ -100,6 +100,7 @@ export const ReadingListItemLink: React.FC<ReadingListItemLinkProps> = ({
             <a
               target='_blank'
               rel='noopener noreferrer'
+              aria-label={`External link to the book: ${book.title}`}
               style={{ display: 'block' }}>
               <SvgContainer svgWidth={24} svgHeight={24}>
                 <ExternalLinkIcon />

@@ -34,7 +34,7 @@ export const ThemeButton: React.FC = () => {
     theme === 'dark' ? setTheme('light') : setTheme('dark');
   };
   return (
-    <StyledButton onClick={handleClick}>
+    <StyledButton onClick={handleClick} aria-label='toggle theme'>
       <Icon>
         <SvgContainer svgHeight={24} svgWidth={24}>
           {theme === 'light' ? <MoonIcon /> : <SunIcon />}
