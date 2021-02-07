@@ -1,9 +1,9 @@
-import { useTheme } from '@/context/theme';
-import { SvgContainer } from '@/components/common/SvgContainer/SvgContainer';
 import { ReactComponent as MoonIcon } from '@/assets/moon.svg';
 import { ReactComponent as SunIcon } from '@/assets/sun.svg';
-import { styled } from 'stitches.config';
+import { SvgContainer } from '@/components/common/SvgContainer/SvgContainer';
+import { useTheme } from '@/context/theme';
 import { defaultTransition } from '@/styles/animation';
+import { styled } from 'stitches.config';
 
 const StyledButton = styled('button', {
   height: '45px',
