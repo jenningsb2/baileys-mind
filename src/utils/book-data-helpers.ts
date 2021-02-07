@@ -28,6 +28,15 @@ function hasNotes(book: IBookData): boolean {
   return idMatch != null ? true : false;
 }
 
+function swapProtocol(url: string): string {
+  const regex = /^http:/;
+  if (regex.test(url)) {
+    return url.replace(regex, 'https:');
+  }
+
+  return url;
+}
+
 function parseGoogleBookData(books: any[]): IReadingListItem[] | [] {
   if (books == null || !Array.isArray(books)) return [];
 
@@ -38,7 +47,7 @@ function parseGoogleBookData(books: any[]): IReadingListItem[] | [] {
         id,
         title,
         description,
-        image: imageLinks.smallThumbnail,
+        image: swapProtocol(imageLinks.smallThumbnail),
         href: `https://books.google.com/books?id=${id}`,
       };
     })
