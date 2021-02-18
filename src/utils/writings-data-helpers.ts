@@ -25,27 +25,26 @@ function createDataObject(
       publishDate: data.publishDate ?? 'XXXX-XX-XX',
       readingTime: readingTime(content),
       year: getYearFromDate(data.publishDate) ?? 'XXXX',
-      featured: data?.featured ? true : false,
+      featured: Boolean(data?.featured),
       draft: Boolean(data?.draft),
       linked: data.linked ?? null,
     } as WritingsMetaData,
   };
 }
 
-function getFileSource() {}
+function getFileSource(p1: string, p2: string): Buffer {
+  const filePath = path.join(p1, p2);
+  return fs?.readFileSync(filePath);
+}
 
 function parseLinkedArticlesData(linked: string[]): LinkedArticle[] {
   if (linked == null || !Array.isArray(linked)) return null;
 
   return linked
     .map((link) => {
-      // TODO: DRY this up
       const fileName = `${link}.mdx`;
-      const writingFilePath = path.join(WRITINGS_PATH, fileName);
-      const source = fs?.readFileSync(writingFilePath);
-
       // MDX is parsed by 'gray-matter' lib
-      const { data } = matter(source);
+      const { data } = matter(getFileSource(WRITINGS_PATH, fileName));
 
       return {
         ...(data as FrontMatter),
@@ -63,11 +62,9 @@ export function getWritingDataFromSlug(slug: string): WritingsData {
   // rebuilding filename from 'slug' which is passed as a link param
   // (which was created in the `getStaticPaths` method)
   const fileName = `${slug}.mdx`;
-  const writingFilePath = path.join(WRITINGS_PATH, fileName);
-  const source = fs?.readFileSync(writingFilePath);
 
   // MDX is parsed by 'gray-matter' lib
-  const { content, data } = matter(source);
+  const { content, data } = matter(getFileSource(WRITINGS_PATH, fileName));
 
   return {
     ...createDataObject(content, { ...data } as FrontMatter, fileName),
@@ -77,9 +74,7 @@ export function getWritingDataFromSlug(slug: string): WritingsData {
 export function getAllWritingsData(): WritingsData[] {
   // Creating an array of writings from `writings/` directory
   const writings = writingsFilePaths.map((fileName) => {
-    const source = fs?.readFileSync(path.join(WRITINGS_PATH, fileName));
-
-    const { content, data } = matter(source);
+    const { content, data } = matter(getFileSource(WRITINGS_PATH, fileName));
 
     return {
       ...createDataObject(
