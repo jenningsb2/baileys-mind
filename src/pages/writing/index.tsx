@@ -45,7 +45,8 @@ const Writing: PageWithLayoutType<WritingProps> = ({ writingsData }) => {
       title,
     },
   };
-  const groupedDates = groupDatesByYear(writingsData);
+  const nonDrafts = writingsData.filter((writing) => !writing.metaData.draft);
+  const groupedDates = groupDatesByYear(nonDrafts);
   return (
     <>
       <NextSeo {...SEO} />

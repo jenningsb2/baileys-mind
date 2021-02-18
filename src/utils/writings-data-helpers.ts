@@ -1,5 +1,5 @@
-import { FrontMatter } from '@/@types/frontmatter';
 import {
+  FrontMatter,
   LinkedArticle,
   WritingsData,
   WritingsMetaData,
@@ -26,10 +26,13 @@ function createDataObject(
       readingTime: readingTime(content),
       year: getYearFromDate(data.publishDate) ?? 'XXXX',
       featured: data?.featured ? true : false,
+      draft: Boolean(data?.draft),
       linked: data.linked ?? null,
     } as WritingsMetaData,
   };
 }
+
+function getFileSource() {}
 
 function parseLinkedArticlesData(linked: string[]): LinkedArticle[] {
   if (linked == null || !Array.isArray(linked)) return null;
@@ -61,7 +64,7 @@ export function getWritingDataFromSlug(slug: string): WritingsData {
   // (which was created in the `getStaticPaths` method)
   const fileName = `${slug}.mdx`;
   const writingFilePath = path.join(WRITINGS_PATH, fileName);
-  const source = fs.readFileSync(writingFilePath);
+  const source = fs?.readFileSync(writingFilePath);
 
   // MDX is parsed by 'gray-matter' lib
   const { content, data } = matter(source);
@@ -74,7 +77,7 @@ export function getWritingDataFromSlug(slug: string): WritingsData {
 export function getAllWritingsData(): WritingsData[] {
   // Creating an array of writings from `writings/` directory
   const writings = writingsFilePaths.map((fileName) => {
-    const source = fs.readFileSync(path.join(WRITINGS_PATH, fileName));
+    const source = fs?.readFileSync(path.join(WRITINGS_PATH, fileName));
 
     const { content, data } = matter(source);
 
