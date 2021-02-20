@@ -55,6 +55,7 @@ const Reading: PageWithLayoutType<{}> = () => {
   };
   const { books, isLoading, isError } = useBooks();
 
+  React.useEffect(() => void console.log(books), [books]);
   return (
     <>
       <NextSeo {...SEO} />

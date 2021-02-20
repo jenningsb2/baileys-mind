@@ -7,7 +7,7 @@ import {
 } from '@/@types/reading.types';
 import { booksData } from '@/data/reading';
 
-const shelveMap: { [x: number]: string } = {
+const shelfMap: { [x: number]: string } = {
   0: 'current',
   1: 'next',
   2: 'read',
@@ -64,10 +64,10 @@ function parseGoogleBookData(books: any[]): IReadingListItem[] | [] {
 export function transformBookData(data: any[]): IReadingGroup[] | [] {
   if (data == null) return [];
 
-  return data.map((shelve, idx) => {
+  return data.map((shelf, idx) => {
     return {
-      type: <ReadingGroupType>shelveMap[idx],
-      books: parseGoogleBookData(shelve.items),
+      type: <ReadingGroupType>shelfMap[idx],
+      books: parseGoogleBookData(shelf.items),
     };
   });
 }

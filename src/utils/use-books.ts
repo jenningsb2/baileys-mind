@@ -6,8 +6,8 @@ export const fetcher = async (url: string) => {
   const key = process.env.NEXT_PUBLIC_BOOKS_API_KEY;
   const shelves = [3, 2, 4];
   return Promise.all(
-    shelves.map((shelve) => {
-      return fetch(`${url}/${user}/bookshelves/${shelve}/volumes?key=${key}`, {
+    shelves.map((shelf) => {
+      return fetch(`${url}/${user}/bookshelves/${shelf}/volumes?key=${key}`, {
         headers: {
           'Content-Type': 'application/json',
         },
