@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const writingsData = sortWritingsByDateDesc(getAllWritingsData());
 
   const featuredWritings: WritingsData[] = writingsData.filter(
-    (writing) => writing?.metaData?.featured,
+    (writing) => writing?.metaData?.featured && !writing?.metaData?.draft,
   );
 
   return {
